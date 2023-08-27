@@ -1,0 +1,79 @@
+
+    .image {
+      object-fit: fill;
+      padding: 0.1%;
+      /* max-width: 100% !important; */
+      position:relative !important;
+      
+    }
+  .centertext{
+    /* animation: MoveUpDown 5s linear; */
+    transform: translate(-50%, -50%);
+    top: 20%;
+    left: 50%;
+    position: absolute;
+    color: #fffdfb;
+    font-weight: bold;
+    font-size:3vw;
+    animation: typing 2500ms steps(50) 1, cursor 1s ;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* .typing-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  } */
+
+  /* .centertext {
+    
+    border-right: 0.15em solid orange;
+  } */
+  .descriptiontext{
+    color: #fffdfb;
+    font-weight: 400;
+    font-size:1.5vw;
+    animation: 3s slide-up;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 45%;
+    left: 42%;
+    margin-top:0%;
+  }
+  .subdis{
+    /* line-height: 2em; */
+    
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @keyframes slide-up {
+    from {
+      margin-top: 100%;
+      height: 300%; 
+    }
+  
+    to {
+      margin-top: 0%;
+      height: 29%;
+    }
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 75%; }
+  }
+
+  @keyframes cursor {
+    from, to { border-right-color: transparent; }
+    /* 50% { border-right-color: orange; } */
+  }
+
+  
+.animationdelay{
+  visibility: visible;
+  animation-delay: 0.4s;
+  animation-name: fadeIn;
+}

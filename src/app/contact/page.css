@@ -1,0 +1,23 @@
+
+
+.contact::before{
+    
+        background-image: linear-gradient(to bottom right, #EF8408 0%, #EE4C22 100%);
+        border-radius: 0px 50px 50px 0px;
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 100%;
+        right: auto;
+        margin: auto;
+        position: absolute;
+
+        width: 75%;
+        max-width: 100%;
+        z-index: -1;
+      
+}
+
+textarea{
+        resize: none; 
+}
