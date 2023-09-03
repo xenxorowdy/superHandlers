@@ -12,8 +12,9 @@ const Index = () => {
     setSelected(event.target?.value)
   }
   const getAllName=async()=>{
-    const result = await axios.get("/api/getName", { cache: 'no-store' });
-    setResult(result.data?.result);
+    const result = await fetch("/api/getName", { cache: 'no-store' });
+    const res = await result.json()
+    setResult(res?.result);
     setLoading(false)
   }
   useEffect(()=>{
