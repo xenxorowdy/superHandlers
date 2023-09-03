@@ -1,0 +1,17 @@
+.dragger {
+    width: 94vw;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px dashed #e37f7f;
+    border-radius: 18px;
+}
+
+.dragger img {
+    max-height: 280px;
+    max-width: 90vw;
+    object-fit: cover;
+    border-radius: 5px;
+}

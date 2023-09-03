@@ -27,8 +27,8 @@ const Navbar = ()=> {
               alt="super logo"
             //   className="dark:invert"
               
-              width={70}
-              height={100}
+              width={50}
+              height={50}
               className=" !w-fit"
               priority
             />
@@ -58,24 +58,24 @@ superhandlers1@gmail.com
               className={state ? "#navbar active" : "#navbar"}
             >
               <li>
-                <Link className={usePathname() === '/' ?  "active" : undefined} href="">
+                <Link onClick={handleClick} className={usePathname() === '/' ?  "active" : undefined} href="">
                   Home
                 </Link>
               </li>
               <li>
-                <Link className={usePathname() === '/shop' ?  "active" : undefined } href="shop">Shop</Link>
+                <Link onClick={handleClick} className={usePathname() === '/shop' ?  "active" : undefined } href="shop">Shop</Link>
               </li>
               {/* <li>
-                <Link className={usePathname() === '/blog' ?  "active" : undefined } href="blog">Blog</Link>
+                <Link onClick={handleClick} className={usePathname() === '/blog' ?  "active" : undefined } href="blog">Blog</Link>
               </li> */}
               <li>
-                <Link className={usePathname() === '/about' ?  "active" : undefined } href="/about">About</Link>
+                <Link onClick={handleClick} className={usePathname() === '/about' ?  "active" : undefined } href="/about">About</Link>
               </li>
               <li>
-                <Link className={usePathname() === '/contact' ?  "active" : undefined } href="contact">Contact</Link>
+                <Link onClick={handleClick} className={usePathname() === '/contact' ?  "active" : undefined } href="contact">Contact</Link>
               </li>
               <li>
-              <Link href="https://www.facebook.com/Shandlers/" target="_blank">
+              <Link onClick={handleClick} href="https://www.facebook.com/Shandlers/" target="_blank">
 <Image
   src='/Facebooklogo.png'
   alt="facebook"

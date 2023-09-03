@@ -1,6 +1,6 @@
 import Image from "next/image"
 import "./footer.css"
-import { FaBeer, FaFacebook } from "react-icons/fa";
+import {  FaFacebook } from "react-icons/fa";
 
 export default function Footter() {
   return (
@@ -32,6 +32,7 @@ export default function Footter() {
         <div className="social-links">
           <a href="https://www.facebook.com/Shandlers/" target="_blank">
           <FaFacebook className="fixwind"  />
+          
           </a>
         {/* //   <a href="#">
         //     <i className="fab fa-twitter" />

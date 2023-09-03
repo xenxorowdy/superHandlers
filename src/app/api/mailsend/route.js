@@ -2,18 +2,14 @@ const nodemailer = require('nodemailer');
 
 export async function POST(request) {
     const req = await request.json()
-
     const transporter = nodemailer.createTransport({
-        host: 'smtp.office365.com',
-        port: 587,
-        secure: false,
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,     
         auth: {
           user: process.env.email,
-          pass: process.env.pwd
-        },
-        tls: {
-            ciphers: 'SSLv3',
-          },
+          pass: process.env.pass
+        }
       });
       const email = req.email ?? ''
       const contactNo = req.contact ?? ''
@@ -35,7 +31,7 @@ const mailConfigurations = {
     `
 };
  const status = await transporter.sendMail(mailConfigurations)
-
+// console.log(status)
     return new Response(`success`);
 }
     

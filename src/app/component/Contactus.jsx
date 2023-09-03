@@ -1,5 +1,6 @@
 import React from 'react'
 // import './brandsEffect.css'
+// import "./contact.css"
 export default function Contactus() {
   return (
     <div>
