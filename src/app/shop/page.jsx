@@ -12,7 +12,7 @@ const Index = () => {
     setSelected(event.target?.value)
   }
   const getAllName=async()=>{
-    const result = await axios.get("/api/getName");
+    const result = await axios.get("/api/getName", { cache: 'no-store' });
     setResult(result.data?.result);
     setLoading(false)
   }
