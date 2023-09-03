@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Cards from '../component/cards'
 import "./shoping.css"
 import Loading from "../loading.jsx"
-const index = () => {
+const Index = () => {
   const [selected,setSelected]= useState("All");
   const [result ,setResult] = useState([]);
   const [loading,setLoading] = useState(true)
@@ -44,7 +44,7 @@ const index = () => {
       </div>
       
  <div style={{gridTemplateColumns:"repeat(auto-fit, minmax(300px,1fr))",display:"grid",rowGap:"16px",padding:"0px px 0px 12px",minHeight:"250px!important",paddingBottom:"16px" , justifyItems:"center" }}>
-      {result.filter(e=>{if(selected==='All') return e ;else if(selected === e.metadata.selected) return e}).map(e=><Cards res={e.filename} price={e.metadata?.price} title={e.metadata?.title } desc={e.metadata?.description??''} selected={e.metadata?.selected} />)}
+      {result.filter(e=>{if(selected==='All') return e ;else if(selected === e.metadata.selected) return e}).map(e=><Cards key={e.filename} res={e.filename} price={e.metadata?.price} title={e.metadata?.title } desc={e.metadata?.description??''} selected={e.metadata?.selected} />)}
     
       {/* <Cards/> */}
      </div>    
@@ -52,4 +52,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

@@ -16,6 +16,7 @@ export default function Home() {
       onLoadingComplete={img => setImageload(true)}
       quality={20}
       fill
+      alt={'homescreen'}
       className={'image blur-[2px] brightness-[0.4] backdrop-hue-rotate-90 bg-white/30 w-9/10 '}
       // placeholder="hello"
       loading = 'lazy' 
@@ -67,6 +68,7 @@ Available include exclusive, current stock, and short-term hiring. for further i
 src={'/wp7388664-forklift-wallpapers.jpg'}
 width={500}
 height={500}
+alt='wallpapers'
 className='rounded-[19px] border-1'
 />
 </div>
@@ -80,7 +82,7 @@ Whether you’re wanting a Planned Preventative Maintenance Contract (PPM) or ev
 </h1>
 </div>
 
-<Image src={'/wp7388677-forklift-wallpapers.jpg'} width={500} height={500} className=' rounded-[19px] border-1' />
+<Image src={'/wp7388677-forklift-wallpapers.jpg'} width={500} height={500} className=' rounded-[19px] border-1' alt='forklift-wallpapers' />
 
 </div>
 

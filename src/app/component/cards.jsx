@@ -81,7 +81,7 @@ export default function Cards({res,title,price,desc,selected}) {
     </div>
     
     {more && desc &&
-     desc.split("\n").map(e=> e.trim() && <li className='w-[90%]'>{e}</li>)}
+     desc.split("\n").map((e,index)=> e.trim() && <li key={index} className='w-[90%]'>{e}</li>)}
     </div>
     
     </div>

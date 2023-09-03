@@ -91,10 +91,10 @@ const handleReset = ()=>{
           <div {...getRootProps()}>
             <input {...getInputProps()} />
             {uploadedImage ? (
-              <img src={URL.createObjectURL(uploadedImage)} alt="Uploaded" />
+              <Image src={URL.createObjectURL(uploadedImage)} width={400} height={200} alt="Uploaded" />
             ) : (<div className="flex flex-col gap-3  items-center justify-center">
               <FaFileImage className="w-20 h-20"/>
-              <p>Drag 'n' drop or click to select Image</p>
+              <p>Drag & drop or click to select Image</p>
               </div>
             )}
           </div>
