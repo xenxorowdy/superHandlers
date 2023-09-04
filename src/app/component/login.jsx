@@ -24,12 +24,12 @@ function LoginForm() {
   };
 
   return (
-    <form class="login">
-    <input type="text" onChange={handleUsernameChange} placeholder="Username">
-    <input type="password" onchange={handlePasswordChange} placeholder="Password">
+    <div>
+       <input type="text" onChange={handleUsernameChange} placeholder="Username"/>
+    <input type="password" onchange={handlePasswordChange} placeholder="Password"/>
     <button onClick={handleSubmit} >Login</button>
-  </form>
-  );
-}
+    </div>
+  )
 
+}
 export default LoginForm;
