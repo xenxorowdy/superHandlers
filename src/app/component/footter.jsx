@@ -25,6 +25,9 @@ export default function Footter() {
           <li>
             <a href="/">Home</a>
           </li>
+          <li>
+            <a href="/login">Login</a>
+          </li>
         </ul>
       </div>
       <div className="footer-col">
@@ -47,7 +50,7 @@ export default function Footter() {
       </div>
     </div>
   </div>
-  <Image src={"/My project.png"} width={200} height={200} className="  object-contain" />
+  <Image src={"/My project.png"} width={200} height={200} className="  object-contain" alt='myprojectlogo' />
 
   </div>
   <hr className=" bg-black"/>

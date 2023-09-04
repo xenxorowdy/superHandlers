@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 
 import { connectToDb,getfiles } from "../upload/route";
 
-export async function GET(request) {
-      if(request.method == 'GET'){
+export async function POST(request) {
+      if(request.method == 'POST'){
         try {
             const {client} = await connectToDb();
              const result = await client

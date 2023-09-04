@@ -58,6 +58,9 @@ export default function Cards({res,title,price,desc,selected}) {
       src={urls}
       width={260}
       height={100}
+      className=' aspect-squre max-w-[250px] max-h-[150px]  object-contain'
+      alt={urls}
+
        />
     </div>
        

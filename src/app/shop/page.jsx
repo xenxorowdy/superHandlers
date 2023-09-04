@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useEffect, useState } from 'react'
 import Cards from '../component/cards'
 import "./shoping.css"
-import Loading from "../loading.jsx"
 const Index = () => {
   const [selected,setSelected]= useState("All");
   const [result ,setResult] = useState([]);
@@ -12,7 +11,7 @@ const Index = () => {
     setSelected(event.target?.value)
   }
   const getAllName=async()=>{
-    const result = await fetch("/api/getName", { cache: 'no-store' });
+    const result = await fetch("/api/getName", {next:{revalidate:5},method:'post',body:{data:JSON.stringify(Math.random())}});
     const res = await result.json()
     setResult(res?.result);
     setLoading(false)
@@ -21,7 +20,6 @@ const Index = () => {
     setLoading(true)
      getAllName();
   },[])
-  if(loading) <Loading/>
   return (
     <>
      <div className="tabs">
