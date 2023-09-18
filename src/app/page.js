@@ -23,18 +23,15 @@ export default function Home() {
        />
        {
         imageload&&
-        <div className='flex gap-1'>
+        <div className='flex gap-[2px]'>
       <div className='centertext' > Your Trusted Forklift Solution in Brampton, Canada</div>
         <div className='descriptiontext'>
           <p className="subdis">
-      Super Handlers inc. founded in 2015, has one of the biggest inventories of forklifts to meet the needs of various clients. 
+          Super Handlers establishes in 2016 and  fastest growing material handling equipments sales, Rental and service company with 2 locations in Ontario and Alberta.
 </p>
-<p className='lg:block sm:hidden'>
-We provide a variety of services: - Refurbished and brand-new forklifts for  lease, and purchase - Forklift accessories - Premium Equipment and components - Maintenance and repair facility
 
-</p>
 <Link href="/about">
-<button href='/about' className='p-[8px] m-1 border-1 rounded-[18px] bg-[#21DA8C] hover:bg-[#5fc186]'  >
+<button href='/about' className='p-[8px] m-1 border-1 rounded-[18px] bg-green-400 hover:bg-[#5fc186]'  >
    Learn More
    </button>
    </Link>

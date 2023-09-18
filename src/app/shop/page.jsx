@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from 'react'
 import Cards from '../component/cards'
 import "./shoping.css"
+import Skeleton from "../component/skeleton";
 const Index = () => {
   const [selected,setSelected]= useState("All");
   const [result ,setResult] = useState([]);
@@ -42,8 +43,10 @@ const Index = () => {
        
       </div>
       
- <div style={{gridTemplateColumns:"repeat(auto-fit, minmax(300px,1fr))",display:"grid",rowGap:"16px",padding:"0px px 0px 12px",minHeight:"250px!important",paddingBottom:"16px" , justifyItems:"center" }}>
-      {result.filter(e=>{if(selected==='All') return e ;else if(selected === e.metadata.selected) return e}).map(e=><Cards key={e.filename} res={e.filename} price={e.metadata?.price} title={e.metadata?.title } desc={e.metadata?.description??''} selected={e.metadata?.selected} />)}
+ <div style={{gridTemplateColumns:"repeat(auto-fit, minmax(300px,1fr))",display:"grid",gap:"30px",padding:"0px px 0px 12px",minHeight:"250px!important",paddingBottom:"16px" , justifyItems:"center" }}>
+      { loading ? Array(20).fill(null).map((e,index)=><Skeleton key={index}/>)  :
+      
+      result.filter(e=>{if(selected==='All') return e ;else if(selected === e.metadata.selected) return e}).map(e=><Cards key={e.filename} res={e.filename} price={e.metadata?.price} title={e.metadata?.title } desc={e.metadata?.description??''} selected={e.metadata?.selected} deleted={false} />)}
     
       {/* <Cards/> */}
      </div>    

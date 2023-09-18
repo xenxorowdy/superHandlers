@@ -35,11 +35,11 @@
     color: #fffdfb;
     font-weight: 400;
     font-size:1.5vw;
-    animation: 3s slide-up;
+    animation: 2s slide-up;
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 45%;
-    left: 42%;
+    top: 40%;
+    left: 44%;
     margin-top:0%;
   }
   .subdis{
@@ -57,7 +57,7 @@
   
     to {
       margin-top: 0%;
-      height: 29%;
+      height: 20%;
     }
   }
 
