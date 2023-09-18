@@ -4,8 +4,7 @@
 @tailwind utilities;
 
 body{
-	background-color: rgba(241, 244, 245, 0.659);
-	font-family:'Nunito Sans' !important;
+		font-family:'Nunito Sans' !important;
 }
 
 ::-webkit-scrollbar

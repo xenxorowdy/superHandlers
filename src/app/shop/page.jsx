@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from 'react'
 import Cards from '../component/cards'
 import "./shoping.css"
-import Skeleton from "../component/skeleton";
+import Skeleton from "../component/Skeleton";
 const Index = () => {
   const [selected,setSelected]= useState("All");
   const [result ,setResult] = useState([]);

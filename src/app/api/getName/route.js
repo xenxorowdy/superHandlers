@@ -15,6 +15,7 @@ export async function POST(request) {
             // console.log(fileNameArr);
             return  NextResponse.json({result:result})
         } catch (error) {
+          console.log("error happend",error);
           return new Response('failed');
         }
       }

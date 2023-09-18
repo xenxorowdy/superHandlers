@@ -10,7 +10,7 @@ const index = () => {
       <Image src={"/aboutImage.jpg"}  width={1000} height={800} className=' flex-initial' />
       <div className='flex flex-wrap gap-3 p-3 '>
         <p className='w-["40%"]  font-bold text-4xl'>Our Purpose:</p>
-        <p className='w-["40%"] font-normal text-xl'> Super-handlers is a one-stop shop for all of your forklift needs, with a wide choice of solutions. Whether you're looking to acquire a forklift for your company or need dependable service and maintenance, our all-inclusive approach has you covered. We offer sales, purchasing, and expert maintenance to ensure that your forklift operations run properly. With our assistance, you can confidently navigate the forklift market, knowing you have a partner committed to your success. </p>
+        <p className='w-["40%"] font-normal text-xl'> Super-handlers is a one-stop shop for all of your forklift needs, with a wide choice of solutions. Whether you are looking to acquire a forklift for your company or need dependable service and maintenance, our all-inclusive approach has you covered. We offer sales, purchasing, and expert maintenance to ensure that your forklift operations run properly. With our assistance, you can confidently navigate the forklift market, knowing you have a partner committed to your success. </p>
       </div>
         <p className=' text-[#192232]  font-bold  font-sans  text-4xl'> What We Care About The Most </p>
         <p className='text-[#3f4550] font-normal text-xl'>Super-handlers is the kind of place that always asks the big questions: how and why? 

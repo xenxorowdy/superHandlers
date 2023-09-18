@@ -1,6 +1,6 @@
 "use client"
 import React,{useState,useEffect} from 'react'
-import Skeleton from "../component/skeleton";
+import Skeleton from "../component/Skeleton";
 import Cards from '../component/cards';
 import MyModal from '../component/Modal';
 
