@@ -11,9 +11,9 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'SuperHandlers',
-  description: 'Created by Riyam Jain (riyam.jain.3@gmail.com)',
-
+  description: 'SuperHandlers - Your go-to source for top-quality forklift rentals and second-hand forklifts. Serving Brampton toronto ontario canada with a wide range of forklift models and excellent customer service.',
 }
+
 
 export default async function RootLayout({ children }) {
   const session = await getServerSession();
