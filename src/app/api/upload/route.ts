@@ -7,6 +7,8 @@ declare global {
 import { NextResponse } from "next/server";
 import { Readable } from "stream";
 import { v4 as uuidv4 } from 'uuid'; // Import the uuid library
+import { authOptions } from "../auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 const MONGODB_URI = process.env.MONGODB_URI;
 if (!MONGODB_URI) {
   throw new Error(
@@ -19,6 +21,7 @@ if (!MONGODB_URI) {
   Once connected, it will use the cached connection.
  */
 export async function connectToDb() {
+ 
   if (global.client) {
     return {
       client: global.client,
@@ -50,6 +53,10 @@ async function fileExists(filename: string): Promise<boolean> {
 
 
 export async function POST(req: Request) {
+  const session = await getServerSession(authOptions)
+  if(!session){
+    return new NextResponse(null, { status: 401 });
+  }
   const { bucket } = await connectToDb();
   // get the form data
   // console.log(req,JSON.stringify(await req.formData()));

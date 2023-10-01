@@ -3,8 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+	font-family:'Nunito Sans' !important;
+}
+
 body{
-		font-family:'Nunito Sans' !important;
+		background-color: rgba(244, 252, 251,0.5);
 }
 
 ::-webkit-scrollbar

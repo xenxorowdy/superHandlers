@@ -1,7 +1,54 @@
+"use client"
 import LoginForm from "../component/login"
-export default function Login() {
+import Image from 'next/image';
+import { FaCloudUploadAlt, FaExternalLinkAlt, FaTrashAlt } from 'react-icons/fa';
+import "../imageResponse.css";
+import {signIn,signOut,useSession} from "next-auth/react";
+import { useRouter } from "next/navigation";
 
+export default function Login() {
+  const {data:session} = useSession(); 
+  const router = useRouter()
+  console.log("session",session)
+  if(session){
+    return (
+      <>
+
+
+
+      <div className={"flex gap-14 items-center justify-center "}>
+      <p className="caption flex text-[#3f4550] font-normal text-3xl  align-baseline  items-center w-fit">Hello {session?.user?.name}</p> 
+      <button  className="inline-flex items-center px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded-md" onClick={async()=>{await signOut(); router.push("/login")}}> Sign Out</button>
+      </div>
+      <div className='bodycard'>
+  
+  <a href='/upload' >
+  <p className="caption flex text-[#3f4550] font-normal align-baseline  items-center  w-fit text-xl"> <FaCloudUploadAlt className="h-4"/> upload <FaExternalLinkAlt className='h-4 '/> </p>
+<figure>
+<Image  src={'/wp7388677-forklift-wallpapers.jpg'} className=' aspect-[3/2] w-80 h-40' width={300} height={400} alt="Mountains" />
+
+  <figcaption>Upload</figcaption>
+</figure>
+  </a>
+  <a href='/deleteImage' >
+
+  <p className="caption flex text-[#3f4550] font-normal align-baseline  items-center   text-xl w-fit"><FaTrashAlt className="h-4"/>  delete <FaExternalLinkAlt className='h-4'/> </p>
+<figure>
+
+  <Image  src={'/forklift-for-rent.jpg'} className=' aspect-[3/2] w-80 h-40' width={300} height={400} alt="Mountains" />
+  <figcaption>Delete</figcaption>
+
+</figure>
+</a>
+
+</div>
+
+      
+      </>
+    )
+  }
   return (
+
     <LoginForm/>
 
   )

@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectToDb } from "../../upload/route";
+import { authOptions } from "../../auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
 
 type Params = {
   params: { filename: string };
@@ -7,6 +9,10 @@ type Params = {
 
 export async function GET(req: Request, { params }: Params) {
   // 1. get GridFS bucket
+  const session = await getServerSession(authOptions)
+  if(!session){
+    return new NextResponse(null, { status: 401 });
+  }
   const { bucket } = await connectToDb();
 
   const filename = params.filename as string;
@@ -17,7 +23,7 @@ export async function GET(req: Request, { params }: Params) {
 
   const files = await bucket.find({ filename }).toArray();
   if (!files.length) {
-    return new NextResponse(null, { status: 404, statusText: "Not found" });
+    return new NextResponse(null, { status: 402, statusText: "Not found" });
   }
 
   // 3. get file data

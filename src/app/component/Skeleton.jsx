@@ -20,7 +20,7 @@ const Skeleton = () => {
         
     '
     >
-   <div className="w-[260px] h-[100px] skeleton"></div>
+   <div className="w-[245px] h-[150px] skeleton absolute left-9"></div>
    </div>
       
      

@@ -3,8 +3,17 @@ import React,{useState,useEffect} from 'react'
 import Skeleton from "../component/Skeleton";
 import Cards from '../component/cards';
 import MyModal from '../component/Modal';
+import { useRouter } from 'next/navigation';
+import {useSession} from "next-auth/react";
 
 const DeleteImage = () => {
+  const {data:session} = useSession(); 
+
+  const router = useRouter();
+  
+  if(!session){
+    router.push("/login")
+  }
     const [result ,setResult] = useState([]);
     const [loading,setLoading] = useState(true)
     const [deleteFile,setDeleteFile] = useState(null); 

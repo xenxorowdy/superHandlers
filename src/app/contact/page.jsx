@@ -127,19 +127,21 @@ theme="dark"
 
         <h1 className='font-bold text-2xl   ' >Lets get in touch</h1>
         <div className="items-center flex flex-col gap-5 " >
-          <input type="text" placeholder='Name' className=" p-1 border-[2px]  rounded-md  border-black focus-visible:!border-0  " id="name" name="name"  onChange={e => value.current.name = e.currentTarget.value} />
-          <input id="contact" type='tel' name='Number' placeholder='Contact Number' className=" p-1 border-[2px]  rounded-md  border-black focus-visible:!border-0  " value={value.current.contact} onChange={e => value.current.contact = e.currentTarget.value} />
+          <input type="text" placeholder='Name' className=" className=' border-2 p-1 rounded-lg  " id="name" name="name"  onChange={e => value.current.name = e.currentTarget.value} />
+          <input id="contact" type='tel' name='Number' placeholder='Contact Number' className=" className=' border-2 p-1 rounded-lg  " value={value.current.contact} onChange={e => value.current.contact = e.currentTarget.value} />
           <div>
-          <input id="email" type='email' name='email' placeholder='Email' className=" p-1 border-[2px]  rounded-md  border-black focus-visible:!border-0  " value={email} onChange={e =>{ value.current.email = e.currentTarget.value; setEmail(e.currentTarget.value) }} />
+          <input id="email" type='email' name='email' placeholder='Email' className=" className=' border-2 p-1 rounded-lg  " value={email} onChange={e =>{ value.current.email = e.currentTarget.value; setEmail(e.currentTarget.value) }} />
           <p id="error" className=' text-red-700' > {errorMessage} </p>
           </div>
-          <input id="interest" type='text' name='Interest' placeholder='Interest' className=" p-1 border-[2px]  rounded-md  border-black focus-visible:!border-0  " value={value.current.interest} onChange={e => value.current.interest = e.currentTarget.value} />
-          <textarea id="message" placeholder='Your Message' rows={'5'} className=" p-1 w-[220px] border-[2px]  rounded-md  border-black focus-visible:!border-0  " value={value.current.message} onChange={e => value.current.message = e.currentTarget.value} />
-          <button type="submit" className=' b-1 bg-sky-700 text-white w-fit p-2 rounded-[15px] hover:bg-sky-900 justify-center flex items-center' onClick={webformfill} >Submit</button>
+          <input id="interest" type='text' name='Interest' placeholder='Interest' className=" className=' border-2 p-1 rounded-lg  " value={value.current.interest} onChange={e => value.current.interest = e.currentTarget.value} />
+          <textarea id="message" placeholder='Your Message' rows={'5'} className=" p-1 w-[220px] border-[2px]  rounded-md    " value={value.current.message} onChange={e => value.current.message = e.currentTarget.value} />
+          <button type="submit" className=' b-1 bg-sky-700 text-white w-fit p-2 rounded-[15px] hover:bg-sky-900 justify-center flex items-center visited:bg-sky-950' onClick={webformfill} >Submit</button>
         </div>
       </div>
 }
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5770.183074298723!2d-79.81591837783648!3d43.68786033821295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b1465db7352cf%3A0xd067ead581ef467d!2s6%20Linderwood%20Dr%2C%20Brampton%2C%20ON%20L7A%201R7%2C%20Canada!5e0!3m2!1sen!2sin!4v1692993949630!5m2!1sen!2sin" height={550} style={{ border: 0, minWidth: "40vw" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+      {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5770.183074298723!2d-79.81591837783648!3d43.68786033821295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b1465db7352cf%3A0xd067ead581ef467d!2s6%20Linderwood%20Dr%2C%20Brampton%2C%20ON%20L7A%201R7%2C%20Canada!5e0!3m2!1sen!2sin!4v1692993949630!5m2!1sen!2sin" height={550} style={{ border: 0, minWidth: "40vw" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" /> */}
+      
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2885.1535165402033!2d-79.7024688893458!3d43.68657175015284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3e5e6da4d927%3A0x875f2ef3a8c94acc!2s241%20Advance%20Blvd%2C%20Brampton%2C%20ON%20L6T%204J2%2C%20Canada!5e0!3m2!1sen!2sjp!4v1696132339456!5m2!1sen!2sjp" height={550} style={{ border: 0, minWidth: "40vw" }} allowFullScreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       <ToastContainer
 position="bottom-left"
 autoClose={3000}

@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 
 const index = () => {
   return (
+    <>
     <div className=' text-center flex flex-col gap-6 p-6  items-center'>
       <p className=' text-[#13BBB2]  font-semibold  text-xl'>Know Everything… About Us</p>
       <p className='text-[#192232]  font-bold  font-sans  text-4xl  '>About Super-handlers </p>
@@ -231,8 +233,27 @@ We are united by a common goal: to ensure efficient and safe operations.</p>
 <span>Always Curious</span>
 </div>
 </div>
-    
     </div>
+<div className='pl-10 flex flex-col gap-2 pb-12'>
+    <h1 className='w-["40%"]  font-bold text-4xl space-x-4 '> Super Handlers Address</h1>
+    <span className='w-["40%"] font-normal text-xl'> In North America, our workers are highly qualified experts. </span>
+    <div className='flex gap-3 text-center'>
+    <Image src={'/canda.png'} width={44} height={25} className='rounded-[50%]' /> 
+    <h1 className='font-bold text-4xl space-x-4 '>Brampton</h1>
+
+    </div>
+    <p className='w-["40%"]  font-normal text-xl pl-14'> 
+    <p className='flex gap-x-2 text-center items-center '>
+    241 Advance Blvd
+    <a href='https://maps.app.goo.gl/ZufwDGCdrLqQB7QJ6' target="blank">
+     <FaExternalLinkAlt className='h-[0.8em]'/>
+     </a>
+      </p>  
+    Brampton, ON L6T 4J2, Canada 
+  
+    </p>
+    </div>
+    </>
   )
 }
 

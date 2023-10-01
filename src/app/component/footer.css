@@ -19,6 +19,7 @@ body{
 .row{
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: flex-end;
 }
 ul{
 	list-style: none;
@@ -28,8 +29,8 @@ ul{
     padding: 70px 0;
 }
 .footer-col{
-   width: 25%;
-   padding: 0 15px;
+   width: 23%;
+   padding: 0px;
 }
 .footer-col h4{
 	font-size: 18px;
@@ -84,15 +85,23 @@ ul{
 }
 
 /*responsive*/
+@media (max-width:1300px) {
+	.footer-col{
+		width: 41%;
+		padding: 0px;
+		margin-bottom: 20px;
+	 }
+}
 @media(max-width: 767px){
   .footer-col{
     width: 50%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 }
-@media(max-width: 574px){
+@media(max-width: 520px){
   .footer-col{
     width: 100%;
+	margin-bottom: 10px;
 }
 }
 

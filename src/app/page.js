@@ -4,6 +4,7 @@ import { useState } from 'react';
 import BrandsEffect from './component/BrandsEffect';
 import "./imageResponse.css";
 import Link from 'next/link';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 export default function Home() {
   const [imageload,setImageload] = useState(false)
 
@@ -27,8 +28,7 @@ export default function Home() {
       <div className='centertext' > Your Trusted Forklift Solution in Brampton, Canada</div>
         <div className='descriptiontext'>
           <p className="subdis">
-          Super Handlers establishes in 2016 and  fastest growing material handling equipments sales, Rental and service company with 2 locations in Ontario and Alberta.
-</p>
+          Founded in 2016, Super Handlers is the fastest-growing sales, rental, and service firm for material handling equipment, with two facilities in Ontario and Alberta.</p>
 
 <Link href="/about">
 <button href='/about' className='p-[8px] m-1 border-1 rounded-[18px] bg-green-400 hover:bg-[#5fc186]'  >
@@ -73,7 +73,7 @@ className='rounded-[19px] border-1'
 <div className='flex flex-wrap gap-20 m-2 items-center justify-around animationdelay '>
   <div>
 <h1 className='text-2xl font-bold'>Servicing</h1>
-  <h1 className=' relative  flex  lg:w-[25rem] sm:w-fit'>
+  <h1 className=' relative  flex  lg:w-[25rem] sm:w-fit '>
 To get the most out of your equipment, it’s important to get everything properly serviced and maintained. Forklift Solutions can Service & Repair any make of equipment and we pride ourselves on being able to offer a first-class service to ensure as little downtime for you as possible.
 Whether you’re wanting a Planned Preventative Maintenance Contract (PPM) or even a Full Maintenance Contract (FMC) for your Forklift Truck, with our variety of preventative maintenance, repairs and services, we can tailor to your individual needs
 </h1>
@@ -82,8 +82,34 @@ Whether you’re wanting a Planned Preventative Maintenance Contract (PPM) or ev
 <Image src={'/wp7388677-forklift-wallpapers.jpg'} width={500} height={500} className=' rounded-[19px] border-1' alt='forklift-wallpapers' />
 
 </div>
+<div className='bodycard'>
+  
+  <a href='/shop' >
+  <p className="caption flex text-[#3f4550] font-normal align-baseline  items-center  w-fit text-xl">shop <FaExternalLinkAlt className='h-4 '/> </p>
+<figure>
+  <Image  src={'/shop.jpg'} width={300} height={400} className=' aspect-[3/2] w-80 h-40' alt="Mountains" />
+  <figcaption>Shop</figcaption>
+</figure>
+  </a>
+  <a href='/about' >
 
+  <p className="caption flex text-[#3f4550] font-normal align-baseline  items-center   text-xl w-fit">About <FaExternalLinkAlt className='h-4'/> </p>
+<figure>
 
+  <Image  src={'/wp7388677-forklift-wallpapers.jpg'} className=' aspect-[3/2] w-80 h-40' width={300} height={400} alt="Mountains" />
+  <figcaption>About</figcaption>
+
+</figure>
+</a>
+<a href='/contact'>
+  <p className="caption flex text-[#3f4550] font-normal text-xl  align-baseline  items-center w-fit  ">ContactUS <FaExternalLinkAlt className='h-4 '/> </p>
+<figure  >
+  <Image  src={'/contact.webp'} className=' aspect-[3/2] w-80 h-40' width={300} height={400} alt="Mountains" />
+  <figcaption>Contact Us</figcaption>
+
+</figure>
+</a>
+</div>
      </div>
   )
 }

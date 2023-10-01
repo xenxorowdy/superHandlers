@@ -4,7 +4,7 @@ nav {
     justify-content: space-between;
     background: rgb(243, 254, 255);
     padding: 2px 8px;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 14px 35px rgba(105, 246, 246, 0.06);
   }
   #navbar {
     display: flex;
