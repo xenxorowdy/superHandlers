@@ -49,7 +49,7 @@ export default function Home() {
         <div>
       <h2 className='text-2xl font-bold' >Heavy Duty</h2>
      <h1 className='relative  flex  lg:w-[25rem] sm:w-fit' >
-We specialise in renting out huge capacity vehicles.
+SuperHandlers specialise in Forklift renting out huge capacity vehicles in Brampton Toronto Ontario Canada.
 Available include exclusive, current stock, and short-term hiring. for further information.
 
 </h1>

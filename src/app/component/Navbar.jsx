@@ -20,7 +20,7 @@ const Navbar = ()=> {
     return (
       <>
         <nav>
-          <Link href="">
+          <Link href="/">
             
             <Image
               src='/My project.png'
