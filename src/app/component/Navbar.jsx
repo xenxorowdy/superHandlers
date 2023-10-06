@@ -52,13 +52,13 @@ superhandlers1@gmail.com
 </span>
 </Link>
 
-          <div>
+          <div className="">
             <ul
               id="navbar"
               className={state ? "#navbar active" : "#navbar"}
             >
               <li>
-                <Link onClick={handleClick} className={usePathname() === '/' ?  "active" : undefined} href="">
+                <Link onClick={handleClick} className={usePathname() === '/' ?  "active" : undefined} href="/">
                   Home
                 </Link>
               </li>

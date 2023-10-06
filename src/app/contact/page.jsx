@@ -135,7 +135,7 @@ theme="dark"
           </div>
           <input id="interest" type='text' name='Interest' placeholder='Interest' className=" className=' border-2 p-1 rounded-lg  " value={value.current.interest} onChange={e => value.current.interest = e.currentTarget.value} />
           <textarea id="message" placeholder='Your Message' rows={'5'} className=" p-1 w-[220px] border-[2px]  rounded-md    " value={value.current.message} onChange={e => value.current.message = e.currentTarget.value} />
-          <button type="submit" className=' b-1 bg-sky-700 text-white w-fit p-2 rounded-[15px] hover:bg-sky-900 justify-center flex items-center visited:bg-sky-950' onClick={webformfill} >Submit</button>
+          <button type="submit" className=' inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2' onClick={webformfill} >Submit</button>
         </div>
       </div>
 }

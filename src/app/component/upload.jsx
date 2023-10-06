@@ -115,7 +115,7 @@ const handleReset = ()=>{
 </select>
       <textarea id="description" placeholder='Your description' rows={'5'} className=" p-1 w-[220px] border-[2px]  rounded-md   focus-visible:!border-0  " value={description} onChange={e=>setDescription(e.target.value)} />
           
-<button onClick={handleSubmit} > submit</button>
+<button className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2" onClick={handleSubmit} > submit</button>
         {/* <input type="file" name="files" ref={ref}  /> */}
         {/* <button
           type="submit"

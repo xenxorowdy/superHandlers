@@ -9,7 +9,7 @@ const index = () => {
       <p className=' text-[#13BBB2]  font-semibold  text-xl'>Know Everything… About Us</p>
       <p className='text-[#192232]  font-bold  font-sans  text-4xl  '>About Super-handlers </p>
       <p className='text-[#192232]   text-xl  '>Forklift Solutions: Sales, Purchasing, and Expert Service Options</p>
-      <Image src={"/aboutImage.jpg"}  width={1000} height={800} className=' flex-initial' />
+      <Image src={"/aboutImage.jpg"}  width={1000} height={800} className='imageboxshawdow flex-initial' alt='aboutImage' />
       <div className='flex flex-wrap gap-3 p-3 '>
         <p className='w-["40%"]  font-bold text-4xl'>Our Purpose:</p>
         <p className='w-["40%"] font-normal text-xl'> Super-handlers is a one-stop shop for all of your forklift needs, with a wide choice of solutions. Whether you are looking to acquire a forklift for your company or need dependable service and maintenance, our all-inclusive approach has you covered. We offer sales, purchasing, and expert maintenance to ensure that your forklift operations run properly. With our assistance, you can confidently navigate the forklift market, knowing you have a partner committed to your success. </p>
@@ -238,7 +238,7 @@ We are united by a common goal: to ensure efficient and safe operations.</p>
     <h1 className='w-["40%"]  font-bold text-4xl space-x-4 '> Super Handlers Address</h1>
     <span className='w-["40%"] font-normal text-xl'> In North America, our workers are highly qualified experts. </span>
     <div className='flex gap-3 text-center'>
-    <Image src={'/canda.png'} width={44} height={25} className='rounded-[50%]' /> 
+    <Image src={'/canda.png'} width={44} height={25} className='imageboxshawdow rounded-[50%]' alt='canda' /> 
     <h1 className='font-bold text-4xl space-x-4 '>Brampton</h1>
 
     </div>

@@ -18,7 +18,7 @@ export default function Login() {
 
       <div className={"flex gap-14 items-center justify-center "}>
       <p className=" flex text-[#3f4550] font-normal gap-4 text-3xl  align-baseline  items-center w-[240px]">Hello {session?.user?.name}</p> 
-      <button  className="inline-flex items-center px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded-md" onClick={async()=>{await signOut(); router.push("/login")}}> Sign Out</button>
+      <button  className="inline-flex justify-center rounded-md border border-transparent bg-green-300 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2" onClick={async()=>{await signOut(); router.push("/login")}}> Sign Out</button>
       </div>
       <div className='bodycard'>
   

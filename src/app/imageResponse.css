@@ -129,7 +129,7 @@ figure:hover img {
   gap: 50px;
   margin: 12px;
 }
-@media screen and (max-width: 720px) {
+@media  (max-width: 720px) {
   .bodycard{
     display: flex;
     flex-direction: column;
@@ -139,6 +139,6 @@ figure:hover img {
 
   }
   .caption{
-    display: block;
+    display: flex;
   }
 }

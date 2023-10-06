@@ -2,10 +2,7 @@
 const path = require('path')
 
 const nextConfig = {
-  experimental: {
-    appDir: true,
-
-  },
+  swcMinify: true
 }
 
 module.exports = nextConfig

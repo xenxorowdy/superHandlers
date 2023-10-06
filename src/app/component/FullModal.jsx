@@ -37,7 +37,7 @@ const FullModal = ({title,desc,open,url,handleImage,price,selected}) => {
               >
                <div className='text-[#21DA8C] font-[550] opacity-60 border-black text-md flex justify-around items-center'> 
         {selected||''}</div> 
-                <Image src={url} loading = 'lazy' placeholder='blur' blurDataURL="data:image/png" onLoad={e=>setLoad(true)} width={400} height={400} style={{objectFit:"contain",aspectRatio:"3/2"}}/>
+                <Image src={url} loading = 'lazy' placeholder='blur' blurDataURL="data:image/png" onLoad={e=>setLoad(true)} width={400} height={400} style={{objectFit:"contain",aspectRatio:"3/2"}} alt={url}/>
                <h1 style={{fontWeight:"700"}}>{title}</h1> 
               </Dialog.Title>
               <div className="mt-2">

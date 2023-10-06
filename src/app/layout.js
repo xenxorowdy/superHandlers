@@ -2,7 +2,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Navbar from './component/Navbar'
-import { Suspense } from 'react'
 import SessionProvider from "./component/SessionProvider.jsx"
 import Footter from './component/footter'
 import { getServerSession } from 'next-auth'

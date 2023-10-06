@@ -15,10 +15,9 @@ export default function Home() {
        <Image
       src={'/homescreen.jpg'}
       onLoadingComplete={img => setImageload(true)}
-      quality={20}
       fill
       alt={'homescreen'}
-      className={'image blur-[2px] brightness-[0.4] backdrop-hue-rotate-90 bg-white/30 w-9/10 '}
+      className={'image blur-[1px] brightness-[0.4] backdrop-hue-rotate-90 bg-white/30 w-9/10 '}
       // placeholder="hello"
       loading = 'lazy' 
        />
@@ -31,7 +30,7 @@ export default function Home() {
           Founded in 2016, Super Handlers is the fastest-growing sales, rental, and service firm for material handling equipment, with two facilities in Ontario and Alberta.</p>
 
 <Link href="/about">
-<button href='/about' className='p-[8px] m-1 border-1 rounded-[18px] bg-green-400 hover:bg-[#5fc186]'  >
+<button href='/about' className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'  >
    Learn More
    </button>
    </Link>
@@ -41,10 +40,10 @@ export default function Home() {
        
     
      </div >
-     <div className='p-4 flex-col gap-3'>
+     <div className='p-4 flex-col gap-3 flex-wrap'>
 
-     <h1 className='flex justify-center text-lg font-semibold' >
-     Brands We have Authorized
+     <h1 className='flex justify-center text-xl font-bold uppercase' >
+     Brands We Provide Services.
      </h1>
      <BrandsEffect/>
      </div>
@@ -58,7 +57,7 @@ Available include exclusive, current stock, and short-term hiring. for further i
 
 </h1>
 <Link href="/contact">
-<button className='p-2 m-1 border-1 rounded-[18px] bg-[#21DA8C]  hover:bg-[#5fc186]'>Contact Us</button>
+<button className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'>Contact Us</button>
 </Link>
 </div>
 <Image
@@ -66,7 +65,7 @@ src={'/wp7388664-forklift-wallpapers.jpg'}
 width={500}
 height={500}
 alt='wallpapers'
-className='rounded-[19px] border-1'
+className='imageboxshawdow rounded-[19px] border-1'
 />
 </div>
 </div>
@@ -79,35 +78,37 @@ Whether you’re wanting a Planned Preventative Maintenance Contract (PPM) or ev
 </h1>
 </div>
 
-<Image src={'/wp7388677-forklift-wallpapers.jpg'} width={500} height={500} className=' rounded-[19px] border-1' alt='forklift-wallpapers' />
+<Image src={'/wp7388677-forklift-wallpapers.jpg'} width={500} height={500} className=' imageboxshawdow rounded-[19px] border-1' alt='forklift-wallpapers' />
 
 </div>
 <div className='bodycard'>
   
-  <a href='/shop' >
-  <p className="caption flex text-[#3f4550] font-normal align-baseline  items-center  w-fit text-xl">shop <FaExternalLinkAlt className='h-4 '/> </p>
+  <a className='flex items-center flex-col' href='/shop' >
 <figure>
-  <Image  src={'/shop.jpg'} width={300} height={400} className=' aspect-[3/2] w-80 h-40' alt="Mountains" />
+  <Image  src={'/shop.jpg'} width={300} height={400} className='imageboxshawdow aspect-[3/2] w-80 h-40' alt="Mountains" />
   <figcaption>Shop</figcaption>
 </figure>
+<p className="caption flex text-[#3f4550] font-normal align-baseline  items-center  w-fit text-xl">shop <FaExternalLinkAlt className='h-4 '/> </p>
   </a>
-  <a href='/about' >
+  <a className='flex items-center flex-col' href='/about' >
 
-  <p className="caption flex text-[#3f4550] font-normal align-baseline  items-center   text-xl w-fit">About <FaExternalLinkAlt className='h-4'/> </p>
 <figure>
 
-  <Image  src={'/wp7388677-forklift-wallpapers.jpg'} className=' aspect-[3/2] w-80 h-40' width={300} height={400} alt="Mountains" />
+  <Image  src={'/wp7388677-forklift-wallpapers.jpg'} className='imageboxshawdow aspect-[3/2] w-80 h-40' width={300} height={400} alt="Mountains" />
   <figcaption>About</figcaption>
 
 </figure>
+<p className="caption flex text-[#3f4550] font-normal align-baseline  items-center   text-xl w-fit">About <FaExternalLinkAlt className='h-4'/> </p>
+
 </a>
-<a href='/contact'>
-  <p className="caption flex text-[#3f4550] font-normal text-xl  align-baseline  items-center w-fit  ">ContactUS <FaExternalLinkAlt className='h-4 '/> </p>
+<a className='flex items-center flex-col'  href='/contact' >
 <figure  >
-  <Image  src={'/contact.webp'} className=' aspect-[3/2] w-80 h-40' width={300} height={400} alt="Mountains" />
+  <Image  src={'/contact.webp'} className='imageboxshawdow aspect-[3/2] w-80 h-40' width={300} height={400} alt="Mountains" />
   <figcaption>Contact Us</figcaption>
 
 </figure>
+<p className="caption flex text-[#3f4550] font-normal text-xl  align-baseline  items-center w-fit  ">ContactUS <FaExternalLinkAlt className='h-4 '/> </p>
+
 </a>
 </div>
      </div>

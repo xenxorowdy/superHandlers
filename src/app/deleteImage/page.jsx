@@ -31,9 +31,7 @@ const DeleteImage = () => {
        getAllName();
     },[])
     useEffect(()=>{
-      const delteRow = result.filter(e=>e.filename!=deleteFile)
-      console.log(deleteFile)
-      setResult(delteRow)
+      setResult( pre=>pre.filter(e=>e.filename!=deleteFile))
     },[deleteFile])
   return (
     <div className='m-[16px]' >
