@@ -14,14 +14,12 @@ export default function Home() {
     <div className='relative p-[1px]' >
        <Image
       src={'/homescreen.jpg'}
-      onLoadingComplete={img => setImageload(true)}
       fill
       alt={'homescreen'}
       className={'image blur-[1px] brightness-[0.4] backdrop-hue-rotate-90 bg-white/30 w-9/10 '}
       // placeholder="hello"
       loading = 'lazy' 
        />
-       {
         
         <div className='flex gap-[2px]'>
       <div className='centertext' > Your Trusted Forklift Solution in Brampton, Canada</div>
@@ -36,7 +34,6 @@ export default function Home() {
    </Link>
 </div>
         </div>
-       }
        
     
      </div >
