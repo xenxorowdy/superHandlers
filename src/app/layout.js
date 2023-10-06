@@ -9,8 +9,8 @@ import { getServerSession } from 'next-auth'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'SuperHandlers',
-  description: 'SuperHandlers - Your go-to source for top-quality forklift rentals and second-hand forklifts. Serving Brampton toronto ontario canada with a wide range of forklift models and excellent customer service.',
+  title: 'SuperHandlers:  Rentals and Sales Forklift Solution in Brampton',
+  description: 'Your go-to source for top-quality forklift rentals and second-hand forklifts. Serving Brampton toronto canada forklift models and excellent customer service.',
 }
 
 
