@@ -22,7 +22,7 @@ export default function Home() {
       loading = 'lazy' 
        />
        {
-        imageload&&
+        
         <div className='flex gap-[2px]'>
       <div className='centertext' > Your Trusted Forklift Solution in Brampton, Canada</div>
         <div className='descriptiontext'>
@@ -30,7 +30,7 @@ export default function Home() {
           Founded in 2016, Super Handlers is the fastest-growing sales, rental, and service firm for material handling equipment, with two facilities in Ontario and Alberta.</p>
 
 <Link href="/about">
-<button href='/about' className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'  >
+<button href='/about' className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-2 py-1  font-medium text-green-800 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'  >
    Learn More
    </button>
    </Link>
