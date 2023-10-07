@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /contact/
+Disallow: /shop/
+Allow: /about/
+Disallow: /login/
