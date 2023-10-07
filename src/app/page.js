@@ -12,6 +12,9 @@ export default function Home() {
        <Image
       src={'/homescreen.jpg'}
       fill
+      quality={10}
+      placeholder='blur'
+      blurDataURL="data:..."
       alt={'homescreen'}
       className={'image blur-[1px] brightness-[0.4] backdrop-hue-rotate-90 bg-white/30 w-9/10 '}
       // placeholder="hello"
