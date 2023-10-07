@@ -1,11 +1,14 @@
 
-import './globals.css'
+import { getServerSession } from 'next-auth'
 import { Inter } from 'next/font/google'
 import Navbar from './component/Navbar'
 import SessionProvider from "./component/SessionProvider.jsx"
 import Footter from './component/footter'
-import { getServerSession } from 'next-auth'
-import Script from 'next/script'
+import './globals.css'
+import Head from 'next/head'
+import Link from 'next/link'
+import GoogleAnalytics from './component/GoogleAnalytics'
+
 // require("../mongo/connect")
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,26 +22,12 @@ export default async function RootLayout({ children }) {
   const session = await getServerSession();
   return (
     <html lang="en">
-<head>
   
-<link rel="icon" href="/superlogo.webp" />
+  
+    <Head>
+    <Link rel="icon" href="/superlogo.webp" />
 
-  </head>      
-  <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-      />
-
-      <Script id="google-analytics-script" strategy="lazyOnload">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-          page_path: window.location.pathname,
-          });
-    `}
-      </Script>
+    </Head>
       <body className={inter.className}>
       <Navbar/>
       <SessionProvider session={session}>
@@ -46,6 +35,7 @@ export default async function RootLayout({ children }) {
         {children}
         </div>
         </SessionProvider>
+        <GoogleAnalytics/>
         </body>
         <Footter/>
     </html>
