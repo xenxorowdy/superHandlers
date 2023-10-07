@@ -38,9 +38,9 @@ export default function Home() {
      </div >
      <div className='p-4 flex-col gap-3 flex-wrap'>
 
-     <h1 className='flex justify-center text-xl font-bold uppercase' >
+     <span className='flex justify-center text-xl font-bold uppercase' >
      Brands We Provide Services.
-     </h1>
+     </span>
      <BrandsEffect/>
      </div>
      <div>
