@@ -56,9 +56,9 @@ ul{
 .footer-col ul li a{
 	font-size: 16px;
 	text-transform: capitalize;
-	color: #ffffff;
 	text-decoration: none;
 	font-weight: 300;
+	margin: 2px;
 	color: #bbbbbb;
 	display: block;
 	transition: all 0.3s ease;
@@ -94,13 +94,13 @@ ul{
 }
 @media(max-width: 767px){
   .footer-col{
-    width: 50%;
+    width: 40%;
     margin-bottom: 20px;
 }
 }
 @media(max-width: 520px){
   .footer-col{
-    width: 100%;
+    width: 70%;
 	margin-bottom: 10px;
 }
 }

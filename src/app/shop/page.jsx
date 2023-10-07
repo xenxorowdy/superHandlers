@@ -1,11 +1,10 @@
 "use client"
-import axios from "axios";
-import React, { useEffect, useState } from 'react'
-import Cards from '../component/cards'
-import "./shoping.css"
+import dynamic from "next/dynamic";
+import { useEffect, useState } from 'react';
+import { FaTruckLoading } from "react-icons/fa";
 import Skeleton from "../component/Skeleton";
-import { FaPhoenixFramework, FaRegCommentAlt, FaTruckLoading } from "react-icons/fa";
-import { AiOutlineFolderAdd } from "react-icons/ai";
+import "./shoping.css";
+const Cards = dynamic(()=>import('../component/cards'))
 const Index = () => {
   const [selected,setSelected]= useState("All");
   const [result ,setResult] = useState([]);

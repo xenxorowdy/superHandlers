@@ -1,11 +1,25 @@
 nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgb(243, 254, 255);
-    padding: 2px 8px;
+    padding: 2rem;
     box-shadow: 0 14px 35px rgba(105, 246, 246, 0.06);
+    background: rgba(221, 245, 247, 0.985);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+      height: 57px;
+      z-index: 1;
+      border-radius: 4px;
   }
+  
+  nav.scrolled {
+      background-color: rgba(126, 154, 157, 0.985); /* Change to your desired background color on scroll */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow on scroll */
+      animation: fadeIn 1s ease;
+    }
   #navbar {
     display: flex;
     align-items: center;
@@ -56,16 +70,26 @@ nav {
       display: none;
     }
   }
+  @keyframes fadeIn {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   
-  @media screen and (max-width: 900px) {
+  @media  (max-width: 900px) {
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgb(243, 254, 255);
+      background: rgba(243, 254, 255, 0.9);
       padding: 4px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+      height: 57px;
       z-index: 12000;
+      border-radius: 4px;
     }
     
     #navbar {

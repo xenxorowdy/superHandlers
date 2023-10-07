@@ -2,7 +2,11 @@
 const path = require('path')
 
 const nextConfig = {
-  swcMinify: true
+  reactStrictMode:true,
+  swcMinify: true,
+  compiler:{
+    removeConsole: true,
+  }
 }
 
 module.exports = nextConfig

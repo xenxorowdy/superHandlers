@@ -48,7 +48,9 @@
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
+
   }
+ 
   @keyframes slide-up {
     from {
       margin-top: 100%;
@@ -140,5 +142,37 @@ figure:hover img {
   }
   .caption{
     display: flex;
+  }
+  .subdis{
+    /* line-height: 2em; */
+    font-size: 12px;
+    overflow: hidden;
+    height: 40px;
+    white-space: pre-line;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .centertext{
+    /* animation: MoveUpDown 5s linear; */
+    transform: translate(-50%, -50%);
+    top: 20%;
+    left: 50%;
+    position: absolute;
+    color: #fffdfb;
+    font-weight: bold;
+    font-size:14px;
+    animation: typing 2500ms steps(50) 1, cursor 1s ;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+@media  (max-width: 320px) {
+
+  .subdis{
+    /* line-height: 2em; */
+   display: none;
+
   }
 }

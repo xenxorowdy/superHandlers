@@ -20,7 +20,7 @@ const Skeleton = () => {
         
     '
     >
-   <div className="w-[245px] h-[150px] skeleton absolute left-9"></div>
+   <div className="w-[245px] h-[150px] skeleton absolute left-8"></div>
    </div>
       
      
@@ -30,7 +30,7 @@ const Skeleton = () => {
      <h4 className='text-center font-[540] text-lg skeleton '>
      </h4>
    <div className='flex justify-between'>
-     <p className='flex text-[1.1rem] font-medium '> <span id="span" className='font-normal'> price:</span>  </p>
+     <p className='flex text-[1.1rem] font-medium  '> <span id="span" className='font-normal'> price:</span>  </p>
  
    </div>
    </div>

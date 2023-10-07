@@ -1,10 +1,11 @@
 "use client"
-import LoginForm from "../component/login"
+import { signOut, useSession } from "next-auth/react";
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
 import { FaCloudUploadAlt, FaExternalLinkAlt, FaTrashAlt } from 'react-icons/fa';
 import "../imageResponse.css";
-import {signIn,signOut,useSession} from "next-auth/react";
-import { useRouter } from "next/navigation";
+const LoginForm = dynamic( () => import("../component/login"))
 
 export default function Login() {
   const {data:session} = useSession(); 

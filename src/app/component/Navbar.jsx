@@ -1,10 +1,11 @@
 // import { Component } from "react";
 "use client";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import "./NavbarStyles.css";
 import Image from 'next/image'
 import Link from "next/link";
 import { usePathname } from 'next/navigation'
+import { FaFacebook } from "react-icons/fa";
 
 
 const Navbar = ()=> {
@@ -12,18 +13,41 @@ const Navbar = ()=> {
     
 //   state = { clicked: false };
     const [state,SetState] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
   const handleClick = () => {
     SetState(pre=>!pre)
     // this.setState({ clicked: !state });
   };
+
+  useEffect(() => {
+    // Function to handle scroll events
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        // Add a class when the user scrolls down
+        setScrolled(true);
+      } else {
+        // Remove the class when the user scrolls to the top
+        setScrolled(false);
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   
     return (
       <>
-        <nav>
+        <nav className={scrolled ? 'scrolled' : ''} >
           <Link href="/">
             
             <Image
-              src='/My project.png'
+              src='/logo.webp'
               alt="super logo"
             //   className="dark:invert"
               
@@ -35,7 +59,7 @@ const Navbar = ()=> {
           </Link>
           <Link href="tel:+1 905-487-6124" className="flex gap-x-3 text-black hover:text-teal-300 font-semibold">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-  <path strokeLlinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+  <path strokellinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
 </svg>
 <span id='pc'>
 +1 905-487-6124
@@ -76,12 +100,7 @@ superhandlers1@gmail.com
               </li>
               <li>
               <Link onClick={handleClick} href="https://www.facebook.com/Shandlers/" target="_blank">
-<Image
-  src='/Facebooklogo.png'
-  alt="facebook"
-  width={26}
-  height={6}
-/>
+              <FaFacebook className="h-21"/>
 </Link>
               </li>
             </ul>

@@ -10,8 +10,8 @@ export default function MyModal({open,setOpen,handleDelete}) {
     <>
       
 
-      <Transition appear show={open||false} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={e=>setOpen(open=>!open)}>
+      <Transition  appear show={open||false} as={Fragment}>
+        <Dialog as="div" className="relative z-12001 backdrop-filter-lg blur-xl shadow-lg" onClose={e=>setOpen(open=>!open)}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"

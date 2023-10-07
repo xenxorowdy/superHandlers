@@ -16,7 +16,6 @@ export default function BrandsEffect() {
 // console.log(imageFileNames);  
     return (
         <Swiper
-        spaceBetween={50}
         slidesPerView={4}
         modules={[Autoplay]}
         autoplay={{
@@ -29,11 +28,10 @@ export default function BrandsEffect() {
         <SwiperSlide>
         <Image
         src={'/folkliftcompany/toyota.png'}
-        width={120}
-        sizes="10vw"
-        height={120}
+        width={190}
+        height={190}
           
-          style={{ width: '20vw', height: 'auto' }} // optional
+          style={{  height: 'auto' }} // optional
 
           alt="brands toyota"
         />
@@ -41,11 +39,10 @@ export default function BrandsEffect() {
         <SwiperSlide>
         <Image
         src={'/folkliftcompany/raymond.png'}
-        width={120}
-        sizes="10vw"
-        height={120}
+        width={190}
+        height={190}
           
-          style={{ width: '20vw', height: 'auto' }} // optional
+          style={{  height: 'auto' }} // optional
 
           alt="brands raymond"
         />
@@ -53,11 +50,10 @@ export default function BrandsEffect() {
         <SwiperSlide>
         <Image
         src={'/folkliftcompany/crow.png'}
-        width={120}
-        sizes="10vw"
-        height={120}
+        width={190}
+        height={190}
           
-          style={{ width: '20vw', height: 'auto' }} // optional
+          style={{  height: 'auto' }} // optional
 
           alt="brands crow"
         />
@@ -65,11 +61,10 @@ export default function BrandsEffect() {
         <SwiperSlide>
         <Image
         src={'/folkliftcompany/nissan.png'}
-        width={120}
-        sizes="10vw"
-        height={120}
+        width={190}
+        height={190}
           
-          style={{ width: '20vw', height: 'auto' }} // optional
+          style={{  height: 'auto' }} // optional
 
           alt="brands nissan"
         />
@@ -77,11 +72,10 @@ export default function BrandsEffect() {
         <SwiperSlide>
         <Image
         src={'/folkliftcompany/hyster.png'}
-        width={120}
-        sizes="10vw"
-        height={120}
+        width={190}
+        height={190}
           
-          style={{ width: '20vw', height: 'auto' }} // optional
+          style={{  height: 'auto' }} // optional
 
           alt="brands hyster"
         />
@@ -89,11 +83,10 @@ export default function BrandsEffect() {
         <SwiperSlide>
         <Image
         src={'/folkliftcompany/tennant.png'}
-        width={120}
-        sizes="10vw"
-        height={120}
+        width={190}
+        height={190}
           
-          style={{ width: '20vw', height: 'auto' }} // optional
+          style={{  height: 'auto' }} // optional
 
           alt="brands tenant"
         />
@@ -103,11 +96,10 @@ export default function BrandsEffect() {
 <SwiperSlide>
         <Image
         src={'/folkliftcompany/yale_logo-standard.webp'}
-        width={10}
-        sizes="5vw"
-        height={10}
-          className=' object-contain '
-          style={{ width: '20vw', height: 'auto' }} // optional
+        width={190}
+        height={190}
+          className=' aspect-video '
+          style={{  height: 'auto' }} // optional
 
           alt="brands yale"
         />

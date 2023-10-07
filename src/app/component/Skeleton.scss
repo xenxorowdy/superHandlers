@@ -11,12 +11,14 @@
 	background-size: 40px 100%; // width of the shine
 	background-repeat: no-repeat; // No need to repeat the shine effect
 	background-position: left -40px top 0; // Place shine on the left side, with offset on the left based on the width of the shine - see background-size
-	animation: shine 1s ease infinite; // increase animation time to see effect in 'slow-mo'
+	animation: skeleton-loading 1s linear infinite alternate; // increase animation time to see effect in 'slow-mo'
 }
 
-@keyframes shine {
-	to {
-		// Move shine from left to right, with offset on the right based on the width of the shine - see background-size
-		background-position: right -40px top 0;
-	}
-}
+@keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 80%);
+    }
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }

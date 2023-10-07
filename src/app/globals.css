@@ -5,26 +5,39 @@
 
 html{
 	font-family:arial, verdana, sans-serif;
+	scroll-behavior: smooth;
 }
+
+
+
 .imageboxshawdow{
 	box-shadow: 3px 3px 5px 5px #bcbbc2;
 }
 
 body{
 		background-color: rgba(244, 252, 251,0.5);
+		margin-top: 63px;
 }
 
+@media (prefers-color-scheme: dark) {
+	body{
+		background-color: rgba(0, 0, 0,0.8);
+		margin-top: 63px;
+		color:rgb(166, 166, 166)
+		
+	}
+}
 ::-webkit-scrollbar
 {
 	width: 6px;
-  height: 6px;
-	background-color: #F5F5F5;
+  height: 3px;
+	background-color: #ffacac00;
 }
 
 ::-webkit-scrollbar-thumb
 {
-	border-radius: 6px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0 1px 6px rgba(0,0,0,.3);
 	background-color:#878787;
 }
 ::-webkit-scrollbar-thumb:hover {

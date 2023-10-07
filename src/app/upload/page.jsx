@@ -1,6 +1,5 @@
 'use client'
 import React,{useState} from 'react'
-import LoginForm from '../component/login'
 import ImageUploader from '../component/upload'
 import { useRouter } from 'next/navigation';
 import {useSession} from "next-auth/react";
