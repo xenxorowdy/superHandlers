@@ -21,7 +21,7 @@ export default function Home() {
        />
         
         <div className='flex gap-[2px]'>
-      <div className='centertext' > Your Trusted Forklift Solution in Brampton, Canada</div>
+      <h1 className='centertext' > SuperHandlers Trusted Forklift Solutions Brampton.</h1>
         <div className='descriptiontext'>
           <p className="subdis">
           Founded in 2016, Super Handlers is the fastest-growing sales, rental, and service firm for material handling equipment, with two facilities in Ontario and Alberta.</p>
@@ -71,7 +71,7 @@ className='imageboxshawdow rounded-[19px] border-1'
 </div>
 <div className='flex flex-wrap gap-20 m-2 items-center justify-around animationdelay '>
   <div>
-<h1 className='text-2xl font-bold'>Servicing</h1>
+<p className='text-2xl font-bold'>Servicing</p>
   <p className=' relative  flex  lg:w-[25rem] sm:w-fit '>
 To get the most out of your equipment, it’s important to get everything properly serviced and maintained. Forklift Solutions can Service & Repair any make of equipment and we pride ourselves on being able to offer a first-class service to ensure as little downtime for you as possible.
 Whether you’re wanting a Planned Preventative Maintenance Contract (PPM) or even a Full Maintenance Contract (FMC) for your Forklift Truck, with our variety of preventative maintenance, repairs and services, we can tailor to your individual needs

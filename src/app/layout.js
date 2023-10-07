@@ -24,10 +24,12 @@ export default async function RootLayout({ children }) {
     <html lang="en">
   
   
-    <Head>
-    <Link rel="icon" href="/superlogo.webp" />
+    <head>
+    <link rel="icon" href="/logo.webp" />
+    <link rel="apple-touch-icon" href="/logo.webp"/>
 
-    </Head>
+
+    </head>
       <body className={inter.className}>
       <Navbar/>
       <SessionProvider session={session}>

@@ -109,7 +109,7 @@ theme="dark"
       </div>
       :
       <div className=" justify-center items-center flex flex-col gap-y-5 border border-spacing-1 p-1 rounded-[18px] bordercolor-[#f7f7f7] ">
-        <h1 className=' font-semibold text-2xl underline flex items-center gap-10 md: '>Contact Us:
+        <p1 className=' font-semibold text-2xl underline flex items-center gap-10 md: '>Contact Us:
           <Link href="tel:+1 905-487-6124" className="flex gap-x-6  hover:text-teal-300 font-semibold">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
               <path strokellinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
@@ -122,10 +122,10 @@ theme="dark"
               <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
             </svg>
           </Link>
-        </h1>
+        </p1>
 
 
-        <h1 className='font-bold text-2xl   ' >Lets get in touch</h1>
+        <p1 className='font-bold text-2xl   ' >Lets get in touch</p1>
         <div className="items-center flex flex-col gap-5 " >
           <input type="text" placeholder='Name' className=" className=' border-2 p-1 rounded-lg  " id="name" name="name"  onChange={e => value.current.name = e.currentTarget.value} />
           <input id="contact" type='tel' name='Number' placeholder='Contact Number' className=" className=' border-2 p-1 rounded-lg  " value={value.current.contact} onChange={e => value.current.contact = e.currentTarget.value} />

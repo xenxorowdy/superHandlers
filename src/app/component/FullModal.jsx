@@ -38,13 +38,13 @@ const FullModal = ({title,desc,open,url,handleImage,price,selected}) => {
                <div className='text-[#21DA8C] font-[550] opacity-60 border-black text-md flex justify-around items-center'> 
         {selected||''}</div> 
                 <Image src={url} loading = 'lazy' placeholder='blur' blurDataURL="data:image/png" onLoad={e=>setLoad(true)} width={400} height={400} style={{objectFit:"contain",aspectRatio:"3/2"}} alt={url}/>
-               <h1 style={{fontWeight:"700"}}>{title}</h1> 
+               <h4 style={{fontWeight:"700"}}>{title}</h4> 
               </Dialog.Title>
               <div className="mt-2">
                 <p className="text-sm text-gray-800">
                 <p className='flex text-[1.1rem] font-medium '> <span id="span" className='font-normal'> price:</span> ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(price||0)} {selected=="Renatal FolkLift"&&<>\YEAR</>} </p>
 <br/>
-                {desc  && <h1> Descriptions </h1>}
+                {desc  && <h2> Descriptions </h2>}
                 {desc  && desc.split("\n").map((e,index)=> e.trim() &&  <li key={index} className='w-[90%]'>{e}</li>)}
 
                 </p>

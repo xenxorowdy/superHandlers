@@ -36,7 +36,7 @@ function LoginForm() {
   // return <DeleteImage/>
   return (
     <form className='flex flex-col items-center justify-center gap-3 m-20' onSubmit={handleSubmit}>
-    <h1 className='font-bold'>LOGIN</h1>
+    <p1 className='font-bold'>LOGIN</p1>
     {error && <span className=' bg-red-700 rounded-md p-2 text-[#fff]'>Credentials are Incorrect</span>}
     <input type="email" name='email' className='border-2 p-1 rounded-lg' placeholder="Email" />
     <input type="password" name="password" className='border-2 p-1 rounded-lg' placeholder="Password" />

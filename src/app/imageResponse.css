@@ -13,7 +13,7 @@
     left: 50%;
     position: absolute;
     color: #fffdfb;
-    font-weight: bold;
+    font-weight: semi-bold;
     font-size:3vw;
     animation: typing 2500ms steps(50) 1, cursor 1s ;
     overflow: hidden;
@@ -160,11 +160,23 @@ figure:hover img {
     left: 50%;
     position: absolute;
     color: #fffdfb;
-    font-weight: bold;
-    font-size:14px;
+    font-weight: semi-bold;
+    font-size:12px;
     animation: typing 2500ms steps(50) 1, cursor 1s ;
     overflow: hidden;
-    white-space: nowrap;
+  }
+}
+@media  (max-width: 320px) {
+  .centertext{
+    /* animation: MoveUpDown 5s linear; */
+    transform: translate(-50%, -50%);
+    top: 20%;
+    left: 50%;
+    position: absolute;
+    color: #fffdfb;
+    font-weight: semi-bold;
+    font-size:4vw;
+    animation: typing 2500ms steps(50) 1, cursor 1s ;
   }
 }
 

@@ -235,11 +235,11 @@ We are united by a common goal: to ensure efficient and safe operations.</p>
 </div>
     </div>
 <div className='pl-10 flex flex-col gap-2 pb-12'>
-    <h1 className='w-["40%"]  font-bold text-4xl space-x-4 '> Super Handlers Address</h1>
+    <span className='w-["40%"]  font-bold text-4xl space-x-4 '> Super Handlers Address</span>
     <span className='w-["40%"] font-normal text-xl'> In North America, our workers are highly qualified experts. </span>
     <div className='flex gap-3 text-center'>
     <Image src={'/canda.png'} width={44} height={25} className='imageboxshawdow rounded-[50%]' alt='canda' /> 
-    <h1 className='font-bold text-4xl space-x-4 '>Brampton</h1>
+    <h5 className='font-bold text-4xl space-x-4 '>Brampton</h5>
 
     </div>
     <p className='w-["40%"]  font-normal text-xl pl-14'> 
