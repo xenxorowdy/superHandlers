@@ -27,6 +27,7 @@ export default async function RootLayout({ children }) {
     <head>
 
     <link rel="icon" href="/favicon.ico" />
+    <meta name="msvalidate.01" content="BB71A4F1A9AFEBDB310A8D74CE88827D" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
