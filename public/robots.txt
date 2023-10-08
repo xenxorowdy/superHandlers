@@ -5,4 +5,4 @@ Allow: /shop
 Allow: /about
 Allow: /
 
-sitemap:https://www.superhandlerslift.com/sitemap_index.xml
+sitemap:https://www.superhandlerslift.com/sitemap.xml
