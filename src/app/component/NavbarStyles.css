@@ -25,6 +25,7 @@ nav {
     align-items: center;
     justify-content: space-around;
   }
+ 
   
   #navbar li {
     list-style: none;
@@ -91,34 +92,39 @@ nav {
       z-index: 12000;
       border-radius: 4px;
     }
-    
+    .color{
+      background-color: rgba(243, 254, 255, 0.5)
+    }
+    .scrollcolor{
+      background-color: rgba(126, 154, 157, 0.5);
+    }
     #navbar {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      position: fixed;
-       top: 45px;
-      right: -200px; 
-      overflow-y: auto;
-      /* top: 75px; */
-      /* right: -125px; */
-      width: 200px;
-     min-height: 100vh;
-      max-height: 100vh;
-      background: rgb(243, 254, 255);
-      box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
-      padding: 40px 0 0 10px;
-      transition: 0.2s ease-in-out;
-      
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 57px;
+    right: -200px;
+    overflow-y: auto;
+    /* top: 75px; */
+    /* right: -125px; */
+    width: 200px;
+    min-height: 100vh;
+    max-height: 100vh;
+    box-shadow: 38px 61px 79px rgba(0, 0, 0, 0.1);
+    padding: 40px 0 0 10px;
+    border: 1px inset;
+    border-radius: 12px;
+    transition: 0.2s ease-in-out;
     }
-  
     #navbar.active {
       right: 0px;
       z-index: 200;
-      backdrop-filter: blur(2px);
-
+      backdrop-filter: blur(8px);
+      
     }
+    
   
     #navbar li {
       margin-bottom: 25px;

@@ -12,15 +12,13 @@ import { connectToDb,getfiles } from "../../upload/route";
                         .db()
                         .collection("password.check").findOne({email:req.email})
         if(!dbResult){
-            return new NextResponse(null,{ status: 401, statusText: "Bad Request" })
+            return null;
         }
-        console.log(dbResult)
         // const password = dbResult.password;
         const {password ,createdAt,_id,...User} = dbResult
         if(req.password !== password){
             return null
         }
-        console.log(User);
         return User;
     
 }

@@ -1,9 +1,8 @@
 import { Transition,Dialog } from '@headlessui/react';
-import React,{Fragment,useState} from 'react'
+import React,{Fragment} from 'react'
 import Image from 'next/image'
 
 const FullModal = ({title,desc,open,url,handleImage,price,selected}) => {
-    const [load,setLoad] = useState(false)
   return (
     <Transition appear show={open} as={Fragment}>
     <Dialog as="div" className="relative z-10" onClose={e=>handleImage()}>
@@ -37,7 +36,7 @@ const FullModal = ({title,desc,open,url,handleImage,price,selected}) => {
               >
                <div className='text-[#21DA8C] font-[550] opacity-60 border-black text-md flex justify-around items-center'> 
         {selected||''}</div> 
-                <Image src={url} loading = 'lazy' placeholder='blur' blurDataURL="data:image/png" onLoad={e=>setLoad(true)} width={400} height={400} style={{objectFit:"contain",aspectRatio:"3/2"}} alt={url}/>
+                <Image src={url} loading = 'lazy' placeholder='blur' blurDataURL="data:image/png"  width={400} height={400} style={{objectFit:"contain",aspectRatio:"3/2"}} alt={url}/>
                <h4 style={{fontWeight:"700"}}>{title}</h4> 
               </Dialog.Title>
               <div className="mt-2">

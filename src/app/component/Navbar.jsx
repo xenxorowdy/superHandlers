@@ -47,7 +47,7 @@ const Navbar = ()=> {
           <Link href="/">
             
             <Image
-              src='/logo.webp'
+              src='/logo.png'
               alt="super logo"
             //   className="dark:invert"
               
@@ -79,7 +79,7 @@ superhandlers1@gmail.com
           <div className="">
             <ul
               id="navbar"
-              className={state ? "#navbar active" : "#navbar"}
+              className={`${state ? "#navbar active " : "#navbar "} ${scrolled?"scrollcolor":"color"}` }
             >
               <li>
                 <Link onClick={handleClick} className={usePathname() === '/' ?  "active" : undefined} href="/">

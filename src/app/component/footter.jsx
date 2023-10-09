@@ -12,7 +12,7 @@ export default function Footter() {
   <div className="container w-[75%]  md:w-[60%]  ">
     <div className="row">
       <div className="footer-col">
-        <h4>company</h4>
+        <p4>company</p4>
         <ul>
           <li>
             <a href="/about">about us</a>
@@ -32,7 +32,7 @@ export default function Footter() {
         </ul>
       </div>
       <div className="footer-col">
-        <h4>follow us</h4>
+        <p4>follow us</p4>
         <div className="social-links">
           <a href="https://www.facebook.com/Shandlers/" target="_blank">
           <FaFacebook className="fixwind"  />
@@ -50,15 +50,15 @@ export default function Footter() {
         </div>
       </div>
       <div id='pc' className="footer-col">
-        <h4>ADDRESS</h4>
+        <p4>ADDRESS</p4>
        <ul> 
-        <a className="flex gap-1 items-start align-baseline text-[#bbbbbb]  hover:text-white  cursor-pointer " href="https://maps.app.goo.gl/ZufwDGCdrLqQB7QJ6" target="_blank">
+        <a className="flex  items-start align-baseline text-[#bbbbbb]  hover:text-white text-sm  cursor-pointer w-[13em] " href="https://maps.app.goo.gl/ZufwDGCdrLqQB7QJ6" target="_blank">
          <FaMapMarked className="w-[45px]"/> 241 Advance Blvd Brampton, ON L6T 4J2, Canada
     </a> 
        </ul>
       </div>
       <div id='pc' className="footer-col">
-        <h4 >PHONE</h4>
+        <p4 >PHONE</p4>
        <ul> 
         <Link href="tel:+1 905-487-6124" className="flex gap-1 items-start align-baseline text-[#bbbbbb] hover:text-white  cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-5 h-5">
@@ -83,7 +83,7 @@ superhandlers1@gmail.com
       </div>
     </div>
   </div>
-  <Image src={"/logo.webp"} width={200} height={200} className=" w-[25%] object-contain" alt='myprojectlogo' />
+  <Image src={"/logo.png"} width={200} height={200} className=" w-[25%] object-contain" alt='myprojectlogo' />
 
   </div>
   <hr className=" text-[#fff]"/>

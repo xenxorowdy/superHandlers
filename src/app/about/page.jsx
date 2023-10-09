@@ -7,19 +7,19 @@ const index = () => {
     <>
     <div className=' text-center flex flex-col gap-6 p-6  items-center'>
       <p className=' text-[#13BBB2]  font-semibold  text-xl'>Know Everything… About Us</p>
-      <p className='text-[#192232]  font-bold  font-sans  text-4xl  '>About Super-handlers </p>
+      <h3 className='text-[#192232]  font-bold  font-sans   text-3xl  '>About SuperHandlers </h3>
       <p className='text-[#192232]   text-xl  '>Forklift Solutions: Sales, Purchasing, and Expert Service Options</p>
-      <Image src={"/aboutImage.jpg"}  width={1000} height={800} className='imageboxshawdow flex-initial' alt='aboutImage' />
-      <div className='flex flex-wrap gap-3 p-3 '>
-        <p className='w-["40%"]  font-bold text-4xl'>Our Purpose:</p>
-        <p className='w-["40%"] font-normal text-xl'> Super-handlers is a one-stop shop for all of your forklift needs, with a wide choice of solutions. Whether you are looking to acquire a forklift for your company or need dependable service and maintenance, our all-inclusive approach has you covered. We offer sales, purchasing, and expert maintenance to ensure that your forklift operations run properly. With our assistance, you can confidently navigate the forklift market, knowing you have a partner committed to your success. </p>
+      <Image src={"/aboutImage.jpg"}  width={500} height={800} className='imageboxshawdow flex-initial' alt='aboutImage' />
+      <div className='flex flex-wrap gap-3 p-3 text-left '>
+        <p className='w-["40%"]  font-bold text-3xl'>Our Purpose:</p>
+        <p className='w-["40%"] font-normal text-lg'> Super-handlers is a one-stop shop for all of your forklift needs, with a wide choice of solutions. Whether you are looking to acquire a forklift for your company or need dependable service and maintenance, our all-inclusive approach has you covered. We offer sales, purchasing, and expert maintenance to ensure that your forklift operations run properly. With our assistance, you can confidently navigate the forklift market, knowing you have a partner committed to your success. </p>
       </div>
-        <p className=' text-[#192232]  font-bold  font-sans  text-4xl'> What We Care About The Most </p>
-        <p className='text-[#3f4550] font-normal text-xl'>Super-handlers is the kind of place that always asks the big questions: how and why? 
+        <p className=' text-[#192232]  font-bold  font-sans  text-3xl'> What We Care About The Most </p>
+        <p className='text-[#3f4550] font-normal text-lg'>Super-handlers is the kind of place that always asks the big questions: how and why? 
 <br/>
 We are united by a common goal: to ensure efficient and safe operations.</p>
 
-<div style={{display:"flex",justifyContent:"space-around",width:"100%","alignItems": "baseline","fontSize": "larger","fontWeight": "700"}}>
+<div style={{display:"flex",justifyContent:"space-around",width:"100%","alignItems": "baseline","fontSize": "normal","fontWeight": "600"}}>
   <div className={"flex flex-col items-center gap-1"}>
 <svg
     width={58}
@@ -83,7 +83,7 @@ We are united by a common goal: to ensure efficient and safe operations.</p>
       </linearGradient>
     </defs>
   </svg>
-  <span>Customer Satisfaction</span>
+  <h5>Customer Satisfaction</h5>
   </div>
   <div className={"flex flex-col items-center gap-1"}>
   <svg
@@ -169,7 +169,7 @@ We are united by a common goal: to ensure efficient and safe operations.</p>
     </linearGradient>
   </defs>
 </svg>
-<span>Future-Driven</span>
+<h5>Future-Driven</h5>
 </div >
 <div className={"flex flex-col items-center gap-1"}>
 <svg
@@ -230,20 +230,21 @@ We are united by a common goal: to ensure efficient and safe operations.</p>
     </linearGradient>
   </defs>
 </svg>
-<span>Always Curious</span>
+<h5>Always Curious</h5>
 </div>
 </div>
     </div>
-<div className='pl-10 flex flex-col gap-2 pb-12'>
-    <span className='w-["40%"]  font-bold text-4xl space-x-4 '> Super Handlers Address</span>
-    <span className='w-["40%"] font-normal text-xl'> In North America, our workers are highly qualified experts. </span>
-    <div className='flex gap-3 text-center'>
-    <Image src={'/canda.png'} width={44} height={25} className='imageboxshawdow rounded-[50%]' alt='canda' /> 
-    <h5 className='font-bold text-4xl space-x-4 '>Brampton</h5>
+<div className='pl-10  gap-2 pb-12'>
+  
+    <div  id='address' className='w-["40%"]  font-bold text-2xl space-x-4 '> Super Handlers Address</div>
+    <div id='people' className='w-["40%"] font-normal text-lg'> In North America, our workers are highly qualified experts. </div>
+    <div className='flex pt-1 gap-1 text-left'>
+    <Image src={'/canda.png'} width={41} height={15} className=' rounded-[50%] object-contain' alt='canda' /> 
+    <h5 className='font-bold text-2xl space-x-1 '>Brampton</h5>
 
     </div>
-    <p className='w-["40%"]  font-normal text-xl pl-14'> 
-    <p className='flex gap-x-2 text-center items-center '>
+    <p className='w-["40%"]  font-normal text-normal pl-10'> 
+    <p className='flex gap-x-1 text-center items-center '>
     241 Advance Blvd
     <a href='https://maps.app.goo.gl/ZufwDGCdrLqQB7QJ6' target="blank">
      <FaExternalLinkAlt className='h-[0.8em]'/>

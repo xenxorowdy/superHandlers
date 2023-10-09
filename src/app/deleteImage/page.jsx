@@ -35,7 +35,7 @@ const DeleteImage = () => {
     },[deleteFile])
   return (
     <div className='m-[16px]' >
-         <div style={{gridTemplateColumns:"repeat(auto-fit, minmax(310px,1fr))",display:"grid",gap:"30px",padding:"0px px 0px 12px",minHeight:"250px!important",paddingBottom:"16px" , justifyItems:"center" }}>
+         <div style={{gridTemplateColumns:"repeat(auto-fit, minmax(310px,1fr))",display:"grid",gap:"20px",padding:"0px px 0px 12px",minHeight:"250px!important",paddingBottom:"16px" , justifyItems:"center",paddingTop:"1%" }}>
       { loading ? Array(20).fill(null).map((e,index)=><Skeleton key={index}/>)  :
       
       result.map(e=><Cards key={e.filename} res={e.filename} price={e.metadata?.price} title={e.metadata?.title } desc={e.metadata?.description??''} selected={e.metadata?.selected} deleted={true} setDeleteFile={setDeleteFile} />)}

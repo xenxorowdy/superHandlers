@@ -9,13 +9,13 @@
   .centertext{
     /* animation: MoveUpDown 5s linear; */
     transform: translate(-50%, -50%);
-    top: 20%;
+    top: 34%;
     left: 50%;
     position: absolute;
     color: #fffdfb;
     font-weight: semi-bold;
-    font-size:3vw;
-    animation: typing 2500ms steps(50) 1, cursor 1s ;
+    font-size: 3vw;
+    animation: typing 2500ms steps(50) 1, cursor 1s;
     overflow: hidden;
     white-space: nowrap;
   }
@@ -34,13 +34,13 @@
   .descriptiontext{
     color: #fffdfb;
     font-weight: 400;
-    font-size:1.5vw;
+    font-size: 1.5vw;
     animation: 2s slide-up;
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 40%;
-    left: 44%;
-    margin-top:0%;
+    top: 49%;
+    left: 42.5%;
+    margin-top: 0%;
   }
   .subdis{
     /* line-height: 2em; */
@@ -153,18 +153,7 @@ figure:hover img {
     flex-wrap: wrap;
     margin-top: 8px;
   }
-  .centertext{
-    /* animation: MoveUpDown 5s linear; */
-    transform: translate(-50%, -50%);
-    top: 20%;
-    left: 50%;
-    position: absolute;
-    color: #fffdfb;
-    font-weight: semi-bold;
-    font-size:12px;
-    animation: typing 2500ms steps(50) 1, cursor 1s ;
-    overflow: hidden;
-  }
+ 
 }
 @media  (max-width: 320px) {
   .centertext{
@@ -175,12 +164,11 @@ figure:hover img {
     position: absolute;
     color: #fffdfb;
     font-weight: semi-bold;
-    font-size:4vw;
     animation: typing 2500ms steps(50) 1, cursor 1s ;
   }
 }
 
-@media  (max-width: 320px) {
+@media  (max-width: 500px) {
 
   .subdis{
     /* line-height: 2em; */
