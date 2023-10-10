@@ -8,7 +8,6 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
-    box-shadow: 0 14px 35px rgba(105, 246, 246, 0.06);
     background: rgba(221, 245, 247, 0.985);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
       height: 57px;
@@ -17,7 +16,7 @@ nav {
   }
   
   nav.scrolled {
-      background-color: rgba(126, 154, 157, 0.985); /* Change to your desired background color on scroll */
+      background-color: rgba(126, 154, 157, 0.6); /* Change to your desired background color on scroll */
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow on scroll */
       animation: fadeIn 1s ease;
     }
