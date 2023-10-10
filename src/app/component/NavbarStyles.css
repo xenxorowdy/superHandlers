@@ -4,6 +4,7 @@ nav {
   left: 0;
   width: 100%;
     display: flex;
+    filter: blur(4px);
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
@@ -84,12 +85,13 @@ nav {
     nav {
       display: flex;
       align-items: center;
+      filter: blur(4px);
       justify-content: space-between;
       background: rgba(243, 254, 255, 0.9);
       padding: 4px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
       height: 57px;
-      z-index: 12000;
+      z-index: 1;
       border-radius: 4px;
     }
     .color{
