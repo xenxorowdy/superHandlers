@@ -23,7 +23,18 @@ export default async function RootLayout({ children }) {
   
   
     <head>
-
+    <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "http://schema.org",
+              "@type": "Organization",
+              "name": "Super Handlers",
+              "url": "https://www.superhandlerslift.com",
+              "logo": "https://www.superhandlerslift.com/android-chrome-512x512.png",
+            }),
+          }}
+        />
     <link rel="icon" type="image/ico" href="/favicon.ico?v=2" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="manifest" href="/site.webmanifest" />
@@ -32,6 +43,7 @@ export default async function RootLayout({ children }) {
 
 
     </head>
+    
       <body className={inter.className}>
       <Navbar/>
       <SessionProvider session={session}>
