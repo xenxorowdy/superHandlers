@@ -22,7 +22,7 @@ export default function Home() {
        />
        {set&&
         <div className='flex gap-[2px]'>
-      <h1 className='centertext' > SuperHandlers Trusted Forklift Solutions Brampton.</h1>
+      <h1 className='centertext' > Super Handlers Trusted Forklift Solutions Brampton</h1>
         <div className='descriptiontext'>
           <p className="subdis">
           Founded in 2016, Super Handlers is the fastest-growing sales, rental, and service firm for material handling equipment, with two facilities in Ontario and Alberta.</p>
