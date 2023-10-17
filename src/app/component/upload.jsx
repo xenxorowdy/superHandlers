@@ -104,7 +104,7 @@ const handleReset = ()=>{
       <input type="title" placeholder='title' className=" p-1 border-[2px]  rounded-md  focus-within:!border-0  focus-visible:!border-0  " name="title"  value={title} onChange={e=>setTitle(e.target.value)}  />
       <div className="flex  items-center w-[204px]">
       <input type="number"  placeholder='price' className=" p-1 border-[2px]  rounded-md  focus-within:!border-0  focus-visible:!border-0  " name="price" value={price} onChange={e=>setPrice(e.target.value)}   /> 
-      {selected=="Renatal FolkLift"&&<p2 className=" font-semibold text-lg">\YEAR</p2>}
+      {selected=="Renatal FolkLift"&&<p2 className=" font-semibold text-lg">\MONTH</p2>}
       </div>
       <select name="cars" id="cars" defaultValue={selected} value={selected}  onChange={handleChange} className=" p-1 border-[2px] w-[210px]  rounded-md  focus-within:!border-1  focus-visible:!border-1  ">
   <option value="Pre Owned FolkLift">Pre Owned FolkLift</option>
