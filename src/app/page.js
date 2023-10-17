@@ -1,10 +1,12 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import BrandsEffect from './component/BrandsEffect';
 import "./imageResponse.css";
+import { useState } from 'react';
 export default function Home() {
-  let set = false
+  const [set,setLoad] = useState(false)
   return (
     <div className='flex-col gap-[2rem] flex'>
     <div className='relative p-[1px]' >
@@ -14,7 +16,7 @@ export default function Home() {
       quality={10}
       placeholder='blur'
       blurDataURL="data:image/jpeg..."
-      onLoadingComplete={set=true}
+      onLoad={()=>setLoad(true)}
       alt={'homescreen'}
       className={'image blur-[1px] brightness-[0.4] backdrop-hue-rotate-90 bg-white/30 w-9/10 '}
       // placeholder="hello"
