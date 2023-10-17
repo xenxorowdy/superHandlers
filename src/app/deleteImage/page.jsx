@@ -21,7 +21,7 @@ const DeleteImage = () => {
       setSelected(event.target?.value)
     }
     const getAllName=async()=>{
-      const result = await fetch("/api/getName", {next:{revalidate:5},method:'post',body:{data:JSON.stringify(Math.random())}});
+      const result = await fetch("/api/getName", {next:{revalidate:1},method:'post',body:{data:JSON.stringify(Math.random())}});
       const res = await result.json()
       setResult(res?.result);
       setLoading(false)

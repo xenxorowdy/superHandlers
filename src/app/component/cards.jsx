@@ -103,9 +103,9 @@ export default function Cards({res,title,price,desc,selected,deleted,setDeleteFi
     
       <Image  
       src={urls}
-      width={260}
-      height={100}
-      className=' aspect-squre max-w-[250px] max-h-[150px]  object-contain'
+      fill
+      quality={30}
+      className='  object-contain '
       alt={"folk lift image"}
 
        />

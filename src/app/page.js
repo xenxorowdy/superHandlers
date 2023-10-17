@@ -4,7 +4,7 @@ import { FaExternalLinkAlt } from 'react-icons/fa';
 import BrandsEffect from './component/BrandsEffect';
 import "./imageResponse.css";
 export default function Home() {
-
+  let set = false
   return (
     <div className='flex-col gap-[2rem] flex'>
     <div className='relative p-[1px]' >
@@ -13,19 +13,19 @@ export default function Home() {
       fill
       quality={10}
       placeholder='blur'
-      blurDataURL="data:..."
+      blurDataURL="data:image/jpeg..."
+      onLoadingComplete={set=true}
       alt={'homescreen'}
       className={'image blur-[1px] brightness-[0.4] backdrop-hue-rotate-90 bg-white/30 w-9/10 '}
       // placeholder="hello"
       loading = 'lazy' 
        />
-        
+       {set&&
         <div className='flex gap-[2px]'>
       <h1 className='centertext' > SuperHandlers Trusted Forklift Solutions Brampton.</h1>
         <div className='descriptiontext'>
           <p className="subdis">
           Founded in 2016, Super Handlers is the fastest-growing sales, rental, and service firm for material handling equipment, with two facilities in Ontario and Alberta.</p>
-
 <Link href="/about">
 <button href='/about' className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'  >
    Learn More
@@ -33,6 +33,7 @@ export default function Home() {
    </Link>
 </div>
         </div>
+       }
        
     
      </div >

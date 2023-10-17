@@ -37,7 +37,7 @@ function LoginForm() {
   return (
     <form className='flex flex-col items-center justify-center gap-3 m-20' onSubmit={handleSubmit}>
     <p1 className='font-bold'>LOGIN</p1>
-    {error && <span className=' bg-red-700 rounded-md p-2 text-[#fff]'>Credentials are Incorrect</span>}
+    {error && <span className=' bg-red-400 rounded-md p-2 text-[#fff]'>Credentials are Incorrect</span>}
     <input type="email" name='email' className='border-2 p-1 rounded-lg' placeholder="Email" />
     <input type="password" name="password" className='border-2 p-1 rounded-lg' placeholder="Password" />
     <button type="submit" className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'>
