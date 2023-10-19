@@ -1,6 +1,6 @@
 User-agent: *
-Disallow: /contact
-Disallow: /login
+Allow: /contact
+Allow: /login
 Allow: /shop
 Allow: /about
 Allow: /
