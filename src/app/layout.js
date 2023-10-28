@@ -11,7 +11,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Super Handlers Forklifts Solution in Brampton',
+  title: 'Super Handlers: Forklifts Solution in Brampton',
   description: 'Your go-to source for top-quality rentals and sales and second-hand forklifts. Serving Brampton toronto canada forklift models and excellent customer service.',
 }
 

@@ -20,7 +20,7 @@
 	 display: none;
 }
  .tabs .content section h2, .tabs ul li label {
-	 font-weight: bold;
+	 font-weight: normal;
 	 font-size: 18px;
 	 color: #428bff;
 }

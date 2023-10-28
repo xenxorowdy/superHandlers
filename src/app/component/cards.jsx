@@ -103,7 +103,8 @@ export default function Cards({res,title,price,desc,selected,deleted,setDeleteFi
     
       <Image  
       src={urls}
-      fill
+      width={90}
+      height={60}
       quality={30}
       className='  object-contain '
       alt={"folk lift image"}
@@ -120,7 +121,7 @@ export default function Cards({res,title,price,desc,selected,deleted,setDeleteFi
      {title??'Item'}
       </h4>
     <div className='flex justify-between'>
-      <p className='flex text-[1.1rem] font-medium '> <span id="span" className='font-normal'> Price:</span> ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(price||0)}{selected=="Renatal FolkLift"&&'/MONTH'} </p>
+      <p className='flex text-[1.1rem] font-medium '> <span id="span" className='font-normal'> Price:</span> ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(price||0)}{selected=="Rental FolkLift"&&'/Month'} </p>
     {/* {
       desc.trim()&&
     <button onClick={e=>setMore(e=>!e)} className='flex justify-end pr-3 items-center gap-1 cursor-pointer text-[#21DA8C]'>View {more? 'less': 'more'}
