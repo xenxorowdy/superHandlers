@@ -11,8 +11,11 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Super Handlers: Forklifts Solution in Brampton',
-  description: 'Your go-to source for top-quality rentals and sales and second-hand forklifts. Serving Brampton toronto canada forklift models and excellent customer service.',
+  title: "Super Handlers: Brampton & Toronto's Premier Forklift Repair and Maintenance Experts.",
+  description: `Welcome to Precision Forklift Services, your go-to destination for exceptional forklift care in Brampton and Toronto. Our seasoned technicians are dedicated to providing top-tier repairs and maintenance services tailored to the unique demands of your business. Whether it's routine upkeep, urgent repairs, or a customized service plan, trust us to keep your forklifts operating at peak performance.
+  At Precision Forklift Services, we understand that downtime is not an option for your operations. That's why we deliver swift and effective solutions, ensuring your equipment remains reliable and efficient. With a wealth of experience, we take pride in offering dependable and cost-effective forklift services designed to enhance the longevity and functionality of your machinery.
+  As your local industry leaders, we prioritize customer satisfaction and quality service. Serving businesses across Brampton and Toronto, we bring a professional and responsive approach to forklift care. Elevate the performance of your material handling operations with Precision Forklift Services. Contact us today for all your forklift service needs, and experience the difference of precision and expertise.
+  `,
 }
 
 
