@@ -116,12 +116,17 @@ export default function Cards({res,title,price,desc,selected,deleted,setDeleteFi
        <hr/>
     
     <div className='flex flex-col pl-2  pb-1 justify-center     align-center '>
-      <h4 className='text-center font-[540] text-lg '>
+      <h4 className='text-center  whitespace-nowrap w-full overflow-hidden text-ellipsis text-medium '>
 
      {title??'Item'}
       </h4>
     <div className='flex justify-between'>
-      <p className='flex text-[1.1rem] font-medium '> <span id="span" className='font-normal'> Price:</span> ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(price||0)}{selected=="Rental FolkLift"&&'/Month'} </p>
+      <p className='flex text-[1rem] font-medium  '> <span id="span" className='font-normal'> Price:</span> 
+      <span className='  text-[#37a864]'>
+      ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(price||0)}
+      </span>
+      {selected=="Rental FolkLift"&&'/Month'} 
+      </p>
     {/* {
       desc.trim()&&
     <button onClick={e=>setMore(e=>!e)} className='flex justify-end pr-3 items-center gap-1 cursor-pointer text-[#21DA8C]'>View {more? 'less': 'more'}

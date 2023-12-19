@@ -41,7 +41,12 @@ const FullModal = ({title,desc,open,url,handleImage,price,selected}) => {
               </Dialog.Title>
               <div className="mt-2">
                 <p className="text-sm text-gray-800">
-                <p className='flex text-[1.1rem] font-medium '> <span id="span" className='font-normal'> price:</span> ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(price||0)}{selected=="Rental FolkLift"&&<>/Month</>} </p>
+                <p className='flex text-[1.1rem] font-medium '> <span id="span" className='font-normal'> price:</span> 
+                <span className='  text-[#37a864]'>
+                ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(price||0)}
+      </span>
+                {selected=="Rental FolkLift"&&<>/Month</>}
+                </p>
 <br/>
                 {desc  && <h2> Descriptions </h2>}
                 {desc  && desc.split("\n").map((e,index)=> e.trim() &&  <li key={index} className='w-[90%]'>{e}</li>)}
