@@ -107,7 +107,6 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
           unoptimized={true}
           height={60}
           quality={30}
-          loading='lazy' placeholder='blur'
           className='  object-contain '
           alt={title}
 
