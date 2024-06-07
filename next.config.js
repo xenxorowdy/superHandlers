@@ -2,9 +2,8 @@
 const path = require('path')
 
 const nextConfig = {
-  reactStrictMode:true,
-  swcMinify: true,
-  compiler:{
+  reactStrictMode: true,
+  compiler: {
     removeConsole: true,
   }
 }

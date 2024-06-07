@@ -42,7 +42,7 @@ export default function Home() {
       <div className='p-4 flex-col gap-3 flex-wrap'>
 
         <span className='flex justify-center text-xl font-bold uppercase' >
-        Brands We Service: Our Expertise in Your Favorites
+          Brands We Service: Our Expertise in Your Favorites
         </span>
         <BrandsEffect />
       </div>
@@ -87,7 +87,7 @@ export default function Home() {
 
         <a className='flex items-center flex-col' href='/shop' >
           <figure>
-            <Image loading='lazy' src={'/shop.jpg'} width={300} height={400} className='imageboxshawdow aspect-[4/3] ' alt="Shop" />
+            <Image loading='lazy' src={'/shop.jpg'} width={300} height={400} className='imageboxshawdow aspect-[3/2] ' alt="Shop" />
             <figcaption>Shop</figcaption>
           </figure>
           <p className=" flex text-[#3f4550] font-normal align-baseline  items-center  w-fit text-xl">shop <FaExternalLinkAlt className='h-4 ' /> </p>
@@ -96,7 +96,7 @@ export default function Home() {
 
           <figure>
 
-            <Image loading='lazy' src={'/wp7388677-forklift-wallpapers.jpg'} className='imageboxshawdow aspect-[4/3] ' width={300} height={400} alt="About" />
+            <Image loading='lazy' src={'/wp7388677-forklift-wallpapers.jpg'} className='imageboxshawdow aspect-[3/2] ' width={300} height={400} alt="About" />
             <figcaption>About</figcaption>
 
           </figure>
@@ -105,11 +105,11 @@ export default function Home() {
         </a>
         <a className='flex items-center flex-col' href='/contact' >
           <figure  >
-            <Image loading='lazy' src={'/contact.webp'} className='imageboxshawdow aspect-[4/3] ' width={300} height={400} alt="Contact Us" />
-            <figcaption>Contact Us</figcaption>
+            <Image loading='lazy' src={'/contact.webp'} className='imageboxshawdow aspect-[3/2] ' width={300} height={400} alt="Contact Us" />
+            <figcaption>contact us</figcaption>
 
           </figure>
-          <p className=" flex text-[#3f4550] font-normal text-xl  align-baseline  items-center w-fit  ">Contact US <FaExternalLinkAlt className='h-4 ' /> </p>
+          <p className=" flex text-[#3f4550] font-normal text-xl  align-baseline  items-center w-fit  ">contact us <FaExternalLinkAlt className='h-4 ' /> </p>
 
         </a>
       </div>
