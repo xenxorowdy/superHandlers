@@ -4,5 +4,6 @@ Allow: /login
 Allow: /shop
 Allow: /about
 Allow: /
+Allow: /app-ads.txt
 
 sitemap:https://www.superhandlerslift.com/sitemap.xml
