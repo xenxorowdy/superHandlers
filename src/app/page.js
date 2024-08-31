@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     initTracker();
     startTracking();
-  }, [])
+  }, [initTracker, startTracking]);
   return (
     <div className='flex-col gap-[2rem] flex'>
       <div className='relative p-[1px]' >

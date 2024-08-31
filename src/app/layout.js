@@ -1,4 +1,3 @@
-
 import { getServerSession } from 'next-auth'
 import { Inter } from 'next/font/google'
 import GoogleAnalytics from './component/GoogleAnalytics'
