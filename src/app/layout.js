@@ -6,7 +6,7 @@ import Navbar from './component/Navbar'
 import SessionProvider from "./component/SessionProvider.jsx"
 import Footter from './component/footter'
 import './globals.css'
-
+import TrackerProvider from './component/openTracker.js'
 // require("../mongo/connect")
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,10 +23,10 @@ export default async function RootLayout({ children }) {
   const session = await getServerSession();
   return (
     <html lang="en">
-  
-  
-    <head>
-    <script
+
+
+      <head>
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -38,26 +38,28 @@ export default async function RootLayout({ children }) {
             }),
           }}
         />
-    <link rel="icon" type="image/ico" href="/favicon.ico?v=2" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="icon" type="image/ico" href="/favicon.ico?v=2" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
 
-    </head>
-    
+      </head>
+
       <body className={inter.className}>
-      <Navbar/>
-      <SessionProvider session={session}>
-      <div style={{minHeight:"500px"}} >
-        {children}
-        </div>
+        <Navbar />
+        <SessionProvider session={session}>
+          <TrackerProvider>
+            <div style={{ minHeight: "500px" }} >
+              {children}
+            </div>
+          </TrackerProvider>
         </SessionProvider>
-        <GoogleAnalytics/>
-        </body>
-        <Footter/>
+        <GoogleAnalytics />
+      </body>
+      <Footter />
     </html>
-    
+
   )
 }
