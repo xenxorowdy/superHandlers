@@ -5,7 +5,10 @@ import Navbar from './component/Navbar'
 import SessionProvider from "./component/SessionProvider.jsx"
 import Footter from './component/footter'
 import './globals.css'
-import TrackerProvider from './component/openTracker.js'
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import TrackerProvider from './component/opeTracker.jsx'
+import TrackerClientComponent from './component/trackerstart.jsx'
+
 // require("../mongo/connect")
 const inter = Inter({ subsets: ['latin'] })
 
@@ -47,14 +50,17 @@ export default async function RootLayout({ children }) {
       </head>
 
       <body className={inter.className}>
-        <Navbar />
-        <SessionProvider session={session}>
-          <TrackerProvider>
-            <div style={{ minHeight: "500px" }} >
-              {children}
-            </div>
-          </TrackerProvider>
-        </SessionProvider>
+        <TrackerProvider>
+          <TrackerClientComponent>
+            <Navbar />
+            <SessionProvider session={session}>
+              <div style={{ minHeight: "500px" }} >
+                {children}
+                <SpeedInsights />
+              </div>
+            </SessionProvider>
+          </TrackerClientComponent>
+        </TrackerProvider>
         <GoogleAnalytics />
       </body>
       <Footter />

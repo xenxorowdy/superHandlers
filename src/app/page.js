@@ -1,19 +1,12 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import BrandsEffect from './component/BrandsEffect';
 import "./imageResponse.css";
-import { useContext, useEffect, useState } from 'react';
-import { TrackerContext } from './component/openTracker';
 export default function Home() {
   const [set, setLoad] = useState(false)
-  const { initTracker, startTracking } = useContext(TrackerContext)
-
-  useEffect(() => {
-    initTracker();
-    startTracking();
-  }, [initTracker, startTracking]);
   return (
     <div className='flex-col gap-[2rem] flex'>
       <div className='relative p-[1px]' >

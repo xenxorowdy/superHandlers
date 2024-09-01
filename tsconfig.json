@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/component/upload.jsx", "src/app/component/upload.jsx", "src/app/api/auth/[...nextauth]/route.js", "src/app/component/openTracker.js"  ],
+, "src/app/component/upload.jsx", "src/app/component/upload.jsx", "src/app/api/auth/[...nextauth]/route.js", "src/app/component/openTracker.jsx"  ],
   "exclude": [
     "node_modules"
   ]
