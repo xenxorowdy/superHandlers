@@ -6,7 +6,7 @@ import SessionProvider from "./component/SessionProvider.jsx"
 import Footter from './component/footter'
 import './globals.css'
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import TrackerProvider from './component/opeTracker.jsx'
+import TrackerProvider from './component/openTracker'
 import TrackerClientComponent from './component/trackerstart.jsx'
 
 // require("../mongo/connect")
@@ -49,9 +49,9 @@ export default async function RootLayout({ children }) {
 
       </head>
 
-      <body className={inter.className}>
-        <TrackerProvider>
-          <TrackerClientComponent>
+      <TrackerProvider>
+        <TrackerClientComponent>
+          <body className={inter.className}>
             <Navbar />
             <SessionProvider session={session}>
               <div style={{ minHeight: "500px" }} >
@@ -59,11 +59,11 @@ export default async function RootLayout({ children }) {
                 <SpeedInsights />
               </div>
             </SessionProvider>
-          </TrackerClientComponent>
-        </TrackerProvider>
-        <GoogleAnalytics />
-      </body>
-      <Footter />
+            <GoogleAnalytics />
+          </body>
+          <Footter />
+        </TrackerClientComponent>
+      </TrackerProvider>
     </html>
 
   )
