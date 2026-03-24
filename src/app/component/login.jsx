@@ -35,17 +35,41 @@ function LoginForm() {
   };
   // return <DeleteImage/>
   return (
-    <form className='flex flex-col items-center justify-center gap-3 m-20' onSubmit={handleSubmit}>
-    <p1 className='font-bold'>LOGIN</p1>
-    {error && <span className=' bg-red-400 rounded-md p-2 text-[#fff]'>Credentials are Incorrect</span>}
-    <input type="email" name='email' className='border-2 p-1 rounded-lg' placeholder="Email" />
-    <input type="password" name="password" className='border-2 p-1 rounded-lg' placeholder="Password" />
-    <button type="submit" className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'>
-      Log In
-    </button>
-  </form>
-  
+    <div className='login-container pt-32 pb-32 relative'>
+      <div className="bg-orb bg-orb-1 opacity-20"></div>
+      <div className="bg-orb bg-orb-2 bottom-0 left-0 opacity-10"></div>
+      
+      <form className='login-glass flex flex-col items-center justify-center' onSubmit={handleSubmit}>
+        <h2 className='gradient-text'>LOGIN</h2>
+        <p>Access the Super Handlers Admin Dashboard</p>
+        
+        {error && <div className='error-badge mb-6'>Invalid Credentials. Access Denied.</div>}
+        
+        <div className="login-input-group">
+          <label>Email Address</label>
+          <input 
+            type="email" 
+            name='email' 
+            placeholder="admin@superhandlers.com" 
+            required
+          />
+        </div>
+        
+        <div className="login-input-group">
+          <label>Password</label>
+          <input 
+            type="password" 
+            name="password" 
+            placeholder="••••••••" 
+            required
+          />
+        </div>
+        
+        <button type="submit" className='btn-primary login-btn w-full mt-6 shadow-sky-500/20'>
+          Log In Securely
+        </button>
+      </form>
+    </div>
   )
-
 }
 export default LoginForm;

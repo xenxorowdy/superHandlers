@@ -15,7 +15,7 @@ export async function POST(request) {
       const contactNo = req.contact ?? ''
       const Name = req.name ?? ''
       const interest = req.interest ?? ''
-      const message = req.interest ?? ''
+      const message = req.message ?? ''
     
 const mailConfigurations = {
   

@@ -9,44 +9,158 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import TrackerProvider from './component/openTracker'
 import TrackerClientComponent from './component/trackerstart.jsx'
 
-// require("../mongo/connect")
 const inter = Inter({ subsets: ['latin'] })
 
+const SITE_URL = 'https://www.superhandlerslift.com'
+
 export const metadata = {
-  title: "Super Handlers: Brampton & Toronto's Premier Forklift Repair and Maintenance Experts.",
-  description: `Welcome to Precision Forklift Services, your go-to destination for exceptional forklift care in Brampton and Toronto. Our seasoned technicians are dedicated to providing top-tier repairs and maintenance services tailored to the unique demands of your business. Whether it's routine upkeep, urgent repairs, or a customized service plan, trust us to keep your forklifts operating at peak performance.
-  At Precision Forklift Services, we understand that downtime is not an option for your operations. That's why we deliver swift and effective solutions, ensuring your equipment remains reliable and efficient. With a wealth of experience, we take pride in offering dependable and cost-effective forklift services designed to enhance the longevity and functionality of your machinery.
-  As your local industry leaders, we prioritize customer satisfaction and quality service. Serving businesses across Brampton and Toronto, we bring a professional and responsive approach to forklift care. Elevate the performance of your material handling operations with Precision Forklift Services. Contact us today for all your forklift service needs, and experience the difference of precision and expertise.
-  `,
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Super Handlers | Forklift Sales, Rentals & Repair in Brampton & GTA',
+    template: '%s | Super Handlers',
+  },
+  description: 'Super Handlers provides expert forklift repair, maintenance, sales and rentals in Brampton, Toronto and the GTA. 24/7 emergency service. Toyota, Hyster, Yale, Crown — all major brands. Call 289-505-5696.',
+  keywords: ['forklift repair Brampton', 'forklift rental GTA', 'forklift sales Toronto', 'forklift maintenance', 'used forklift', 'forklift service 24/7', 'warehouse equipment Brampton', 'Super Handlers'],
+  authors: [{ name: 'Super Handlers' }],
+  creator: 'Super Handlers',
+  publisher: 'Super Handlers',
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_CA',
+    url: SITE_URL,
+    siteName: 'Super Handlers',
+    title: 'Super Handlers | Forklift Sales, Rentals & Repair in Brampton & GTA',
+    description: 'Expert forklift repair, maintenance, sales and rentals across the Greater Toronto Area. All major brands, 24/7 service. Call 289-505-5696.',
+    images: [
+      {
+        url: '/android-chrome-512x512.png',
+        width: 512,
+        height: 512,
+        alt: 'Super Handlers Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Super Handlers | Forklift Sales, Rentals & Repair — Brampton & GTA',
+    description: 'Expert forklift repair, maintenance, sales and rentals across the Greater Toronto Area.',
+    images: ['/android-chrome-512x512.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: SITE_URL,
+  },
+  verification: {},
 }
 
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${SITE_URL}/#business`,
+  name: 'Super Handlers',
+  alternateName: 'Super Handlers Lift',
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}/android-chrome-512x512.png`,
+  description: 'Premier forklift maintenance, repairs, sales and rentals serving Brampton, Toronto and the Greater Toronto Area.',
+  telephone: '+1-289-505-5696',
+  email: 'superhandlers1@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '241 Advance Blvd',
+    addressLocality: 'Brampton',
+    addressRegion: 'ON',
+    postalCode: 'L6T 4J2',
+    addressCountry: 'CA',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 43.7315,
+    longitude: -79.7624,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '09:00',
+      closes: '14:00',
+    },
+  ],
+  priceRange: '$$',
+  areaServed: [
+    { '@type': 'City', name: 'Brampton' },
+    { '@type': 'City', name: 'Toronto' },
+    { '@type': 'City', name: 'Mississauga' },
+    { '@type': 'City', name: 'Vaughan' },
+    { '@type': 'City', name: 'Etobicoke' },
+  ],
+  sameAs: [],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Forklift Services',
+    itemListElement: [
+      { '@type': 'OfferCatalog', name: 'Forklift Repair & Maintenance' },
+      { '@type': 'OfferCatalog', name: 'Forklift Sales — New & Pre-Owned' },
+      { '@type': 'OfferCatalog', name: 'Forklift Rentals' },
+      { '@type': 'OfferCatalog', name: '24/7 Emergency Service' },
+    ],
+  },
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
+  name: 'Super Handlers',
+  url: SITE_URL,
+  publisher: { '@id': `${SITE_URL}/#business` },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE_URL}/shop?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+}
 
 export default async function RootLayout({ children }) {
   const session = await getServerSession();
   return (
     <html lang="en">
-
-
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "http://schema.org",
-              "@type": "Organization",
-              "name": "Super Handlers",
-              "url": "https://www.superhandlerslift.com",
-              "logo": "https://www.superhandlerslift.com/android-chrome-512x512.png",
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
         />
-        <link rel="icon" type="image/ico" href="/favicon.ico?v=2" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-
-
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
+        <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full site info" />
       </head>
 
       <TrackerProvider>
@@ -59,12 +173,11 @@ export default async function RootLayout({ children }) {
                 <SpeedInsights />
               </div>
             </SessionProvider>
+            <Footter />
             <GoogleAnalytics />
           </body>
-          <Footter />
         </TrackerClientComponent>
       </TrackerProvider>
     </html>
-
   )
 }

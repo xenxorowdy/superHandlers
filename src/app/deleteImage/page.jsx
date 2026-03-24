@@ -2,37 +2,36 @@
 import React,{useState,useEffect} from 'react'
 import Skeleton from "../component/Skeleton";
 import Cards from '../component/cards';
-import MyModal from '../component/Modal';
 import { useRouter } from 'next/navigation';
 import {useSession} from "next-auth/react";
 
 const DeleteImage = () => {
   const {data:session} = useSession(); 
-
   const router = useRouter();
+  const [result ,setResult] = useState([]);
+  const [loading,setLoading] = useState(true)
+  const [deleteFile,setDeleteFile] = useState(null); 
   
-  if(!session){
-    router.push("/login")
+  const getAllName=async()=>{
+    const result = await fetch("/api/getName", {next:{revalidate:1},method:'post',body:{data:JSON.stringify(Math.random())}});
+    const res = await result.json()
+    setResult(res?.result);
+    setLoading(false)
   }
-    const [result ,setResult] = useState([]);
-    const [loading,setLoading] = useState(true)
-    const [deleteFile,setDeleteFile] = useState(null); 
-    const handleOptionChange =(event)=>{
-      setSelected(event.target?.value)
+  
+  useEffect(()=>{
+    if(!session){
+      router.push("/login")
+      return;
     }
-    const getAllName=async()=>{
-      const result = await fetch("/api/getName", {next:{revalidate:1},method:'post',body:{data:JSON.stringify(Math.random())}});
-      const res = await result.json()
-      setResult(res?.result);
-      setLoading(false)
-    }
-    useEffect(()=>{
-      setLoading(true)
-       getAllName();
-    },[])
-    useEffect(()=>{
-      setResult( pre=>pre.filter(e=>e.filename!=deleteFile))
-    },[deleteFile])
+    setLoading(true)
+    getAllName();
+  },[session, router])
+
+  useEffect(()=>{
+    setResult( pre=>pre.filter(e=>e.filename!=deleteFile))
+  },[deleteFile])
+
   return (
     <div className='m-[16px]' >
          <div style={{gridTemplateColumns:"repeat(auto-fit, minmax(310px,1fr))",display:"grid",gap:"20px",padding:"0px px 0px 12px",minHeight:"250px!important",paddingBottom:"16px" , justifyItems:"center",paddingTop:"1%" }}>

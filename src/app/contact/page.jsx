@@ -1,159 +1,182 @@
 "use client"
-import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
-import 'react-toastify/dist/ReactToastify.css';
-import './page.css';
+import React, { useState } from 'react'
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle, FaSpinner } from 'react-icons/fa'
 
-import { ToastContainer, toast } from 'react-toastify';
-// import Input from '../components/Input';
+const Contact = () => {
+    const [form, setForm] = useState({ name: '', contact: '', email: '', interest: '', message: '' });
+    const [status, setStatus] = useState('idle');
+    const [errorMsg, setErrorMsg] = useState('');
 
-export default function Page() {
-  const value = useRef({});
-  const [email, setEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [formfilled, setFormFilled] = useState(false);
-  useEffect(() => {
+    const update = (field) => (e) => setForm({ ...form, [field]: e.target.value });
 
-    if (email) {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+        setErrorMsg('');
 
-      const isValidEmail = /\S+@\S+\.\S+/.test(email);
+        try {
+            const res = await fetch('/api/mailsend', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(form),
+            });
 
-      if (!isValidEmail) {
-        setErrorMessage("Invalid email address")
-      } else {
-        setErrorMessage("") // Clear the error message
+            if (!res.ok) throw new Error('Failed to send');
 
-      }
-    }
-
-  }, [email])
-
-
-  const webformfill = () => {
-    console.log(value.current)
-    if (!email) {
-      setErrorMessage("email required");
-      return;
-    }
-    const isValidEmail = /\S+@\S+\.\S+/.test(email)
-    if (!isValidEmail) {
-      setErrorMessage("Invalid email address")
-      return;
-    }
-
-    fetch("/api/mailsend", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(value.current)
-    })
-      .then((res) => {
-        setFormFilled(true)
-        toast.success("success", {
-          position: "bottom-left",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-
-        value.current = ''
-        // setEmail("")
-
-
-      }).catch((err) => {
-        toast.error("Failed please try in some time!", {
-          position: "bottom-left",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
-      })
-    toast.info("processing", {
-      position: "bottom-left",
-      autoClose: 1000,
-      theme: "dark",
-    });
-    // const email = document.getElementById("email")
-    // console.log(document.getElementById("name"))
-    // console.log("email",email)
-  }
-
-  return (
-    <>
-      <ToastContainer
-        position="bottom-left"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-      <div className=' items-center items-center justify-center  gap-12 p-2  grid md:grid-col-1 lg:grid-cols-2      '>
-        {formfilled ?
-          <div className='justify-center items-center flex flex-col gap-y-5 border border-spacing-1 p-1 rounded-[18px] bordercolor-[#f7f7f7] h-[500px] text-5xl'>
-            form filled <br />
-            we contact to you Soon.... 😊
-          </div>
-          :
-          <div className=" justify-center items-center flex flex-col gap-y-5 border border-spacing-1 p-1 rounded-[18px] bordercolor-[#f7f7f7] ">
-            <p1 className=' font-semibold text-2xl underline flex items-center gap-10 md: '>Contact Us:
-              <Link href="tel:+1 289-505-5696" className="flex gap-x-6  hover:text-teal-300 font-semibold">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                  <path strokellinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                </svg>
-              </Link>
-
-              <Link href="mailto:superhandlers1@gmail.com" className="flex gap-x-3  hover:text-teal-300 font-semibold">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                  <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-                  <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-                </svg>
-              </Link>
-            </p1>
-
-
-            <p1 className='font-bold text-2xl   ' >Lets get in touch</p1>
-            <div className="items-center flex flex-col gap-5 " >
-              <input type="text" placeholder='Name' className=" className=' border-2 p-1 rounded-lg  " id="name" name="name" onChange={e => value.current.name = e.currentTarget.value} />
-              <input id="contact" type='tel' name='Number' placeholder='Contact Number' className=" className=' border-2 p-1 rounded-lg  " value={value.current.contact} onChange={e => value.current.contact = e.currentTarget.value} />
-              <div>
-                <input id="email" type='email' name='email' placeholder='Email' className=" className=' border-2 p-1 rounded-lg  " value={email} onChange={e => { value.current.email = e.currentTarget.value; setEmail(e.currentTarget.value) }} />
-                <p id="error" className=' text-red-700' > {errorMessage} </p>
-              </div>
-              <input id="interest" type='text' name='Interest' placeholder='Interest' className=" className=' border-2 p-1 rounded-lg  " value={value.current.interest} onChange={e => value.current.interest = e.currentTarget.value} />
-              <textarea id="message" placeholder='Your Message' rows={'5'} className=" p-1 w-[220px] border-[2px]  rounded-md    " value={value.current.message} onChange={e => value.current.message = e.currentTarget.value} />
-              <button type="submit" className=' inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2' onClick={webformfill} >Submit</button>
-            </div>
-          </div>
+            setStatus('success');
+            setForm({ name: '', contact: '', email: '', interest: '', message: '' });
+            setTimeout(() => setStatus('idle'), 5000);
+        } catch {
+            setStatus('idle');
+            setErrorMsg('Failed to send message. Please try again or call us directly.');
         }
-        {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5770.183074298723!2d-79.81591837783648!3d43.68786033821295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b1465db7352cf%3A0xd067ead581ef467d!2s6%20Linderwood%20Dr%2C%20Brampton%2C%20ON%20L7A%201R7%2C%20Canada!5e0!3m2!1sen!2sin!4v1692993949630!5m2!1sen!2sin" height={550} style={{ border: 0, minWidth: "40vw" }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" /> */}
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1374.2510594262587!2d-79.70097515577177!3d43.68668441367123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3f003fdda83d%3A0xc22d919eb5982ebd!2sSuper%20handlers%20forklift!5e0!3m2!1sen!2sjp!4v1725634225405!5m2!1sen!2sjp" height={550} style={{ border: 0, minWidth: "40vw" }} allowFullScreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" />
-        <ToastContainer
-          position="bottom-left"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
-      </div>
-    </>
-  )
+    };
+
+    return (
+        <main className="min-h-screen pt-40 pb-20 px-6 relative bg-slate-50 overflow-hidden">
+            <div className="bg-orb orb-1 opacity-10"></div>
+            <div className="bg-orb orb-2 opacity-10"></div>
+
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="text-center mb-24">
+                    <span className="inline-block py-1 px-4 rounded-full bg-[#5ba3b5]/10 text-[#5ba3b5] text-[10px] font-black tracking-[0.2em] uppercase mb-6 border border-[#5ba3b5]/20">
+                      Contact Center
+                    </span>
+                    <h1 className="text-4xl md:text-7xl font-black mb-6 tracking-tight leading-tight text-slate-900">
+                      Get In Touch
+                    </h1>
+                    <p className="text-xl md:text-2xl text-slate-500 font-medium max-w-3xl mx-auto leading-relaxed">
+                        Need immediate assistance? Our expert technicians are ready to keep your fleet moving.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    {/* Contact Form */}
+                    <div className="lg:col-span-7 glass-strong p-8 md:p-12 rounded-[40px] shadow-lg shadow-slate-200/50">
+                        <div className="mb-10">
+                            <h2 className="text-3xl font-black text-slate-900 mb-4">Send a Request</h2>
+                            <p className="text-slate-500 font-medium">Complete the form below for a custom quote or service inquiry.</p>
+                        </div>
+
+                        {status === 'success' && (
+                            <div className="flex items-center gap-3 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 font-semibold text-sm mb-6">
+                                <FaCheckCircle className="text-lg shrink-0" />
+                                Message sent successfully! We&apos;ll get back to you shortly.
+                            </div>
+                        )}
+
+                        {errorMsg && (
+                            <div className="flex items-center gap-3 p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 font-semibold text-sm mb-6">
+                                {errorMsg}
+                            </div>
+                        )}
+
+                        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label htmlFor="name" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Full Name</label>
+                                <input id="name" type="text" placeholder="John Doe" className="w-full" required value={form.name} onChange={update('name')} />
+                            </div>
+                            <div className="space-y-2">
+                                <label htmlFor="contact" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Phone Number</label>
+                                <input id="contact" type="tel" placeholder="+1 289-505-5696" className="w-full" required value={form.contact} onChange={update('contact')} />
+                            </div>
+                            <div className="space-y-2">
+                                <label htmlFor="email" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Email Address</label>
+                                <input id="email" type="email" placeholder="john@example.com" className="w-full" required value={form.email} onChange={update('email')} />
+                            </div>
+                            <div className="space-y-2">
+                                <label htmlFor="interest" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Interest</label>
+                                <input id="interest" type="text" placeholder="Forklift Repair, Rental..." className="w-full" required value={form.interest} onChange={update('interest')} />
+                            </div>
+                            <div className="space-y-2 md:col-span-2">
+                                <label htmlFor="message" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Message</label>
+                                <textarea id="message" rows={6} placeholder="Tell us about your fleet requirements..." className="w-full resize-none" required value={form.message} onChange={update('message')} />
+                            </div>
+                            <div className="md:col-span-2 pt-4">
+                                <button
+                                    type="submit"
+                                    disabled={status === 'loading'}
+                                    className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-12 py-4 rounded-xl font-bold text-white bg-[#5ba3b5] hover:bg-[#7ab8c7] transition-all duration-300 shadow-lg shadow-[#5ba3b5]/20 active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none"
+                                >
+                                    {status === 'loading' ? (
+                                        <><FaSpinner className="animate-spin" /> Opening email...</>
+                                    ) : (
+                                        <><FaPaperPlane className="text-sm opacity-70" /> Send Message</>
+                                    )}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    {/* Contact Info Panels */}
+                    <div className="lg:col-span-5 space-y-6">
+                        <a href="tel:+12895055696" className="glass-card p-10 rounded-[32px] group block">
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 bg-[#5ba3b5]/10 text-[#5ba3b5] rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shrink-0">
+                                    <FaPhoneAlt />
+                                </div>
+                                <div className="space-y-1">
+                                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest">Call Us</p>
+                                    <p className="text-xl font-black text-slate-900 group-hover:text-[#5ba3b5] transition-colors">+1 289-505-5696</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="mailto:superhandlers1@gmail.com" className="glass-card p-10 rounded-[32px] group block">
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 bg-[#5ba3b5]/10 text-[#5ba3b5] rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shrink-0">
+                                    <FaEnvelope />
+                                </div>
+                                <div className="space-y-1">
+                                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest">Email Support</p>
+                                    <p className="text-xl font-black text-slate-900 group-hover:text-[#5ba3b5] transition-colors">superhandlers1@gmail.com</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://maps.app.goo.gl/ZufwDGCdrLqQB7QJ6" target="_blank" rel="noopener noreferrer" className="glass-card p-10 rounded-[32px] group block">
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 bg-[#5ba3b5]/10 text-[#5ba3b5] rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shrink-0">
+                                    <FaMapMarkerAlt />
+                                </div>
+                                <div className="space-y-1">
+                                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest">HQ Location</p>
+                                    <p className="text-xl font-black text-slate-900 leading-tight group-hover:text-[#5ba3b5] transition-colors">241 Advance Blvd, Brampton, ON</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div className="glass-card p-10 rounded-[32px] bg-gradient-to-br from-[#2c3a52] to-[#1a2335] border-none shadow-2xl relative overflow-hidden group">
+                           <div className="absolute top-0 right-0 w-48 h-48 bg-[#5ba3b5]/15 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-[#5ba3b5]/25 transition-all duration-700"></div>
+                           <div className="relative z-10 flex items-center gap-6">
+                                <div className="w-16 h-16 bg-white/10 text-[#7ab8c7] rounded-2xl flex items-center justify-center text-2xl shrink-0">
+                                    <FaClock className="animate-pulse" />
+                                </div>
+                                <div className="space-y-1">
+                                    <p className="text-xs font-black text-white/50 uppercase tracking-widest">Service Hours</p>
+                                    <p className="text-xl font-black text-white">24/7 Support Available</p>
+                                    <p className="text-xs text-[#7ab8c7] font-bold">Standard: 8 AM – 6 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Map */}
+                <div className="mt-20 h-[500px] w-full glass-strong rounded-[40px] overflow-hidden grayscale contrast-[0.9] hover:grayscale-0 transition-all duration-1000 shadow-xl shadow-slate-200/50">
+                   <iframe 
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184474.37340078!2d-79.91428216140513!3d43.743516584281745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b15edda9f9799%3A0x442a3d767ef6152f!2sBrampton%2C%20ON!5e0!3m2!1sen!2sca!4v1711314592577!5m2!1sen!2sca" 
+                      width="100%" 
+                      height="100%" 
+                      style={{ border: 0 }} 
+                      allowFullScreen="" 
+                      loading="lazy" 
+                      referrerPolicy="no-referrer-when-downgrade"
+                   ></iframe>
+                </div>
+            </div>
+        </main>
+    )
 }
+
+export default Contact

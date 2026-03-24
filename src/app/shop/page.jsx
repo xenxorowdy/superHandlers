@@ -1,61 +1,188 @@
-"use client"
-import dynamic from "next/dynamic";
-import { useEffect, useState } from 'react';
-import { FaTruckLoading } from "react-icons/fa";
-import Skeleton from "../component/Skeleton";
-import "./shoping.css";
-const Cards = dynamic(()=>import('../component/cards'))
-const Index = () => {
-  const [selected,setSelected]= useState("All");
-  const [result ,setResult] = useState([]);
-  const [loading,setLoading] = useState(true)
-  const handleOptionChange =(event)=>{
-    setSelected(event.target?.value)
-  }
-  const getAllName=async()=>{
-    const result = await fetch("/api/getName", {next:{revalidate:1},method:'post',body:{data:JSON.stringify(Math.random())}});
-    const res = await result.json()
-    setResult(res?.result);
-    setLoading(false)
-  }
-  useEffect(()=>{
-    setLoading(true)
-     getAllName();
-  },[])
-  return (
-    <>
-     <div className="tabs">
-        <input type="radio" id="tab1" name="tab-control"  value="All" checked={selected === 'All'}  onChange={handleOptionChange}   />
-        <input type="radio" id="tab2" name="tab-control" value="New FolkLift" checked={selected === 'New FolkLift'} onChange={handleOptionChange}  />
-        <input type="radio" id="tab3" name="tab-control"  value="Pre Owned FolkLift" checked={selected === 'Pre Owned FolkLift'} onChange={handleOptionChange}  />  
-        <input type="radio" id="tab4" name="tab-control"  value="Rental FolkLift" checked={selected === 'Rental FolkLift'} onChange={handleOptionChange}  />          
-        <input type="radio" id="tab5" name="tab-control" value="Other" checked={selected === 'Other'} onChange={handleOptionChange}  />
-        <ul>
-          <li title="All"><label htmlFor="tab1" role="button"><svg viewBox="0 0 24 24"><path d="M14,2A8,8 0 0,0 6,10A8,8 0 0,0 14,18A8,8 0 0,0 22,10H20C20,13.32 17.32,16 14,16A6,6 0 0,1 8,10A6,6 0 0,1 14,4C14.43,4 14.86,4.05 15.27,4.14L16.88,2.54C15.96,2.18 15,2 14,2M20.59,3.58L14,10.17L11.62,7.79L10.21,9.21L14,13L22,5M4.93,5.82C3.08,7.34 2,9.61 2,12A8,8 0 0,0 10,20C10.64,20 11.27,19.92 11.88,19.77C10.12,19.38 8.5,18.5 7.17,17.29C5.22,16.25 4,14.21 4,12C4,11.7 4.03,11.41 4.07,11.11C4.03,10.74 4,10.37 4,10C4,8.56 4.32,7.13 4.93,5.82Z" />
-              </svg><br /><span>All</span></label></li>
-          <li title="New FolkLifts"><label htmlFor="tab2" role="button"><svg viewBox="0 0 24 24"><path d="M2,10.96C1.5,10.68 1.35,10.07 1.63,9.59L3.13,7C3.24,6.8 3.41,6.66 3.6,6.58L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.66,6.72 20.82,6.88 20.91,7.08L22.36,9.6C22.64,10.08 22.47,10.69 22,10.96L21,11.54V16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V10.96C2.7,11.13 2.32,11.14 2,10.96M12,4.15V4.15L12,10.85V10.85L17.96,7.5L12,4.15M5,15.91L11,19.29V12.58L5,9.21V15.91M19,15.91V12.69L14,15.59C13.67,15.77 13.3,15.76 13,15.6V19.29L19,15.91M13.85,13.36L20.13,9.73L19.55,8.72L13.27,12.35L13.85,13.36Z" />
-              </svg><br /><span>New FolkLifts</span></label></li>
-          <li title="Pre Owned FolkLift"><label htmlFor="tab3" role="button"><svg viewBox="0 0 24 24">
-                <path d="M3,4A2,2 0 0,0 1,6V17H3A3,3 0 0,0 6,20A3,3 0 0,0 9,17H15A3,3 0 0,0 18,20A3,3 0 0,0 21,17H23V12L20,8H17V4M10,6L14,10L10,14V11H4V9H10M17,9.5H19.5L21.47,12H17M6,15.5A1.5,1.5 0 0,1 7.5,17A1.5,1.5 0 0,1 6,18.5A1.5,1.5 0 0,1 4.5,17A1.5,1.5 0 0,1 6,15.5M18,15.5A1.5,1.5 0 0,1 19.5,17A1.5,1.5 0 0,1 18,18.5A1.5,1.5 0 0,1 16.5,17A1.5,1.5 0 0,1 18,15.5Z" />
-              </svg><br /><span>Pre Owned FolkLift</span></label></li>    
-              <li title="Rental FolkLift"><label htmlFor="tab4" role="button"> <FaTruckLoading/> <br /><span>Rental FolkLift</span></label></li>
-              <li title="Other Items"><label htmlFor="tab5" role="button"><svg viewBox="0 0 24 24">
-                <path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
-              </svg><br /><span>Other Items</span></label></li>
-        </ul>
-        <div className="slider"><div className="indicator" /></div>
-       
-      </div>
-      
- <div style={{gridTemplateColumns:"repeat(auto-fit, minmax(300px,1fr))",display:"grid",gap:"30px",padding:"0px px 0px 12px",minHeight:"250px!important",paddingBottom:"16px" , justifyItems:"center" }}>
-      { loading ? Array(20).fill(null).map((e,index)=><Skeleton key={index}/>)  :
-      
-      result.filter(e=>{if(selected==='All') return e ;else if(selected === e.metadata.selected) return e}).map(e=><Cards key={e.filename} res={e.filename} price={e.metadata?.price} title={e.metadata?.title } desc={e.metadata?.description??''} selected={e.metadata?.selected} deleted={false} />)}
-    
-      {/* <Cards/> */}
-     </div>    
-     </>
-  )
+import Link from 'next/link'
+import ShopContent from './ShopContent'
+
+export const metadata = {
+    title: 'Forklift Inventory | Super Handlers — Sales, Rentals & Pre-Owned in Brampton & GTA',
+    description: 'Browse our inventory of new, pre-owned, and rental forklifts in Brampton and the Greater Toronto Area. Toyota, Hyster, Yale, Crown and more — certified quality, competitive pricing. 24/7 service available.',
+    keywords: ['forklift for sale', 'forklift rental', 'used forklift', 'forklift Brampton', 'forklift Toronto', 'forklift GTA', 'Toyota forklift', 'Hyster forklift', 'warehouse equipment', 'forklift repair', 'forklift maintenance'],
+    openGraph: {
+        title: 'Forklift Inventory | Super Handlers',
+        description: 'New, pre-owned, and rental forklifts across the Greater Toronto Area. All major brands, certified quality.',
+        type: 'website',
+        url: 'https://www.superhandlerslift.com/shop',
+        siteName: 'Super Handlers',
+    },
+    alternates: {
+        canonical: 'https://www.superhandlerslift.com/shop',
+    },
 }
 
-export default Index
+async function getInventory() {
+    try {
+        const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+        const res = await fetch(`${baseUrl}/api/getName`, {
+            method: 'GET',
+            cache: 'no-store',
+        })
+        const data = await res.json()
+        return data?.result || []
+    } catch (error) {
+        console.error('Failed to fetch inventory:', error)
+        return []
+    }
+}
+
+export default async function Shop() {
+    const inventory = await getInventory()
+
+    const structuredData = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Super Handlers Forklift Inventory',
+        description: 'Forklifts for sale, rent, and pre-owned in Brampton and the Greater Toronto Area.',
+        url: 'https://www.superhandlerslift.com/shop',
+        numberOfItems: inventory.length,
+        itemListElement: inventory.slice(0, 50).map((item, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            item: {
+                '@type': 'Product',
+                name: item.metadata?.title || 'Forklift',
+                description: item.metadata?.description || 'Quality forklift available at Super Handlers, Brampton ON.',
+                image: `https://www.superhandlerslift.com/api/uploads/${item.filename}`,
+                brand: { '@type': 'Brand', name: 'Super Handlers' },
+                offers: {
+                    '@type': 'Offer',
+                    price: item.metadata?.price || '0',
+                    priceCurrency: 'CAD',
+                    availability: 'https://schema.org/InStock',
+                    seller: {
+                        '@type': 'Organization',
+                        name: 'Super Handlers',
+                        url: 'https://www.superhandlerslift.com',
+                    },
+                },
+            },
+        })),
+    }
+
+    const orgData = {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Super Handlers',
+        url: 'https://www.superhandlerslift.com',
+        telephone: '+1-289-505-5696',
+        email: 'superhandlers1@gmail.com',
+        address: {
+            '@type': 'PostalAddress',
+            streetAddress: '241 Advance Blvd',
+            addressLocality: 'Brampton',
+            addressRegion: 'ON',
+            postalCode: 'L6T 4J2',
+            addressCountry: 'CA',
+        },
+        description: 'Premier forklift maintenance, repairs, sales and rentals in the Greater Toronto Area.',
+        openingHours: 'Mo-Fr 08:00-18:00',
+        priceRange: '$$',
+    }
+
+    const categories = {
+        new: inventory.filter(i => i.metadata?.selected === 'New ForkLift'),
+        rental: inventory.filter(i => i.metadata?.selected === 'Rental ForkLift'),
+        preowned: inventory.filter(i => i.metadata?.selected === 'Pre Owned ForkLift'),
+    }
+
+    return (
+        <main className="relative min-h-screen pt-[120px] pb-24 overflow-hidden bg-slate-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(orgData) }}
+            />
+
+            <div className="bg-orb orb-1 opacity-10"></div>
+            <div className="bg-orb orb-2 opacity-10"></div>
+
+            <div className="container mx-auto px-6 relative z-10">
+                {/* SEO heading */}
+                <header className="mb-16 text-center">
+                    <span className="inline-block py-1 px-4 rounded-full bg-[#5ba3b5]/10 text-[#5ba3b5] text-[10px] font-black tracking-[0.2em] uppercase mb-6 border border-[#5ba3b5]/20">
+                        Browse Equipment
+                    </span>
+                    <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight text-slate-900">
+                        Forklift Inventory — Brampton &amp; GTA
+                    </h1>
+                    <p className="text-xl text-slate-500 font-medium max-w-3xl mx-auto">
+                        High-quality forklifts for every requirement — new units, certified pre-owned, and flexible rentals.
+                        Serving Brampton, Mississauga, Toronto, Vaughan, and the Greater Toronto Area.
+                    </p>
+                </header>
+
+                {/* Server-rendered category summary for SEO */}
+                <section className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+                    <div className="glass-strong p-6 rounded-2xl text-center">
+                        <p className="text-3xl font-black text-[#5ba3b5] tracking-tight">{categories.new.length}</p>
+                        <h2 className="text-sm font-bold text-slate-700 mt-1">New Forklifts</h2>
+                        <p className="text-xs text-slate-400 mt-1">Brand new units ready for delivery</p>
+                    </div>
+                    <div className="glass-strong p-6 rounded-2xl text-center">
+                        <p className="text-3xl font-black text-[#5ba3b5] tracking-tight">{categories.rental.length}</p>
+                        <h2 className="text-sm font-bold text-slate-700 mt-1">Rental Forklifts</h2>
+                        <p className="text-xs text-slate-400 mt-1">Short &amp; long-term rentals available</p>
+                    </div>
+                    <div className="glass-strong p-6 rounded-2xl text-center">
+                        <p className="text-3xl font-black text-[#5ba3b5] tracking-tight">{categories.preowned.length}</p>
+                        <h2 className="text-sm font-bold text-slate-700 mt-1">Pre-Owned Forklifts</h2>
+                        <p className="text-xs text-slate-400 mt-1">Inspected &amp; certified quality</p>
+                    </div>
+                </section>
+
+                {/* Interactive client-side grid */}
+                <ShopContent initialData={inventory} />
+
+                {/* Server-rendered product listing for crawlers */}
+                <section className="sr-only" aria-label="Complete product listing">
+                    <h2>All Forklifts Available at Super Handlers</h2>
+                    <ul>
+                        {inventory.map((item) => (
+                            <li key={item.filename}>
+                                <article>
+                                    <h3>{item.metadata?.title || 'Forklift'}</h3>
+                                    <p>Category: {item.metadata?.selected || 'Forklift'}</p>
+                                    <p>Price: ${item.metadata?.price || '0'} CAD{item.metadata?.selected === 'Rental ForkLift' ? ' per month' : ''}</p>
+                                    {item.metadata?.description && <p>{item.metadata.description}</p>}
+                                    <p>Available at Super Handlers, 241 Advance Blvd, Brampton ON. Call +1 289-505-5696.</p>
+                                </article>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+
+                {/* SEO bottom content */}
+                <section className="mt-20 glass-strong p-10 md:p-14 rounded-[32px]">
+                    <h2 className="text-2xl font-black text-slate-900 mb-4">Forklift Sales, Rentals &amp; Service in the GTA</h2>
+                    <p className="text-slate-500 font-medium leading-relaxed mb-4">
+                        Super Handlers is your trusted source for forklift equipment in Brampton, Mississauga, Toronto, Vaughan, and Etobicoke.
+                        We carry all major brands including Toyota, Hyster, Yale, Crown, Raymond, and Nissan. Whether you need a new forklift for your warehouse,
+                        a short-term rental for a seasonal project, or a certified pre-owned unit at a competitive price — we have you covered.
+                    </p>
+                    <p className="text-slate-500 font-medium leading-relaxed mb-6">
+                        Every unit in our inventory is inspected by certified technicians and comes with our quality guarantee.
+                        We also offer 24/7 emergency repair services, planned maintenance programs, and genuine OEM parts.
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                        <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white bg-[#5ba3b5] hover:bg-[#7ab8c7] transition-all duration-300 shadow-lg shadow-[#5ba3b5]/20">
+                            Request a Quote
+                        </Link>
+                        <Link href="/about" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all duration-300">
+                            About Super Handlers
+                        </Link>
+                    </div>
+                </section>
+            </div>
+        </main>
+    )
+}

@@ -1,94 +1,95 @@
 import Image from "next/image"
+import Link from "next/link"
+import { FaFacebook, FaTwitter, FaLinkedinIn, FaInstagram, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
 import "./footer.css"
-import { FaFacebook, FaMapMarked, FaPhone } from "react-icons/fa";
-import Link from "next/link";
 
 export default function Footter() {
   return (
-
-    <footer className="footer">
-      <div className="flex justify-between p-4 flex-row-reverse  md:gap-0 lg:gap-40">
-
-        <div className="container w-[75%]  md:w-[60%]  ">
-          <div className="row">
-            <div className="footer-col">
-              <p4>company</p4>
-              <ul>
-                <li>
-                  <a href="/about">about us</a>
-                </li>
-                <li>
-                  <a href="/shop">shop</a>
-                </li>
-                <li>
-                  <a href="/contact">contact us</a>
-                </li>
-                <li>
-                  <a href="/">Home</a>
-                </li>
-                <li>
-                  <a href="/login">Login</a>
-                </li>
-              </ul>
-            </div>
-            <div className="footer-col">
-              <p4>follow us</p4>
-              <div className="social-links">
-                <a href="https://www.facebook.com/Shandlers/" target="_blank">
-                  <FaFacebook className="fixwind" />
-
-                </a>
-                {/* //   <a href="#">
-        //     <i className="fab fa-twitter" />
-        //   </a>
-        //   <a href="#">
-        //     <i className="fab fa-instagram" />
-        //   </a>
-        //   <a href="#">
-        //     <i className="fab fa-linkedin-in" />
-        //   </a> */}
-              </div>
-            </div>
-            <div id='pc' className="footer-col">
-              <p4>ADDRESS</p4>
-              <ul>
-                <a className="flex  items-start align-baseline text-[#bbbbbb]  hover:text-white text-sm  cursor-pointer w-[13em] " href="https://maps.app.goo.gl/ZufwDGCdrLqQB7QJ6" target="_blank">
-                  <FaMapMarked className="w-[45px]" /> 241 Advance Blvd Brampton, ON L6T 4J2, Canada
-                </a>
-              </ul>
-            </div>
-            <div id='pc' className="footer-col">
-              <p4 >PHONE</p4>
-              <ul>
-                <Link href="tel:+1 289-505-5696" className="flex gap-1 items-start align-baseline text-[#bbbbbb] hover:text-white  cursor-pointer">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="w-5 h-5">
-                    <path strokellinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                  </svg>
-                  <span >
-                    +1 289-505-5696
-                  </span>
-                </Link>
-              </ul>
-              <ul>
-                <Link href="mailto:superhandlers1@gmail.com" className="flex gap-1 items-start align-baseline text-[#bbbbbb] hover:text-white  cursor-pointer">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                    <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-                    <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-                  </svg>
-                  <span >
-                    superhandlers1@gmail.com
-                  </span>
-                </Link>
-              </ul>
+    <footer className="site-footer">
+      <div className="footer-main">
+        <div className="footer-grid">
+          {/* Brand Column */}
+          <div className="footer-brand">
+            <Link href="/" className="footer-logo-link">
+              <Image src="/logo.png" width={40} height={40} alt="Super Handlers logo" className="rounded-lg" />
+              <span className="footer-logo-text">Super Handlers</span>
+            </Link>
+            <p className="footer-tagline">
+              Your trusted partner for premium forklift solutions. Excellence in material handling across the GTA.
+            </p>
+            <div className="footer-socials">
+              <a href="https://www.facebook.com/Shandlers/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <FaFacebook />
+              </a>
+              <a href="#" aria-label="Twitter">
+                <FaTwitter />
+              </a>
+              <a href="#" aria-label="LinkedIn">
+                <FaLinkedinIn />
+              </a>
+              <a href="#" aria-label="Instagram">
+                <FaInstagram />
+              </a>
             </div>
           </div>
+
+          {/* Company Links */}
+          <div className="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><Link href="/about">About Us</Link></li>
+              <li><Link href="/shop">Shop</Link></li>
+              <li><Link href="/contact">Contact Us</Link></li>
+              <li><Link href="/">Home</Link></li>
+            </ul>
+          </div>
+
+          {/* Services Links */}
+          <div className="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><Link href="/shop">Sales</Link></li>
+              <li><Link href="/shop">Rental</Link></li>
+              <li><Link href="/contact">Maintenance</Link></li>
+              <li><Link href="/contact">Parts</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact Column */}
+          <div className="footer-col footer-contact">
+            <h4>Contact Us</h4>
+            <ul>
+              <li>
+                <Link href="tel:+1 289-505-5696" className="contact-item">
+                  <span className="contact-icon"><FaPhoneAlt /></span>
+                  <span>+1 (289) 505-5696</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="mailto:superhandlers1@gmail.com" className="contact-item">
+                  <span className="contact-icon"><FaEnvelope /></span>
+                  <span>superhandlers1@gmail.com</span>
+                </Link>
+              </li>
+              <li>
+                <a href="https://maps.app.goo.gl/ZufwDGCdrLqQB7QJ6" target="_blank" rel="noopener noreferrer" className="contact-item">
+                  <span className="contact-icon"><FaMapMarkerAlt /></span>
+                  <span>241 Advance Blvd, Brampton, ON L6T 4J2, Canada</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <Image src={"/logo.png"} width={200} height={200} className=" w-[25%] object-contain" alt='myprojectlogo' />
-
       </div>
-      <hr className=" text-[#fff]" />
-      <span className=" text-center relative top-10  text-white justify-center flex">Copyright © 2023 superHandlers. All rights reserved.</span>
-    </footer>
 
+      {/* Bottom Bar */}
+      <div className="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Super Handlers. All rights reserved.</p>
+        <div className="footer-legal">
+          <Link href="/about">Privacy Policy</Link>
+          <Link href="/about">Terms of Service</Link>
+        </div>
+      </div>
+    </footer>
   )
 }

@@ -1,9 +1,87 @@
-User-agent: *
-Allow: /contact
-Allow: /login
-Allow: /shop
-Allow: /about
-Allow: /
-Allow: /app-ads.txt
+# Super Handlers — https://www.superhandlerslift.com
 
-sitemap:https://www.superhandlerslift.com/sitemap.xml
+# Default: allow everything except internal routes
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /upload
+Disallow: /deleteImage
+Disallow: /login
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /upload
+Disallow: /deleteImage
+Disallow: /login
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /upload
+Disallow: /deleteImage
+Disallow: /login
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /upload
+Disallow: /deleteImage
+Disallow: /login
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /upload
+Disallow: /deleteImage
+Disallow: /login
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /upload
+Disallow: /deleteImage
+Disallow: /login
+
+# Google AI (Gemini)
+User-agent: Google-Extended
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Microsoft / Copilot
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /upload
+Disallow: /deleteImage
+Disallow: /login
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Common AI crawlers
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+Sitemap: https://www.superhandlerslift.com/sitemap.xml

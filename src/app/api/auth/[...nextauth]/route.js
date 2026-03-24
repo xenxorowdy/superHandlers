@@ -10,7 +10,7 @@ import { connectToDb,getfiles } from "../../upload/route";
         if(!req) return null
         const dbResult = await client
                         .db()
-                        .collection("password.check").findOne({email:req.email})
+                        .collection("user").findOne({email:req.email})
         if(!dbResult){
             return null;
         }

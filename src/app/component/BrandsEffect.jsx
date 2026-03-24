@@ -1,109 +1,64 @@
-'use client'
-import Image from 'next/image'
+"use client"
 import React from 'react'
-import {Swiper, SwiperSlide} from 'swiper/react';
-// import fs from 'fs';
-import { Autoplay } from 'swiper/modules';
+import Image from 'next/image'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
 
-// import path from 'path';
-import 'swiper/css';
-import 'swiper/css/autoplay';
-console.log(process.cwd());
-export default function BrandsEffect() {
-    // const imageFolderPath = path.join(process.cwd(), 'public'); // Adjust the path accordingly
-    // const imageFileNames = fs.readdirSync(imageFolderPath);
-    // console.log("imageFileName:", imageFileNames);
-// console.log(imageFileNames);  
+const BrandsEffect = () => {
+    const brands = [
+        { src: '/folkliftcompany/toyota.png', alt: 'Toyota' },
+        { src: '/folkliftcompany/raymond.png', alt: 'Raymond' },
+        { src: '/folkliftcompany/crow.png', alt: 'Crown' },
+        { src: '/folkliftcompany/nissan.png', alt: 'Nissan' },
+        { src: '/folkliftcompany/hyster.png', alt: 'Hyster' },
+        { src: '/folkliftcompany/tennant.png', alt: 'Tennant' },
+        { src: '/folkliftcompany/yale_logo-standard.webp', alt: 'Yale' },
+    ]
+
     return (
-        <Swiper
-        slidesPerView={4}
-        modules={[Autoplay]}
-        autoplay={{
-          delay: 1000,
-          disableOnInteraction: false,
-          waitForTransition:false
-        }}
-        >
-          
-        <SwiperSlide>
-        <Image
-        src={'/folkliftcompany/toyota.png'}
-        width={190}
-        height={190}
-          
-          style={{  height: 'auto' }} // optional
+        <div className=" relative overflow-hidden group">
+            <div className="absolute inset-y-0 left-0 w-32   from-slate-950 to-transparent z-10"></div>
+            <div className="absolute inset-y-0 right-0 w-32 from-slate-950 to-transparent z-10"></div>
+            
+            <Swiper
+                slidesPerView={2}
+                spaceBetween={30}
+                loop={true}
+                speed={3000}
+                modules={[Autoplay]}
+                autoplay={{
+                    delay: 0,
+                    disableOnInteraction: false,
+                }}
+                breakpoints={{
+                    640: { slidesPerView: 3, spaceBetween: 40 },
+                    1024: { slidesPerView: 5, spaceBetween: 50 },
+                }}
+                className="brands-swiper"
+            >
+                {/* Double the brands for seamless loop */}
+                {[...brands, ...brands].map((brand, index) => (
+                    <SwiperSlide key={index} className="flex items-center justify-center  transition-all duration-500 cursor-pointer py-4">
+                        <div className="relative h-16 w-32 md:h-20 md:w-40">
+                            <Image
+                                src={brand.src}
+                                fill
+                                className="object-contain"
+                                alt={brand.alt}
+                            />
+                        </div>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
 
-          alt="brands toyota"
-        />
-        </SwiperSlide>
-        <SwiperSlide>
-        <Image
-        src={'/folkliftcompany/raymond.png'}
-        width={190}
-        height={190}
-          
-          style={{  height: 'auto' }} // optional
-
-          alt="brands raymond"
-        />
-        </SwiperSlide>
-        <SwiperSlide>
-        <Image
-        src={'/folkliftcompany/crow.png'}
-        width={190}
-        height={190}
-          
-          style={{  height: 'auto' }} // optional
-
-          alt="brands crow"
-        />
-        </SwiperSlide>
-        <SwiperSlide>
-        <Image
-        src={'/folkliftcompany/nissan.png'}
-        width={190}
-        height={190}
-          
-          style={{  height: 'auto' }} // optional
-
-          alt="brands nissan"
-        />
-        </SwiperSlide>
-        <SwiperSlide>
-        <Image
-        src={'/folkliftcompany/hyster.png'}
-        width={190}
-        height={190}
-          
-          style={{  height: 'auto' }} // optional
-
-          alt="brands hyster"
-        />
-        </SwiperSlide>
-        <SwiperSlide>
-        <Image
-        src={'/folkliftcompany/tennant.png'}
-        width={190}
-        height={190}
-          
-          style={{  height: 'auto' }} // optional
-
-          alt="brands tenant"
-        />
-        </SwiperSlide>
-       
-
-<SwiperSlide>
-        <Image
-        src={'/folkliftcompany/yale_logo-standard.webp'}
-        width={190}
-        height={190}
-          className=' aspect-video '
-          style={{  height: 'auto' }} // optional
-
-          alt="brands yale"
-        />
-        </SwiperSlide>
-    </Swiper>
-  )
+            <style jsx global>{`
+                .brands-swiper .swiper-wrapper {
+                    transition-timing-function: linear !important;
+                }
+            `}</style>
+        </div>
+    )
 }
+
+export default BrandsEffect

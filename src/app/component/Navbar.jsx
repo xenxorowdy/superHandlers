@@ -1,132 +1,171 @@
-// import { Component } from "react";
-"use client";
-import { useEffect, useState } from "react";
-import "./NavbarStyles.css";
-import Image from 'next/image'
-import Link from "next/link";
+"use client"
+import React, { useState, useEffect } from 'react'
+import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation'
-import { FaFacebook } from "react-icons/fa";
-
+import { FaPhoneAlt, FaBars, FaTimes } from 'react-icons/fa';
+import "./NavbarStyles.css";
 
 const Navbar = () => {
-
-
-  //   state = { clicked: false };
-  const [state, SetState] = useState(false);
+  const [click, setClick] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const handleClick = () => {
-    SetState(pre => !pre)
-    // this.setState({ clicked: !state });
-  };
+  const pathname = usePathname();
 
   useEffect(() => {
-    // Function to handle scroll events
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        // Add a class when the user scrolls down
-        setScrolled(true);
-      } else {
-        // Remove the class when the user scrolls to the top
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 30);
     };
-
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeMobileMenu = () => {
+    setClick(false);
+    document.body.style.overflow = "unset";
+  };
+
+  const toggleMobileMenu = () => {
+    setClick(!click);
+    if (!click) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  };
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Shop', path: '/shop' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' },
+  ];
 
   return (
     <>
-      <nav className={scrolled ? 'scrolled' : ''} >
-        <Link href="/">
-
-          <Image
-            src='/logo.png'
-            alt="super logo"
-            //   className="dark:invert"
-
-            width={50}
-            height={50}
-            className=" !w-fit"
+      <nav className={scrolled ? 'nav scrolled' : 'nav'}>
+        <Link href="/" className="flex items-center gap-2.5" onClick={closeMobileMenu}>
+          <Image 
+            src="/logo.png" 
+            width={80} 
+            height={80} 
+            className="hover:scale-105 transition-transform duration-300 rounded-lg" 
+            alt="Super Handlers — Forklift Sales, Rentals & Repair" 
             priority
           />
-        </Link>
-        <Link href="tel:+1 289-505-5696" className="flex gap-x-3 text-black hover:text-teal-300 font-semibold">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-            <path strokellinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-          </svg>
-          <span id='pc'>
-            +1 289-505-5696
-          </span>
+          <span className={`hidden sm:block text-[15px] font-black tracking-tight transition-colors duration-500 leading-tight ${
+            scrolled ? 'text-white' : 'text-slate-900'
+          }`}>Super<br/><span className="text-[#5ba3b5]">Handlers</span></span>
         </Link>
 
-        <Link href="mailto:superhandlers1@gmail.com" className="flex gap-x-3 text-black hover:text-teal-300 font-semibold">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-          </svg>
-          <span id='pc'>
-            superhandlers1@gmail.com
-          </span>
-        </Link>
-
-        <div className="">
-          <ul
-            id="navbar"
-            className={`${state ? "#navbar active " : "#navbar "} ${scrolled ? "scrollcolor" : "color"}`}
-          >
-            <li>
-              <Link onClick={handleClick} className={usePathname() === '/' ? "active" : undefined} href="/">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link onClick={handleClick} className={usePathname() === '/shop' ? "active" : undefined} href="shop">Shop</Link>
-            </li>
-            {/* <li>
-                <Link onClick={handleClick} className={usePathname() === '/blog' ?  "active" : undefined } href="blog">Blog</Link>
-              </li> */}
-            <li>
-              <Link onClick={handleClick} className={usePathname() === '/about' ? "active" : undefined} href="/about">About</Link>
-            </li>
-            <li>
-              <Link onClick={handleClick} className={usePathname() === '/contact' ? "active" : undefined} href="contact">Contact</Link>
-            </li>
-            <li>
-              <Link onClick={handleClick} href="https://www.facebook.com/Shandlers/" target="_blank">
-                <FaFacebook className="h-21" />
-              </Link>
-            </li>
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex items-center">
+          <ul id="navbar">
+            {navLinks.filter(l => l.name !== 'Contact').map((link) => (
+              <li key={link.path}>
+                <Link 
+                  href={link.path} 
+                  className={pathname === link.path ? 'active' : ''}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
           </ul>
-
         </div>
 
-        <div id="mobile" onClick={handleClick}>
-          {!state ?
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-            : <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+        <div className="flex items-center gap-3">
+          <a
+            href="tel:+12895055696"
+            className={`hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 ${
+              scrolled
+                ? 'text-slate-400 hover:text-white'
+                : 'text-slate-900 hover:text-white'
+            }`}
+          >
+            <FaPhoneAlt className="text-xs text-[#5ba3b5]" />
+            <span>289-505-5696</span>
+          </a>
+          <Link 
+            href="/contact" 
+            className={`hidden lg:flex items-center gap-2 px-6 py-2 rounded-xl font-bold transition-all duration-300 ${
+              pathname === '/contact'
+              ? 'bg-[#5ba3b5] text-white shadow-lg shadow-[#5ba3b5]/20'
+              : scrolled
+                ? 'bg-white/10 hover:bg-white/15 text-white border border-white/20'
+                : 'bg-white hover:bg-slate-50 text-slate-900 border border-slate-200'
+            }`}
+          >
+            <span>Get Quote</span>
+          </Link>
 
-          }
-
-          <i
-            id="bar"
-            className={state ? "fas fa-times" : "fas fa-bars"}
-          ></i>
+          {/* Mobile Toggle */}
+          <button 
+            className={`lg:hidden w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 active:scale-95 z-[2001] ${
+              click
+                ? 'bg-white/15 text-white border border-white/20'
+                : scrolled
+                  ? 'bg-white/15 text-white border border-white/20'
+                  : 'bg-white text-slate-700 border border-slate-200 shadow-sm'
+            }`}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle Menu"
+          >
+            {click ? <FaTimes size={16} /> : <FaBars size={16} />}
+          </button>
         </div>
       </nav>
+
+      {/* Mobile overlay backdrop */}
+      <div 
+        className={`mobile-overlay${click ? ' open' : ''}`} 
+        onClick={closeMobileMenu}
+      />
+
+      {/* Mobile Menu Panel */}
+      <div className={`mobile-panel${click ? ' open' : ''}`}>
+        <div className="flex flex-col h-full w-full relative z-10">
+          <div className="flex justify-between items-center mb-12 pb-6 border-b border-white/10">
+            <div className="flex items-center gap-3">
+              <Image src="/logo.png" width={120} height={120} alt="Super Handlers" className="rounded-lg" />
+              <span className="text-[#8a95a8] uppercase text-base font-semibold tracking-[0.2em]">MENU</span>
+            </div>
+          </div>
+
+          <nav className="flex flex-col gap-2">
+            {navLinks.map((link, index) => (
+              <Link 
+                key={index} 
+                href={link.path} 
+                className={`mobile-nav-link text-2xl font-bold py-3 px-3 rounded-xl transition-all duration-300 ${
+                  pathname === link.path 
+                  ? 'text-[#7ab8c7] bg-white/5 pl-5 border-l-2 border-[#5ba3b5]' 
+                  : 'text-[#8a95a8] hover:text-white hover:bg-white/5 hover:pl-5'
+                }`} 
+                onClick={closeMobileMenu}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="mobile-panel-footer mt-auto pb-10 space-y-5">
+            <div className="p-5 bg-white/5 rounded-2xl border border-white/8">
+              <p className="text-[10px] font-black text-[#5ba3b5] uppercase tracking-[0.3em] mb-3">Support</p>
+              <Link href="tel:+1 289-505-5696" className="text-base font-bold text-[#c8cdd6] flex items-center gap-3 hover:text-white transition-colors">
+                <FaPhoneAlt className="text-[#5ba3b5] text-sm" /> +1 289-505-5696
+              </Link>
+            </div>
+            <button 
+              onClick={() => { closeMobileMenu(); window.location.href='/contact'; }} 
+              className="w-full justify-center py-4 rounded-xl font-bold text-white bg-[#5ba3b5] hover:bg-[#7ab8c7] transition-all duration-300 active:scale-[0.98] shadow-lg shadow-[#5ba3b5]/20 flex items-center gap-2"
+            >
+              Request Service
+            </button>
+          </div>
+        </div>
+      </div>
     </>
   );
-
 }
 
 export default Navbar;

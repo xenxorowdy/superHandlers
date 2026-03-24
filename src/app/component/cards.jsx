@@ -1,160 +1,136 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
-import "../card.scss";
-import { FaTrash } from 'react-icons/fa';
-import MyModal from './Modal';
+import "../card.scss"
+import { FaTrash } from 'react-icons/fa'
+import MyModal from './Modal'
 import FullModal from './FullModal'
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
-import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer, toast } from 'react-toastify'
+import axios from 'axios'
+
 export default function Cards({ res, title, price, desc, selected, deleted, setDeleteFile }) {
-  const [urls, setUrls] = useState(`/api/uploads/${res}`);
-  const [more, setMore] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [imageOpen, setImageOpen] = useState(false);
+  const [urls] = useState(`/api/uploads/${res}`)
+  const [open, setOpen] = useState(false)
+  const [imageOpen, setImageOpen] = useState(false)
+  const [imgError, setImgError] = useState(false)
 
   const handleDelete = () => {
-    console.log(res);
-    axios(`api/delete/${res}`, {
-      method: "DELETE"
-    }).then((resp) => {
-      if (resp.status == 200) {
-        setDeleteFile(res)
-        toast.success("Card Deleted", {
+    axios(`api/delete/${res}`, { method: "DELETE" })
+      .then((resp) => {
+        if (resp.status === 200) {
+          setDeleteFile(res)
+          toast.success("Card Deleted", {
+            position: "bottom-left",
+            autoClose: 3000,
+            theme: "dark",
+          })
+        } else throw new Error("Delete failed")
+      })
+      .catch(() => {
+        toast.error("Error — try again later", {
           position: "bottom-left",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
+          autoClose: 5000,
           theme: "dark",
-        });
-      } else throw "err"
-    }).catch((err) => {
-      toast.success("Error Try again some time", {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-    })
+        })
+      })
   }
-  const handleImage = () => {
-    setImageOpen(imageOpen => !imageOpen)
-  }
-  // useEffect(()=>{
 
-  //   setUrls(`/api/uploads/${res}`);
-
-  // },[])
-
-  // return(
-  //   <>
-  //   <div className="product-card">
-  //     <div className="product-image">
-  //       <img src={urls} />
-  //     </div>
-  //     <div className="product-details">
-  //       <h1>Product title</h1>
-  //       <p>
-  //         Great product title for a great product and all of the extra things a
-  //         product might need to make it fill an entire card.
-  //       </p>
-  //       <button type="button" className="btn">
-  //         Buy Now
-  //       </button>
-  //     </div>
-  //   </div>
-  // </>
-
-  // )
+  const formattedPrice = `$${new Intl.NumberFormat('en-US').format(price || 0)}`
+  const isRental = selected === "Rental ForkLift"
 
   return (
+    <article className="card-item group" itemScope itemType="https://schema.org/Product">
+      <meta itemProp="category" content={selected || 'Forklift'} />
 
-    <div id={!more ? 'max-height' : 'height'} className='  shadow-md   border-2 bg-white
-     border-solid rounded-[12px]    sm:w-[310px]  md: w-[340px] lg:[400px] '>
-      <div>
-        <div className='text-[#21DA8C]  pl-2 font-[550] opacity-60 z-10 border-black text-md flex justify-around items-center m-1'>
-          {selected || ''}
-          {deleted && <FaTrash onClick={e => setOpen(open => !open)} className=' cursor-pointer text-red-600' />}
-        </div>
-
+      {/* Category + Delete */}
+      <div className="flex items-center justify-between px-4 pt-3 pb-1">
+        <span className="text-[10px] font-bold text-[#5ba3b5] uppercase tracking-wider">
+          {selected || 'Listing'}
+        </span>
+        {deleted && (
+          <button
+            onClick={() => setOpen(true)}
+            className="text-slate-400 hover:text-red-500 transition-colors p-1"
+            aria-label="Delete listing"
+          >
+            <FaTrash size={12} />
+          </button>
+        )}
       </div>
-      <div id='article' onClick={handleImage} className='   effect
-     drop-shadow-lg 
-     items-center
-     text-center
-     cursor-pointer
-     w-[100%]
-     h-[210px]
-      
-     flex
-     
-        justify-center
-         
-     '
+
+      {/* Image */}
+      <figure
+        onClick={() => setImageOpen(true)}
+        className="relative w-full h-[220px] cursor-pointer overflow-hidden bg-slate-100 m-0"
+        role="button"
+        tabIndex={0}
+        aria-label={`View details for ${title || 'forklift'}`}
+        onKeyDown={(e) => e.key === 'Enter' && setImageOpen(true)}
       >
+        {imgError ? (
+          <div className="w-full h-full flex items-center justify-center text-slate-300 text-sm">
+            Image unavailable
+          </div>
+        ) : (
+          <Image
+            src={urls}
+            fill
+            unoptimized
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            alt={`${title || 'Forklift'} — ${selected || 'forklift'} available at Super Handlers, Brampton`}
+            itemProp="image"
+            onError={() => setImgError(true)}
+          />
+        )}
+      </figure>
 
-        <Image
-          src={urls}
-          width={90}
-          unoptimized={true}
-          height={60}
-          quality={30}
-          className='  object-contain '
-          alt={title}
-
-        />
-      </div>
-
-
-      <hr />
-
-      <div className='flex flex-col pl-2  pb-1 justify-center     align-center '>
-        <h4 className='text-center  whitespace-nowrap w-full overflow-hidden text-ellipsis text-medium '>
-
-          {title ?? 'Item'}
-        </h4>
-        <div className='flex justify-between'>
-          <p className='flex text-[1rem] font-medium  '> <span id="span" className='font-normal'> Price:</span>
-            <span className='  text-[#37a864]'>
-              ${new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(price || 0)}
-            </span>
-            {selected == "Rental FolkLift" && '/month'}
+      {/* Info */}
+      <div className="px-4 py-3 border-t border-slate-100">
+        <h3 className="text-sm font-bold text-slate-900 truncate mb-1.5" itemProp="name">
+          {title || 'Forklift'}
+        </h3>
+        {desc && (
+          <p className="sr-only" itemProp="description">{desc}</p>
+        )}
+        <div className="flex items-baseline justify-between" itemProp="offers" itemScope itemType="https://schema.org/Offer">
+          <p className="text-lg font-black text-[#5ba3b5] tracking-tight">
+            <span itemProp="price" content={price || '0'}>{formattedPrice}</span>
+            <meta itemProp="priceCurrency" content="CAD" />
+            <meta itemProp="availability" content="https://schema.org/InStock" />
+            {isRental && (
+              <span className="text-xs font-medium text-slate-400 ml-0.5">/mo</span>
+            )}
           </p>
-          {/* {˳˳
-      desc.trim()&&
-    <button onClick={e=>setMore(e=>!e)} className='flex justify-end pr-3 items-center gap-1 cursor-pointer text-[#21DA8C]'>View {more? 'less': 'more'}
-˳
-    <i class={`arrow ${more? 'up': 'down'}`} />
-    </button>
-    } */}
+          <button
+            onClick={() => setImageOpen(true)}
+            className="text-xs font-semibold text-[#5ba3b5] hover:text-[#7ab8c7] transition-colors"
+          >
+            View Details →
+          </button>
         </div>
-
-        {/* {more && desc &&
-     desc.split("\n").map((e,index)=> e.trim() && <li key={index} className='w-[90%]'>{e}</li>)} */}
       </div>
+
       <MyModal open={open} setOpen={setOpen} handleDelete={handleDelete} />
-      <FullModal title={title} desc={desc} price={price} open={imageOpen} handleImage={handleImage} url={urls} selected={selected} />
+      <FullModal
+        title={title}
+        desc={desc}
+        price={price}
+        open={imageOpen}
+        handleImage={() => setImageOpen(false)}
+        url={urls}
+        selected={selected}
+      />
       <ToastContainer
         position="bottom-left"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
         draggable
         pauseOnHover
         theme="dark"
       />
-    </div>
-
+    </article>
   )
 }

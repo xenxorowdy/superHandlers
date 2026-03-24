@@ -1,23 +1,34 @@
 import { NextResponse } from "next/server";
+import { connectToDb } from "../upload/route";
 
-import { connectToDb,getfiles } from "../upload/route";
-
-export async function POST(request) {
-      if(request.method == 'POST'){
-        try {
-            const {client} = await connectToDb();
-             const result = await client
-            .db()
-            .collection("images.files")
-            .find().sort({uploadDate:-1})
-            .project({"filename": 1,metadata:1}).toArray();
-
-            // console.log(fileNameArr);
-            return  NextResponse.json({result:result})
-        } catch (error) {
-          console.log("error happend",error);
-          return new Response('failed');
-        }
-      }
+async function getInventory() {
+  const { client } = await connectToDb();
+  return client
+    .db()
+    .collection("images.files")
+    .find()
+    .sort({ uploadDate: -1 })
+    .project({ filename: 1, metadata: 1 })
+    .toArray();
 }
-    
+
+export async function GET() {
+  try {
+    const result = await getInventory();
+    return NextResponse.json({ result });
+  } catch (error) {
+    console.error("Error fetching inventory:", error);
+    return NextResponse.json({ result: [] }, { status: 500 });
+  }
+}
+
+export async function POST() {
+  try {
+    const result = await getInventory();
+    return NextResponse.json({ result });
+  } catch (error) {
+    console.error("Error fetching inventory:", error);
+    return NextResponse.json({ result: [] }, { status: 500 });
+  }
+}
+
