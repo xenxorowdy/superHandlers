@@ -145,7 +145,7 @@ const websiteSchema = {
 export default async function RootLayout({ children }) {
   const session = await getServerSession();
   return (
-    <html lang="en">
+    <html lang="en-CA">
       <head>
         <script
           type="application/ld+json"
@@ -155,6 +155,7 @@ export default async function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
