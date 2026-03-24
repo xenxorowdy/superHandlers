@@ -150,7 +150,7 @@ const About = () => {
               <div className="relative z-10 p-10 md:p-12 w-full">
                 <FaQuoteLeft className="text-4xl text-[#5ba3b5]/50 mb-6" />
                 <p className="text-xl md:text-2xl font-black text-white leading-snug mb-8">
-                  "Our mission is simple: keep the engines of Canadian industry running smoothly through expert care."
+                  &ldquo;Our mission is simple: keep the engines of Canadian industry running smoothly through expert care.&rdquo;
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-[#5ba3b5] rounded-full flex items-center justify-center font-black text-white text-sm">SH</div>
