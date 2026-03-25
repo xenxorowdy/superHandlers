@@ -78,7 +78,7 @@ const Contact = () => {
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="contact" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Phone Number</label>
-                                <input id="contact" type="tel" placeholder="+1 289-505-5696" className="w-full" required value={form.contact} onChange={update('contact')} />
+                                <input id="contact" type="tel" placeholder="+1 289-505-1340" className="w-full" required value={form.contact} onChange={update('contact')} />
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="email" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Email Address</label>
@@ -110,14 +110,14 @@ const Contact = () => {
 
                     {/* Contact Info Panels */}
                     <div className="lg:col-span-5 space-y-6">
-                        <a href="tel:+12895055696" className="glass-card p-10 rounded-[32px] group block">
+                        <a href="tel:+12895051340" className="glass-card p-10 rounded-[32px] group block">
                             <div className="flex items-center gap-6">
                                 <div className="w-16 h-16 bg-[#5ba3b5]/10 text-[#5ba3b5] rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shrink-0">
                                     <FaPhoneAlt />
                                 </div>
                                 <div className="space-y-1">
                                     <p className="text-xs font-black text-slate-400 uppercase tracking-widest">Call Us</p>
-                                    <p className="text-xl font-black text-slate-900 group-hover:text-[#5ba3b5] transition-colors">+1 289-505-5696</p>
+                                    <p className="text-xl font-black text-slate-900 group-hover:text-[#5ba3b5] transition-colors">+1 289-505-1340</p>
                                 </div>
                             </div>
                         </a>
@@ -134,17 +134,18 @@ const Contact = () => {
                             </div>
                         </a>
 
-                        <a href="https://maps.app.goo.gl/ZufwDGCdrLqQB7QJ6" target="_blank" rel="noopener noreferrer" className="glass-card p-10 rounded-[32px] group block">
+                        <div className="glass-card p-10 rounded-[32px] group block">
                             <div className="flex items-center gap-6">
-                                <div className="w-16 h-16 bg-[#5ba3b5]/10 text-[#5ba3b5] rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shrink-0">
+                                <div className="w-16 h-16 bg-[#5ba3b5]/10 text-[#5ba3b5] rounded-2xl flex items-center justify-center text-2xl shrink-0">
                                     <FaMapMarkerAlt />
                                 </div>
                                 <div className="space-y-1">
-                                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest">HQ Location</p>
-                                    <p className="text-xl font-black text-slate-900 leading-tight group-hover:text-[#5ba3b5] transition-colors">241 Advance Blvd, Brampton, ON</p>
+                                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest">Primary Location</p>
+                                    <p className="text-xl font-black text-slate-900 leading-tight">11 Holland Dr, Unit 9, Bolton, ON L7E 1G7</p>
+                                    <p className="text-sm font-semibold text-slate-400 pt-1">Secondary: 241 Advance Blvd, Brampton, ON</p>
                                 </div>
                             </div>
-                        </a>
+                        </div>
 
                         <div className="glass-card p-10 rounded-[32px] bg-gradient-to-br from-[#2c3a52] to-[#1a2335] border-none shadow-2xl relative overflow-hidden group">
                            <div className="absolute top-0 right-0 w-48 h-48 bg-[#5ba3b5]/15 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-[#5ba3b5]/25 transition-all duration-700"></div>

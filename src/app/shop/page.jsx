@@ -71,14 +71,14 @@ export default async function Shop() {
         '@type': 'LocalBusiness',
         name: 'Super Handlers',
         url: 'https://www.superhandlerslift.com',
-        telephone: '+1-289-505-5696',
+        telephone: '+1-289-505-1340',
         email: 'superhandlers1@gmail.com',
         address: {
             '@type': 'PostalAddress',
-            streetAddress: '241 Advance Blvd',
-            addressLocality: 'Brampton',
+            streetAddress: '11 Holland Dr, Unit 9',
+            addressLocality: 'Bolton',
             addressRegion: 'ON',
-            postalCode: 'L6T 4J2',
+            postalCode: 'L7E 1G7',
             addressCountry: 'CA',
         },
         description: 'Premier forklift maintenance, repairs, sales and rentals in the Greater Toronto Area.',
@@ -154,7 +154,7 @@ export default async function Shop() {
                                     <p>Category: {item.metadata?.selected || 'Forklift'}</p>
                                     <p>Price: ${item.metadata?.price || '0'} CAD{item.metadata?.selected === 'Rental ForkLift' ? ' per month' : ''}</p>
                                     {item.metadata?.description && <p>{item.metadata.description}</p>}
-                                    <p>Available at Super Handlers, 241 Advance Blvd, Brampton ON. Call +1 289-505-5696.</p>
+                                    <p>Available at Super Handlers, 11 Holland Dr, Unit 9, Bolton ON. Call +1 289-505-1340.</p>
                                 </article>
                             </li>
                         ))}

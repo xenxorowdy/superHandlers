@@ -60,9 +60,9 @@ export default function Footter() {
             <h4>Contact Us</h4>
             <ul>
               <li>
-                <Link href="tel:+1 289-505-5696" className="contact-item">
+                <Link href="tel:+1 289-505-1340" className="contact-item">
                   <span className="contact-icon"><FaPhoneAlt /></span>
-                  <span>+1 (289) 505-5696</span>
+                  <span>+1 (289) 505-1340</span>
                 </Link>
               </li>
               <li>
@@ -74,7 +74,7 @@ export default function Footter() {
               <li>
                 <a href="https://maps.app.goo.gl/ZufwDGCdrLqQB7QJ6" target="_blank" rel="noopener noreferrer" className="contact-item">
                   <span className="contact-icon"><FaMapMarkerAlt /></span>
-                  <span>241 Advance Blvd, Brampton, ON L6T 4J2, Canada</span>
+                  <span>11 Holland Dr, Unit 9, Bolton, ON L7E 1G7, Canada</span>
                 </a>
               </li>
             </ul>

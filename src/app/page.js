@@ -7,7 +7,7 @@ import { FaWrench, FaCogs, FaTools, FaCheckCircle, FaStar, FaShieldAlt, FaArrowR
 
 export const metadata = {
   title: 'Super Handlers | Forklift Repair, Sales & Rentals in Brampton & GTA',
-  description: 'Super Handlers — expert forklift repair, maintenance, sales and rentals in Brampton, Toronto and the Greater Toronto Area. 24/7 emergency service, all major brands. Call 289-505-5696 for a free quote.',
+  description: 'Super Handlers — expert forklift repair, maintenance, sales and rentals in Brampton, Toronto and the Greater Toronto Area. 24/7 emergency service, all major brands. Call 289-505-1340 for a free quote.',
   openGraph: {
     title: 'Super Handlers | Forklift Repair, Sales & Rentals in Brampton & GTA',
     description: 'Expert forklift repair, maintenance, sales and rentals across the Greater Toronto Area. 24/7 service, all major brands.',
@@ -225,14 +225,14 @@ export default function Home() {
               </span>
             </Link>
 
-            <a href="tel:+12895055696" className="glass-card p-8 rounded-[20px] group block text-center hover:shadow-xl transition-all duration-300">
+            <a href="tel:+12895051340" className="glass-card p-8 rounded-[20px] group block text-center hover:shadow-xl transition-all duration-300">
               <div className="w-14 h-14 bg-[#5ba3b5]/10 text-[#5ba3b5] rounded-2xl flex items-center justify-center text-2xl mb-5 mx-auto group-hover:bg-[#5ba3b5] group-hover:text-white transition-all duration-300">
                 <FaWrench />
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">24/7 Emergency</h3>
               <p className="text-sm text-slate-500 mb-4">Forklift breakdown? Our emergency team is available around the clock.</p>
               <span className="text-[#5ba3b5] font-bold text-sm flex items-center justify-center gap-1 group-hover:gap-2 transition-all">
-                Call 289-505-5696 <FaArrowRight size={10} />
+                Call 289-505-1340 <FaArrowRight size={10} />
               </span>
             </a>
           </ScrollRevealGroup>

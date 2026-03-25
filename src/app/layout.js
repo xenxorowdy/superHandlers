@@ -19,7 +19,7 @@ export const metadata = {
     default: 'Super Handlers | Forklift Sales, Rentals & Repair in Brampton & GTA',
     template: '%s | Super Handlers',
   },
-  description: 'Super Handlers provides expert forklift repair, maintenance, sales and rentals in Brampton, Toronto and the GTA. 24/7 emergency service. Toyota, Hyster, Yale, Crown — all major brands. Call 289-505-5696.',
+  description: 'Super Handlers provides expert forklift repair, maintenance, sales and rentals in Brampton, Toronto and the GTA. 24/7 emergency service. Toyota, Hyster, Yale, Crown — all major brands. Call 289-505-1340.',
   keywords: ['forklift repair Brampton', 'forklift rental GTA', 'forklift sales Toronto', 'forklift maintenance', 'used forklift', 'forklift service 24/7', 'warehouse equipment Brampton', 'Super Handlers'],
   authors: [{ name: 'Super Handlers' }],
   creator: 'Super Handlers',
@@ -35,7 +35,7 @@ export const metadata = {
     url: SITE_URL,
     siteName: 'Super Handlers',
     title: 'Super Handlers | Forklift Sales, Rentals & Repair in Brampton & GTA',
-    description: 'Expert forklift repair, maintenance, sales and rentals across the Greater Toronto Area. All major brands, 24/7 service. Call 289-505-5696.',
+    description: 'Expert forklift repair, maintenance, sales and rentals across the Greater Toronto Area. All major brands, 24/7 service. Call 289-505-1340.',
     images: [
       {
         url: '/android-chrome-512x512.png',
@@ -78,14 +78,14 @@ const businessSchema = {
   logo: `${SITE_URL}/logo.png`,
   image: `${SITE_URL}/android-chrome-512x512.png`,
   description: 'Premier forklift maintenance, repairs, sales and rentals serving Brampton, Toronto and the Greater Toronto Area.',
-  telephone: '+1-289-505-5696',
+  telephone: '+1-289-505-1340',
   email: 'superhandlers1@gmail.com',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '241 Advance Blvd',
-    addressLocality: 'Brampton',
+    streetAddress: '11 Holland Dr, Unit 9',
+    addressLocality: 'Bolton',
     addressRegion: 'ON',
-    postalCode: 'L6T 4J2',
+    postalCode: 'L7E 1G7',
     addressCountry: 'CA',
   },
   geo: {
