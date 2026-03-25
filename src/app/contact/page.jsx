@@ -154,8 +154,8 @@ const Contact = () => {
                                     <FaClock className="animate-pulse" />
                                 </div>
                                 <div className="space-y-1">
-                                    <p className="text-xs font-black text-white/50 uppercase tracking-widest">Service Hours</p>
-                                    <p className="text-xl font-black text-white">24/7 Support Available</p>
+                                    <p className="text-xs font-black text-[#7ab8c7] uppercase tracking-widest">Service Hours</p>
+                                    <p className="text-xl font-black text-[#7ab8c7]">24/7 Support Available</p>
                                     <p className="text-xs text-[#7ab8c7] font-bold">Standard: 8 AM – 6 PM</p>
                                 </div>
                             </div>
