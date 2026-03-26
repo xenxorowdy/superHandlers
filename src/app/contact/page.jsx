@@ -78,7 +78,7 @@ const Contact = () => {
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="contact" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Phone Number</label>
-                                <input id="contact" type="tel" placeholder="+1 289-505-1340" className="w-full" required value={form.contact} onChange={update('contact')} />
+                                <input id="contact" type="tel" placeholder="+1 647-573-0160" className="w-full" required value={form.contact} onChange={update('contact')} />
                             </div>
                             <div className="space-y-2">
                                 <label htmlFor="email" className="text-xs font-black text-slate-400 uppercase tracking-widest pl-1">Email Address</label>
@@ -110,14 +110,14 @@ const Contact = () => {
 
                     {/* Contact Info Panels */}
                     <div className="lg:col-span-5 space-y-6">
-                        <a href="tel:+12895051340" className="glass-card p-10 rounded-[32px] group block">
+                        <a href="tel:+6475730160" className="glass-card p-10 rounded-[32px] group block">
                             <div className="flex items-center gap-6">
                                 <div className="w-16 h-16 bg-[#5ba3b5]/10 text-[#5ba3b5] rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform shrink-0">
                                     <FaPhoneAlt />
                                 </div>
                                 <div className="space-y-1">
                                     <p className="text-xs font-black text-slate-400 uppercase tracking-widest">Call Us</p>
-                                    <p className="text-xl font-black text-slate-900 group-hover:text-[#5ba3b5] transition-colors">+1 289-505-1340</p>
+                                    <p className="text-xl font-black text-slate-900 group-hover:text-[#5ba3b5] transition-colors">+1 647-573-0160</p>
                                 </div>
                             </div>
                         </a>
@@ -129,7 +129,7 @@ const Contact = () => {
                                 </div>
                                 <div className="space-y-1">
                                     <p className="text-xs font-black text-slate-400 uppercase tracking-widest">Email Support</p>
-                                    <p className="text-xl font-black text-slate-900 group-hover:text-[#5ba3b5] transition-colors">superhandlers1@gmail.com</p>
+                                    <p className="text-xl font-black text-slate-900 group-hover:text-[#5ba3b5] transition-colors break-all">superhandlers1@gmail.com</p>
                                 </div>
                             </div>
                         </a>

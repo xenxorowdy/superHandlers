@@ -75,7 +75,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-3">
           <a
-            href="tel:+12895051340"
+            href="tel:+6475730160"
             className={`hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 ${
               scrolled
                 ? 'text-slate-400 hover:text-white'
@@ -83,7 +83,7 @@ const Navbar = () => {
             }`}
           >
             <FaPhoneAlt className="text-xs text-[#5ba3b5]" />
-            <span>289-505-1340</span>
+            <span>647-573-0160</span>
           </a>
           <Link 
             href="/contact" 
@@ -151,8 +151,8 @@ const Navbar = () => {
           <div className="mobile-panel-footer mt-auto pb-10 space-y-5">
             <div className="p-5 bg-white/5 rounded-2xl border border-white/8">
               <p className="text-[10px] font-black text-[#5ba3b5] uppercase tracking-[0.3em] mb-3">Support</p>
-              <Link href="tel:+1 289-505-1340" className="text-base font-bold text-[#c8cdd6] flex items-center gap-3 hover:text-white transition-colors">
-                <FaPhoneAlt className="text-[#5ba3b5] text-sm" /> +1 289-505-1340
+              <Link href="tel:+1 647-573-0160" className="text-base font-bold text-[#c8cdd6] flex items-center gap-3 hover:text-white transition-colors">
+                <FaPhoneAlt className="text-[#5ba3b5] text-sm" /> +1 647-573-0160
               </Link>
             </div>
             <button 

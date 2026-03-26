@@ -8,12 +8,17 @@ import 'swiper/css'
 const BrandsEffect = () => {
     const brands = [
         { src: '/folkliftcompany/toyota.png', alt: 'Toyota' },
-        { src: '/folkliftcompany/raymond.png', alt: 'Raymond' },
+        { src: '/folkliftcompany/caterpillar.png', alt: 'Caterpillar' },
         { src: '/folkliftcompany/crow.png', alt: 'Crown' },
-        { src: '/folkliftcompany/nissan.png', alt: 'Nissan' },
+        { src: '/folkliftcompany/jungheinrich.png', alt: 'Jungheinrich' },
+        { src: '/folkliftcompany/linde.png', alt: 'Linde' },
         { src: '/folkliftcompany/hyster.png', alt: 'Hyster' },
-        { src: '/folkliftcompany/tennant.png', alt: 'Tennant' },
         { src: '/folkliftcompany/yale_logo-standard.webp', alt: 'Yale' },
+        { src: '/folkliftcompany/mitsubishi.png', alt: 'Mitsubishi' },
+        { src: '/folkliftcompany/nissan.png', alt: 'Nissan' },
+        { src: '/folkliftcompany/raymond.png', alt: 'Raymond' },
+        { src: '/folkliftcompany/clark.png', alt: 'Clark' },
+        { src: '/folkliftcompany/tennant.png', alt: 'Tennant' },
     ]
 
     return (
@@ -40,11 +45,11 @@ const BrandsEffect = () => {
                 {/* Double the brands for seamless loop */}
                 {[...brands, ...brands].map((brand, index) => (
                     <SwiperSlide key={index} className="flex items-center justify-center  transition-all duration-500 cursor-pointer py-4">
-                        <div className="relative h-16 w-32 md:h-20 md:w-40">
+                        <div className="relative w-32 md:w-40 aspect-[3/2]">
                             <Image
                                 src={brand.src}
                                 fill
-                                className="object-contain"
+                                className="object-contain mix-blend-multiply aspect-[3/2]"
                                 alt={brand.alt}
                             />
                         </div>

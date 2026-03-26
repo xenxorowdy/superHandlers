@@ -116,10 +116,10 @@
 
 /* Contact Column */
 .contact-item {
-  display: flex;
-  align-items: flex-start;
+  display: flex !important;
   gap: 14px;
   color: #64748b;
+  align-items: center;
   text-decoration: none;
   transition: color 0.25s ease;
   line-height: 1.6;
@@ -127,6 +127,17 @@
 
 .contact-item:hover {
   color: #7ab8c7;
+}
+.contact-item span {
+  white-space: nowrap;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: normal;
+  text-wrap: balance;
+  text-overflow: ellipsis;
+  text-align: left;
+  text-justify: inter-word;
 }
 
 .contact-icon {

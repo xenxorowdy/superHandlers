@@ -71,7 +71,7 @@ export default async function Shop() {
         '@type': 'LocalBusiness',
         name: 'Super Handlers',
         url: 'https://www.superhandlerslift.com',
-        telephone: '+1-289-505-1340',
+        telephone: '+1-647-573-0160',
         email: 'superhandlers1@gmail.com',
         address: {
             '@type': 'PostalAddress',
@@ -154,7 +154,7 @@ export default async function Shop() {
                                     <p>Category: {item.metadata?.selected || 'Forklift'}</p>
                                     <p>Price: ${item.metadata?.price || '0'} CAD{item.metadata?.selected === 'Rental ForkLift' ? ' per month' : ''}</p>
                                     {item.metadata?.description && <p>{item.metadata.description}</p>}
-                                    <p>Available at Super Handlers, 11 Holland Dr, Unit 9, Bolton ON. Call +1 289-505-1340.</p>
+                                    <p>Available at Super Handlers, 11 Holland Dr, Unit 9, Bolton ON. Call +1 647-573-0160.</p>
                                 </article>
                             </li>
                         ))}

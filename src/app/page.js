@@ -3,11 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import BrandsEffect from './component/BrandsEffect'
 import ScrollReveal, { ScrollRevealGroup } from './component/ScrollReveal'
+import StatsCounter from './component/CountUp'
 import { FaWrench, FaCogs, FaTools, FaCheckCircle, FaStar, FaShieldAlt, FaArrowRight, FaForklift, FaPhoneAlt } from 'react-icons/fa'
 
 export const metadata = {
   title: 'Super Handlers | Forklift Repair, Sales & Rentals in Brampton & GTA',
-  description: 'Super Handlers — expert forklift repair, maintenance, sales and rentals in Brampton, Toronto and the Greater Toronto Area. 24/7 emergency service, all major brands. Call 289-505-1340 for a free quote.',
+  description: 'Super Handlers — expert forklift repair, maintenance, sales and rentals in Brampton, Toronto and the Greater Toronto Area. 24/7 emergency service, all major brands. Call 647-573-0160 for a free quote.',
   openGraph: {
     title: 'Super Handlers | Forklift Repair, Sales & Rentals in Brampton & GTA',
     description: 'Expert forklift repair, maintenance, sales and rentals across the Greater Toronto Area. 24/7 service, all major brands.',
@@ -74,23 +75,7 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="py-20 px-6 bg-white/50 border-y border-slate-100">
-        <div className="container mx-auto">
-          <ScrollRevealGroup animation="fade-up" stagger={100} className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { val: '15+', label: 'Years Experience' },
-              { val: '24/7', label: 'Emergency Support' },
-              { val: '500+', label: 'Parts in Stock' },
-              { val: '1000+', label: 'Happy Clients' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <p className="text-4xl font-black text-[#5ba3b5] mb-2 tracking-tighter">{stat.val}</p>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{stat.label}</p>
-              </div>
-            ))}
-          </ScrollRevealGroup>
-        </div>
-      </section>
+      <StatsCounter />
 
       {/* Services */}
       <section className="py-24 px-6">
@@ -225,14 +210,14 @@ export default function Home() {
               </span>
             </Link>
 
-            <a href="tel:+12895051340" className="glass-card p-8 rounded-[20px] group block text-center hover:shadow-xl transition-all duration-300">
+            <a href="tel:+6475730160" className="glass-card p-8 rounded-[20px] group block text-center hover:shadow-xl transition-all duration-300">
               <div className="w-14 h-14 bg-[#5ba3b5]/10 text-[#5ba3b5] rounded-2xl flex items-center justify-center text-2xl mb-5 mx-auto group-hover:bg-[#5ba3b5] group-hover:text-white transition-all duration-300">
                 <FaWrench />
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">24/7 Emergency</h3>
               <p className="text-sm text-slate-500 mb-4">Forklift breakdown? Our emergency team is available around the clock.</p>
               <span className="text-[#5ba3b5] font-bold text-sm flex items-center justify-center gap-1 group-hover:gap-2 transition-all">
-                Call 289-505-1340 <FaArrowRight size={10} />
+                Call 647-573-0160 <FaArrowRight size={10} />
               </span>
             </a>
           </ScrollRevealGroup>

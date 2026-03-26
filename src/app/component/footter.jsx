@@ -21,7 +21,7 @@ export default function Footter() {
               <a href="https://www.facebook.com/Shandlers/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <FaFacebook />
               </a>
-              <a href="#" aria-label="Twitter">
+              {/* <a href="#" aria-label="Twitter">
                 <FaTwitter />
               </a>
               <a href="#" aria-label="LinkedIn">
@@ -29,7 +29,7 @@ export default function Footter() {
               </a>
               <a href="#" aria-label="Instagram">
                 <FaInstagram />
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -60,9 +60,9 @@ export default function Footter() {
             <h4>Contact Us</h4>
             <ul>
               <li>
-                <Link href="tel:+1 289-505-1340" className="contact-item">
+                <Link href="tel:+1 647-573-0160" className="contact-item">
                   <span className="contact-icon"><FaPhoneAlt /></span>
-                  <span>+1 (289) 505-1340</span>
+                  <span>+1 (647) 573-0160</span>
                 </Link>
               </li>
               <li>
