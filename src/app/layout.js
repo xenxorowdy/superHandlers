@@ -17,6 +17,12 @@ const outfit = Outfit({
 
 const SITE_URL = 'https://www.superhandlerslift.com'
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -68,6 +74,10 @@ export const metadata = {
   },
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      'en-CA': SITE_URL,
+      'x-default': SITE_URL,
+    },
   },
   verification: {},
 }

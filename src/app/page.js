@@ -7,7 +7,7 @@ import StatsCounter from './component/CountUp'
 import { FaWrench, FaCogs, FaTools, FaCheckCircle, FaStar, FaShieldAlt, FaArrowRight, FaForklift, FaPhoneAlt } from 'react-icons/fa'
 
 export const metadata = {
-  title: 'Forklift Repair, Sales & Rentals — Brampton & GTA',
+  title: 'Forklift Repair, Sales & Rentals in Brampton & the GTA',
   description: 'Expert forklift repair, sales & rentals in Brampton & the GTA. 24/7 emergency service, all major brands. Call 647-573-0160.',
   openGraph: {
     title: 'Super Handlers — Forklift Repair, Sales & Rentals in Brampton',
@@ -47,7 +47,7 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-10 py-32">
           <div className="max-w-3xl">
             <ScrollReveal animation="fade-up" duration={800}>
-              <span className="inline-block py-1.5 px-5 rounded-full bg-[#5ba3b5]/20 text-[#7ab8c7] text-[10px] font-black tracking-[0.2em] uppercase mb-8 border border-[#5ba3b5]/30 backdrop-blur-sm">
+              <span className="inline-block py-1.5 px-5 rounded-full bg-[#5ba3b5]/20 text-[#7ab8c7] text-xs font-black tracking-[0.2em] uppercase mb-8 border border-[#5ba3b5]/30 backdrop-blur-sm">
                 Brampton &amp; GTA&apos;s Trusted Forklift Experts
               </span>
             </ScrollReveal>
@@ -83,7 +83,7 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="container mx-auto">
           <ScrollReveal animation="fade-up" className="text-center mb-16">
-            <span className="inline-block py-1 px-4 rounded-full bg-[#5ba3b5]/10 text-[#5ba3b5] text-[10px] font-black tracking-[0.2em] uppercase mb-5 border border-[#5ba3b5]/20">
+            <span className="inline-block py-1 px-4 rounded-full bg-[#5ba3b5]/10 text-[#5ba3b5] text-xs font-black tracking-[0.2em] uppercase mb-5 border border-[#5ba3b5]/20">
               What We Do
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">Forklift Services in Brampton &amp; Toronto</h2>
@@ -124,7 +124,7 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <ScrollReveal animation="fade-right" className="flex-1">
-              <span className="inline-block py-1 px-4 rounded-full bg-[#5ba3b5]/10 text-[#5ba3b5] text-[10px] font-black tracking-[0.2em] uppercase mb-6 border border-[#5ba3b5]/20">
+              <span className="inline-block py-1 px-4 rounded-full bg-[#5ba3b5]/10 text-[#5ba3b5] text-xs font-black tracking-[0.2em] uppercase mb-6 border border-[#5ba3b5]/20">
                 Why Choose Super Handlers
               </span>
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-8 leading-tight">Expert Forklift Service You Can Count On</h2>

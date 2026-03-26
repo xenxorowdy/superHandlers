@@ -65,7 +65,7 @@ const Contact = () => {
             <section className="relative pt-40 pb-20 px-6 bg-gradient-to-b from-[#1a2335] via-[#1a2335] to-slate-50 overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(91,163,181,0.15),transparent)]" />
                 <div className="container mx-auto relative z-10 text-center">
-                    <span className="inline-block py-1.5 px-5 rounded-full bg-[#5ba3b5]/15 text-[#7ab8c7] text-[10px] font-black tracking-[0.25em] uppercase mb-8 border border-[#5ba3b5]/25 backdrop-blur-sm">
+                    <span className="inline-block py-1.5 px-5 rounded-full bg-[#5ba3b5]/15 text-[#7ab8c7] text-xs font-black tracking-[0.25em] uppercase mb-8 border border-[#5ba3b5]/25 backdrop-blur-sm">
                         Contact Center
                     </span>
                     <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight leading-[0.95] text-white">
@@ -104,7 +104,7 @@ const Contact = () => {
                                         {card.icon}
                                     </div>
                                     <div className="relative z-10 min-w-0">
-                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">{card.label}</p>
+                                        <p className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-1">{card.label}</p>
                                         <p className={`text-lg font-black text-slate-900 group-hover:text-[#5ba3b5] transition-colors leading-tight ${card.breakAll ? 'break-all' : ''}`}>
                                             {card.value}
                                         </p>
@@ -148,23 +148,23 @@ const Contact = () => {
 
                             <form onSubmit={handleSubmit} className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label htmlFor="name" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] pl-1">Full Name</label>
+                                    <label htmlFor="name" className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] pl-1">Full Name</label>
                                     <input id="name" type="text" placeholder="John Doe" className="w-full bg-white/70 border border-slate-200/80 focus:border-[#5ba3b5] focus:ring-4 focus:ring-[#5ba3b5]/10 rounded-2xl px-5 py-4 text-slate-900 placeholder:text-slate-300 transition-all duration-300 outline-none" required value={form.name} onChange={update('name')} />
                                 </div>
                                 <div className="space-y-2">
-                                    <label htmlFor="contact" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] pl-1">Phone Number</label>
+                                    <label htmlFor="contact" className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] pl-1">Phone Number</label>
                                     <input id="contact" type="tel" placeholder="+1 647-573-0160" className="w-full bg-white/70 border border-slate-200/80 focus:border-[#5ba3b5] focus:ring-4 focus:ring-[#5ba3b5]/10 rounded-2xl px-5 py-4 text-slate-900 placeholder:text-slate-300 transition-all duration-300 outline-none" required value={form.contact} onChange={update('contact')} />
                                 </div>
                                 <div className="space-y-2">
-                                    <label htmlFor="email" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] pl-1">Email Address</label>
+                                    <label htmlFor="email" className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] pl-1">Email Address</label>
                                     <input id="email" type="email" placeholder="john@example.com" className="w-full bg-white/70 border border-slate-200/80 focus:border-[#5ba3b5] focus:ring-4 focus:ring-[#5ba3b5]/10 rounded-2xl px-5 py-4 text-slate-900 placeholder:text-slate-300 transition-all duration-300 outline-none" required value={form.email} onChange={update('email')} />
                                 </div>
                                 <div className="space-y-2">
-                                    <label htmlFor="interest" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] pl-1">Interest</label>
+                                    <label htmlFor="interest" className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] pl-1">Interest</label>
                                     <input id="interest" type="text" placeholder="Forklift Repair, Rental..." className="w-full bg-white/70 border border-slate-200/80 focus:border-[#5ba3b5] focus:ring-4 focus:ring-[#5ba3b5]/10 rounded-2xl px-5 py-4 text-slate-900 placeholder:text-slate-300 transition-all duration-300 outline-none" required value={form.interest} onChange={update('interest')} />
                                 </div>
                                 <div className="space-y-2 md:col-span-2">
-                                    <label htmlFor="message" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] pl-1">Message</label>
+                                    <label htmlFor="message" className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] pl-1">Message</label>
                                     <textarea id="message" rows={5} placeholder="Tell us about your fleet requirements..." className="w-full bg-white/70 border border-slate-200/80 focus:border-[#5ba3b5] focus:ring-4 focus:ring-[#5ba3b5]/10 rounded-2xl px-5 py-4 text-slate-900 placeholder:text-slate-300 transition-all duration-300 outline-none resize-none" required value={form.message} onChange={update('message')} />
                                 </div>
                                 <div className="md:col-span-2 pt-2">

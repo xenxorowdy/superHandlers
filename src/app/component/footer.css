@@ -107,6 +107,7 @@
   transition: color 0.25s ease, padding-left 0.25s ease;
   display: block;
   font-size: 14px;
+  padding: 6px 0;
 }
 
 .footer-col ul li a:hover {
@@ -213,14 +214,45 @@
     padding: 48px 20px 36px;
   }
 
+  .footer-col ul li a {
+    font-size: 15px;
+    padding: 10px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-col ul li {
+    margin-bottom: 4px;
+  }
+
+  .contact-item {
+    min-height: 48px;
+    padding: 8px 0;
+  }
+
+  .footer-socials a {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
   .footer-bottom {
     flex-direction: column;
     gap: 16px;
     text-align: center;
     padding: 20px;
+    font-size: 14px;
   }
 
   .footer-legal {
     gap: 20px;
+  }
+
+  .footer-legal a {
+    padding: 8px 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }
