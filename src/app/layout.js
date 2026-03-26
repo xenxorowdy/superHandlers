@@ -8,6 +8,8 @@ import './globals.css'
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import TrackerProvider from './component/openTracker'
 import TrackerClientComponent from './component/trackerstart.jsx'
+import { Analytics } from "@vercel/analytics/next"
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -179,6 +181,7 @@ export default async function RootLayout({ children }) {
           </body>
         </TrackerClientComponent>
       </TrackerProvider>
+      <Analytics/>
     </html>
   )
 }
