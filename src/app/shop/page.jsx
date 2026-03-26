@@ -2,8 +2,8 @@ import Link from 'next/link'
 import ShopContent from './ShopContent'
 
 export const metadata = {
-    title: 'Forklift Inventory | Super Handlers — Sales, Rentals & Pre-Owned in Brampton & GTA',
-    description: 'Browse our inventory of new, pre-owned, and rental forklifts in Brampton and the Greater Toronto Area. Toyota, Hyster, Yale, Crown and more — certified quality, competitive pricing. 24/7 service available.',
+    title: 'Forklift Inventory — Sales, Rentals & Pre-Owned',
+    description: 'Browse new, pre-owned & rental forklifts in Brampton & the GTA. Toyota, Hyster, Yale, Crown & more. Certified quality, competitive pricing.',
     keywords: ['forklift for sale', 'forklift rental', 'used forklift', 'forklift Brampton', 'forklift Toronto', 'forklift GTA', 'Toyota forklift', 'Hyster forklift', 'warehouse equipment', 'forklift repair', 'forklift maintenance'],
     openGraph: {
         title: 'Forklift Inventory | Super Handlers',

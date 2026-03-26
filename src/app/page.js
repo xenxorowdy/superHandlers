@@ -7,11 +7,11 @@ import StatsCounter from './component/CountUp'
 import { FaWrench, FaCogs, FaTools, FaCheckCircle, FaStar, FaShieldAlt, FaArrowRight, FaForklift, FaPhoneAlt } from 'react-icons/fa'
 
 export const metadata = {
-  title: 'Super Handlers | Forklift Repair, Sales & Rentals in Brampton & GTA',
-  description: 'Super Handlers — expert forklift repair, maintenance, sales and rentals in Brampton, Toronto and the Greater Toronto Area. 24/7 emergency service, all major brands. Call 647-573-0160 for a free quote.',
+  title: 'Forklift Repair, Sales & Rentals — Brampton & GTA',
+  description: 'Expert forklift repair, sales & rentals in Brampton & the GTA. 24/7 emergency service, all major brands. Call 647-573-0160.',
   openGraph: {
-    title: 'Super Handlers | Forklift Repair, Sales & Rentals in Brampton & GTA',
-    description: 'Expert forklift repair, maintenance, sales and rentals across the Greater Toronto Area. 24/7 service, all major brands.',
+    title: 'Super Handlers — Forklift Repair, Sales & Rentals in Brampton',
+    description: 'Expert forklift repair, sales & rentals across the Greater Toronto Area. 24/7 service, all major brands.',
     url: 'https://www.superhandlerslift.com',
   },
   alternates: {

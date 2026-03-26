@@ -16,10 +16,10 @@ const SITE_URL = 'https://www.superhandlerslift.com'
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Super Handlers | Forklift Sales, Rentals & Repair in Brampton & GTA',
+    default: 'Super Handlers — Forklift Repair, Sales & Rentals in Brampton',
     template: '%s | Super Handlers',
   },
-  description: 'Super Handlers provides expert forklift repair, maintenance, sales and rentals in Brampton, Toronto and the GTA. 24/7 emergency service. Toyota, Hyster, Yale, Crown — all major brands. Call 647-573-0160.',
+  description: 'Expert forklift repair, sales & rentals in Brampton & the GTA. 24/7 emergency service. Toyota, Hyster, Yale, Crown & more. Call 647-573-0160.',
   keywords: ['forklift repair Brampton', 'forklift rental GTA', 'forklift sales Toronto', 'forklift maintenance', 'used forklift', 'forklift service 24/7', 'warehouse equipment Brampton', 'Super Handlers'],
   authors: [{ name: 'Super Handlers' }],
   creator: 'Super Handlers',
@@ -34,8 +34,8 @@ export const metadata = {
     locale: 'en_CA',
     url: SITE_URL,
     siteName: 'Super Handlers',
-    title: 'Super Handlers | Forklift Sales, Rentals & Repair in Brampton & GTA',
-    description: 'Expert forklift repair, maintenance, sales and rentals across the Greater Toronto Area. All major brands, 24/7 service. Call 647-573-0160.',
+    title: 'Super Handlers — Forklift Repair, Sales & Rentals in Brampton',
+    description: 'Expert forklift repair, sales & rentals in Brampton & the GTA. 24/7 service, all major brands. Call 647-573-0160.',
     images: [
       {
         url: '/android-chrome-512x512.png',
@@ -47,8 +47,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Super Handlers | Forklift Sales, Rentals & Repair — Brampton & GTA',
-    description: 'Expert forklift repair, maintenance, sales and rentals across the Greater Toronto Area.',
+    title: 'Super Handlers — Forklift Repair & Sales in Brampton & GTA',
+    description: 'Expert forklift repair, sales & rentals across the Greater Toronto Area. 24/7 service.',
     images: ['/android-chrome-512x512.png'],
   },
   robots: {
