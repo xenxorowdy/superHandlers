@@ -16,19 +16,25 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/app/component/upload.jsx", "src/app/component/upload.jsx", "src/app/api/auth/[...nextauth]/route.js", "src/app/component/openTracker.jsx"  ],
+    "**/*.tsx",
+    "src/app/component/upload.jsx",
+    "src/app/component/upload.jsx",
+    "src/app/api/auth/[...nextauth]/route.js",
+    "src/app/component/openTracker.jsx",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]

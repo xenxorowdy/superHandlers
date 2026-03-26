@@ -3,15 +3,12 @@ import { connectToDb } from "../../upload/route";
 
 
 type Params = {
-  params: { filename: string };
+  params: Promise<{ filename: string }>;
 };
 
 export async function GET(req: Request, { params }: Params) {
-  // 1. get GridFS bucket
-  
+  const { filename } = await params;
   const { bucket } = await connectToDb();
-
-  const filename = params.filename as string;
   // 2. validate the filename
   if (!filename) {
     return new NextResponse(null, { status: 400, statusText: "Bad Request" });

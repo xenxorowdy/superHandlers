@@ -49,7 +49,8 @@ const BrandsEffect = () => {
                             <Image
                                 src={brand.src}
                                 fill
-                                className="object-contain mix-blend-multiply aspect-[3/2]"
+                                sizes="(max-width: 640px) 128px, 160px"
+                                className="object-contain mix-blend-multiply"
                                 alt={brand.alt}
                             />
                         </div>

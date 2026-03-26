@@ -21,8 +21,7 @@ async function getInventory() {
     try {
         const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
         const res = await fetch(`${baseUrl}/api/getName`, {
-            method: 'GET',
-            cache: 'no-store',
+            next: { revalidate: 60 },
         })
         const data = await res.json()
         return data?.result || []

@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 :root {
   --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
@@ -19,7 +17,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Outfit', sans-serif;
 }
 
 body {
@@ -78,10 +75,11 @@ body {
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(80px);
   z-index: -1;
-  opacity: 0.2;
+  opacity: 0.15;
   pointer-events: none;
+  contain: strict;
 }
 
 .orb-1 {
@@ -117,13 +115,12 @@ input, textarea {
 /* ── Scroll Reveal Animations ── */
 .sr-init {
   opacity: 0;
-  will-change: transform, opacity;
   transition-property: opacity, transform;
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .sr-fade-up {
-  transform: translateY(50px);
+  transform: translateY(24px);
 }
 .sr-fade-up.sr-visible {
   opacity: 1;
@@ -131,7 +128,7 @@ input, textarea {
 }
 
 .sr-fade-down {
-  transform: translateY(-50px);
+  transform: translateY(-24px);
 }
 .sr-fade-down.sr-visible {
   opacity: 1;
@@ -139,7 +136,7 @@ input, textarea {
 }
 
 .sr-fade-left {
-  transform: translateX(-60px);
+  transform: translateX(-30px);
 }
 .sr-fade-left.sr-visible {
   opacity: 1;
@@ -147,7 +144,7 @@ input, textarea {
 }
 
 .sr-fade-right {
-  transform: translateX(60px);
+  transform: translateX(30px);
 }
 .sr-fade-right.sr-visible {
   opacity: 1;
@@ -155,7 +152,7 @@ input, textarea {
 }
 
 .sr-zoom-in {
-  transform: scale(0.9);
+  transform: scale(0.95);
 }
 .sr-zoom-in.sr-visible {
   opacity: 1;

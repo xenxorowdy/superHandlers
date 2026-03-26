@@ -1,17 +1,19 @@
 import { getServerSession } from 'next-auth'
-import { Inter } from 'next/font/google'
+import { Outfit } from 'next/font/google'
 import GoogleAnalytics from './component/GoogleAnalytics'
 import Navbar from './component/Navbar'
 import SessionProvider from "./component/SessionProvider.jsx"
 import Footter from './component/footter'
 import './globals.css'
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import TrackerProvider from './component/openTracker'
-import TrackerClientComponent from './component/trackerstart.jsx'
 import { Analytics } from "@vercel/analytics/next"
 
 
-const inter = Inter({ subsets: ['latin'] })
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-outfit',
+})
 
 const SITE_URL = 'https://www.superhandlerslift.com'
 
@@ -153,10 +155,7 @@ export default async function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
+        <link rel="preload" as="image" href="/wp7388677-forklift-wallpapers.jpg" fetchPriority="high" />
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -166,22 +165,18 @@ export default async function RootLayout({ children }) {
         <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full site info" />
       </head>
 
-      <TrackerProvider>
-        <TrackerClientComponent>
-          <body className={inter.className}>
-            <Navbar />
-            <SessionProvider session={session}>
-              <div style={{ minHeight: "500px" }} >
-                {children}
-                <SpeedInsights />
-              </div>
-            </SessionProvider>
-            <Footter />
-            <GoogleAnalytics />
-          </body>
-        </TrackerClientComponent>
-      </TrackerProvider>
-      <Analytics/>
+      <body className={outfit.className}>
+        <Navbar />
+        <SessionProvider session={session}>
+          <div style={{ minHeight: "500px" }} >
+            {children}
+          </div>
+        </SessionProvider>
+        <Footter />
+        <GoogleAnalytics />
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   )
 }

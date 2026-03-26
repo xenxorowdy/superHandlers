@@ -36,9 +36,11 @@ export default function Home() {
         <Image
           src="/wp7388677-forklift-wallpapers.jpg"
           fill
+          sizes="100vw"
           className="object-cover"
           alt="Forklift warehouse operations at Super Handlers, Brampton Ontario"
           priority
+          quality={75}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a2335]/95 via-[#1a2335]/80 to-[#1a2335]/40" />
 
@@ -147,8 +149,11 @@ export default function Home() {
                 <Image
                   src="/homescreen.jpg"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                   alt="Super Handlers certified forklift technician performing maintenance"
+                  loading="lazy"
+                  quality={75}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a2335]/50 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
