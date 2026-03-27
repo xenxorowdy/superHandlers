@@ -76,10 +76,10 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <a
             href="tel:+6475730160"
-            className={`hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 ${
+            className={`hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl text-slate-900 font-semibold text-sm transition-all duration-300 ${
               scrolled
-                ? 'text-slate-400 hover:text-white'
-                : 'text-slate-900 hover:text-white'
+                ? 'hover:font-bold'
+                : 'text-slate-700 hover:text-slate-900'
             }`}
           >
             <FaPhoneAlt className="text-xs text-[#5ba3b5]" />

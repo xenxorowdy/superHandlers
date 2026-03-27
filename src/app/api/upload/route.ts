@@ -5,6 +5,28 @@ import { authOptions } from "../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { connectToDb } from "../../../lib/db";
 
+async function uploadImageToGridFS(
+  bucket: any,
+  file: Blob,
+  metadata: Record<string, unknown>
+): Promise<string> {
+  const fileExtension = file.type.split("/").pop() || "jpg";
+  const filename = `${uuidv4()}.${fileExtension}`;
+  const buffer = Buffer.from(await file.arrayBuffer());
+  const stream = Readable.from(buffer);
+
+  const uploadStream = bucket.openUploadStream(filename, {
+    contentType: file.type,
+    metadata,
+  });
+
+  await new Promise<void>((resolve, reject) => {
+    stream.pipe(uploadStream).on("finish", resolve).on("error", reject);
+  });
+
+  return filename;
+}
+
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
   if (!session) {
@@ -15,47 +37,69 @@ export async function POST(req: Request) {
     const { bucket } = await connectToDb();
     const data = await req.formData();
 
-    const imageFile = data.get("image") as Blob | null;
     const title = (data.get("title") as string) || "";
     const description = (data.get("description") as string) || "";
     const price = (data.get("price") as string) || "";
     const category = (data.get("category") as string) || "";
 
-    if (!imageFile || typeof imageFile === "string") {
-      return NextResponse.json(
-        { error: "Image file is required" },
-        { status: 400 }
-      );
-    }
-
     if (!title.trim()) {
-      return NextResponse.json(
-        { error: "Title is required" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Title is required" }, { status: 400 });
     }
 
-    const fileExtension = imageFile.type.split("/").pop() || "jpg";
-    const filename = `${uuidv4()}.${fileExtension}`;
+    // Collect all uploaded images (images[0], images[1], ...)
+    const imageFiles: Blob[] = [];
+    let i = 0;
+    while (true) {
+      const file = data.get(`images[${i}]`) as Blob | null;
+      if (!file || typeof file === "string") break;
+      imageFiles.push(file);
+      i++;
+    }
 
-    const buffer = Buffer.from(await imageFile.arrayBuffer());
-    const stream = Readable.from(buffer);
+    // Fallback: legacy single "image" field
+    if (imageFiles.length === 0) {
+      const single = data.get("image") as Blob | null;
+      if (single && typeof single !== "string") imageFiles.push(single);
+    }
 
-    const uploadStream = bucket.openUploadStream(filename, {
-      contentType: imageFile.type,
-      metadata: { title, description, price, selected: category },
+    if (imageFiles.length === 0) {
+      return NextResponse.json({ error: "At least one image is required" }, { status: 400 });
+    }
+
+    // Upload extra images first so we have their filenames
+    const extraFilenames: string[] = [];
+    for (let j = 1; j < imageFiles.length; j++) {
+      const extraFilename = await uploadImageToGridFS(bucket, imageFiles[j], {
+        isPrimary: false,
+        // primaryFilename added below after primary is uploaded
+      });
+      extraFilenames.push(extraFilename);
+    }
+
+    // Upload primary image with full metadata + extra filenames list
+    const primaryFilename = await uploadImageToGridFS(bucket, imageFiles[0], {
+      title,
+      description,
+      price,
+      selected: category,
+      extraImages: extraFilenames,
     });
 
-    await new Promise<void>((resolve, reject) => {
-      stream.pipe(uploadStream).on("finish", resolve).on("error", reject);
-    });
+    // Back-patch primaryFilename onto extra image metadata
+    if (extraFilenames.length > 0) {
+      const { client } = await connectToDb();
+      await client
+        .db()
+        .collection("images.files")
+        .updateMany(
+          { filename: { $in: extraFilenames } },
+          { $set: { "metadata.primaryFilename": primaryFilename } }
+        );
+    }
 
-    return NextResponse.json({ success: true, filename });
+    return NextResponse.json({ success: true, filename: primaryFilename, extraImages: extraFilenames });
   } catch (err) {
     console.error("Upload error:", err);
-    return NextResponse.json(
-      { error: "Upload failed" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Upload failed" }, { status: 500 });
   }
 }

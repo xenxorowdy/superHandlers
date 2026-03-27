@@ -2,77 +2,66 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import "../card.scss"
-import { FaTrash } from 'react-icons/fa'
+import { FaTrash, FaPhoneAlt } from 'react-icons/fa'
 import MyModal from './Modal'
-import FullModal from './FullModal'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer, toast } from 'react-toastify'
 import axios from 'axios'
 import { buildInventoryUrl } from '@/lib/shopSeo'
 
-export default function Cards({ res, title, price, desc, selected, deleted, setDeleteFile }) {
+const PHONE = '+16475730160'
+
+const CATEGORY_COLORS = {
+  'New ForkLift':       { bg: 'bg-emerald-100', text: 'text-emerald-700', label: 'New' },
+  'Rental ForkLift':    { bg: 'bg-blue-100',    text: 'text-blue-700',    label: 'Rental' },
+  'Pre Owned ForkLift': { bg: 'bg-amber-100',   text: 'text-amber-700',   label: 'Pre-Owned' },
+}
+
+export default function Cards({ res, title, price, desc, selected, deleted, setDeleteFile, uploadDate }) {
   const [urls] = useState(`/api/uploads/${res}`)
   const [open, setOpen] = useState(false)
-  const [imageOpen, setImageOpen] = useState(false)
   const [imgError, setImgError] = useState(false)
 
   const handleDelete = () => {
-    axios(`api/delete/${res}`, { method: "DELETE" })
+    axios(`api/delete/${res}`, { method: 'DELETE' })
       .then((resp) => {
         if (resp.status === 200) {
           setDeleteFile(res)
-          toast.success("Card Deleted", {
-            position: "bottom-left",
-            autoClose: 3000,
-            theme: "dark",
-          })
-        } else throw new Error("Delete failed")
+          toast.success('Card Deleted', { position: 'bottom-left', autoClose: 3000, theme: 'dark' })
+        } else throw new Error('Delete failed')
       })
       .catch(() => {
-        toast.error("Error — try again later", {
-          position: "bottom-left",
-          autoClose: 5000,
-          theme: "dark",
-        })
+        toast.error('Error — try again later', { position: 'bottom-left', autoClose: 5000, theme: 'dark' })
       })
   }
 
-  const formattedPrice = `$${new Intl.NumberFormat('en-US').format(price || 0)}`
-  const isRental = selected === "Rental ForkLift"
+  const isRental = selected === 'Rental ForkLift'
   const detailsHref = buildInventoryUrl({ filename: res, metadata: { title } })
+  const formattedPrice = `$${new Intl.NumberFormat('en-US').format(price || 0)}`
 
   return (
-    <article className="card-item group" itemScope itemType="https://schema.org/Product">
+    <article
+      className="group relative bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col w-full"
+      itemScope
+      itemType="https://schema.org/Product"
+    >
       <meta itemProp="category" content={selected || 'Forklift'} />
 
-      {/* Category + Delete */}
-      <div className="flex items-center justify-between px-4 pt-3 pb-1">
-        <span className="text-[10px] font-bold text-[#5ba3b5] uppercase tracking-wider">
-          {selected || 'Listing'}
-        </span>
-        {deleted && (
-          <button
-            onClick={() => setOpen(true)}
-            className="text-slate-400 hover:text-red-500 transition-colors p-1"
-            aria-label="Delete listing"
-          >
-            <FaTrash size={12} />
-          </button>
-        )}
-      </div>
+      {/* Delete button (admin only) */}
+      {deleted && (
+        <button
+          onClick={() => setOpen(true)}
+          className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-white/90 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-red-500 hover:border-red-200 transition-all shadow-sm"
+          aria-label="Delete listing"
+        >
+          <FaTrash size={11} />
+        </button>
+      )}
 
-      {/* Image */}
-      <figure
-        onClick={() => setImageOpen(true)}
-        className="relative w-full h-[220px] cursor-pointer overflow-hidden bg-slate-100 m-0"
-        role="button"
-        tabIndex={0}
-        aria-label={`View details for ${title || 'forklift'}`}
-        onKeyDown={(e) => e.key === 'Enter' && setImageOpen(true)}
-      >
+      {/* Cover image */}
+      <Link href={detailsHref} className="relative block w-full h-[240px] overflow-hidden bg-slate-100 shrink-0 cursor-pointer">
         {imgError ? (
-          <div className="w-full h-full flex items-center justify-center text-slate-300 text-sm">
+          <div className="w-full h-full flex items-center justify-center text-slate-300 text-sm font-medium">
             Image unavailable
           </div>
         ) : (
@@ -81,61 +70,70 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
             fill
             unoptimized
             className="object-cover transition-transform duration-500 group-hover:scale-105"
-            alt={`${title || 'Forklift'} — ${selected || 'forklift'} available at Super Handlers, Brampton`}
+            alt={`${title || 'Forklift'} — ${selected || 'forklift'} for sale at Super Handlers`}
             itemProp="image"
             onError={() => setImgError(true)}
           />
         )}
-      </figure>
+      </Link>
 
       {/* Info */}
-      <div className="px-4 py-3 border-t border-slate-100">
-        <h3 className="text-sm font-bold text-slate-900 truncate mb-1.5" itemProp="name">
+      <div className="flex flex-col flex-1 p-5">
+        {/* Category tag */}
+        {(() => {
+          const cat = CATEGORY_COLORS[selected]
+          return cat ? (
+            <span className={`self-start mb-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${cat.bg} ${cat.text}`}>
+              {cat.label}
+            </span>
+          ) : null
+        })()}
+        <h3 className="text-[15px] font-black text-slate-900 leading-tight mb-1 line-clamp-2" itemProp="name">
           <Link href={detailsHref} className="hover:text-[#5ba3b5] transition-colors">
             {title || 'Forklift'}
           </Link>
         </h3>
-        {desc && (
-          <p className="sr-only" itemProp="description">{desc}</p>
-        )}
-        <div className="flex items-baseline justify-between" itemProp="offers" itemScope itemType="https://schema.org/Offer">
-          <p className="text-lg font-black text-[#5ba3b5] tracking-tight">
-            <span itemProp="price" content={price || '0'}>{formattedPrice}</span>
-            <meta itemProp="priceCurrency" content="CAD" />
-            <meta itemProp="availability" content="https://schema.org/InStock" />
-            {isRental && (
-              <span className="text-xs font-medium text-slate-400 ml-0.5">/mo</span>
-            )}
+
+        {desc && <p className="sr-only" itemProp="description">{desc}</p>}
+
+        {/* Price */}
+        <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="flex items-baseline gap-1 mt-2 mb-4">
+          <span className="text-2xl font-black text-[#5ba3b5] tracking-tight" itemProp="price" content={price || '0'}>
+            {formattedPrice}
+          </span>
+          <span className="text-xs font-semibold text-slate-400">CAD</span>
+          {isRental && <span className="text-xs font-semibold text-slate-400">/mo</span>}
+          <meta itemProp="priceCurrency" content="CAD" />
+          <meta itemProp="availability" content="https://schema.org/InStock" />
+        </div>
+
+        {/* Listing date */}
+        {uploadDate && (
+          <p className="text-[11px] text-slate-400 -mt-2 mb-2">
+            Listed {new Date(uploadDate).toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' })}
           </p>
+        )}
+
+        {/* Actions */}
+        <div className="flex gap-2 mt-auto">
           <Link
             href={detailsHref}
-            className="text-xs font-semibold text-[#5ba3b5] hover:text-[#7ab8c7] transition-colors"
+            className="flex-1 inline-flex items-center justify-center rounded-xl bg-[#5ba3b5] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#4a92a4] active:scale-[0.98] transition-all duration-200"
           >
-            View Details →
+            View Details
           </Link>
+          <a
+            href={`tel:${PHONE}`}
+            className="inline-flex items-center justify-center rounded-xl bg-slate-100 px-3.5 py-2.5 text-slate-600 hover:bg-[#5ba3b5]/10 hover:text-[#5ba3b5] active:scale-[0.98] transition-all duration-200"
+            aria-label="Call Super Handlers"
+          >
+            <FaPhoneAlt size={13} />
+          </a>
         </div>
       </div>
 
       <MyModal open={open} setOpen={setOpen} handleDelete={handleDelete} />
-      <FullModal
-        title={title}
-        desc={desc}
-        price={price}
-        open={imageOpen}
-        handleImage={() => setImageOpen(false)}
-        url={urls}
-        selected={selected}
-      />
-      <ToastContainer
-        position="bottom-left"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+      <ToastContainer position="bottom-left" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick draggable pauseOnHover theme="dark" />
     </article>
   )
 }

@@ -33,7 +33,7 @@ const DeleteImage = () => {
   },[deleteFile])
 
   return (
-    <div className='m-[16px]' >
+    <div className='pt-[102px] px-10' >
          <div style={{gridTemplateColumns:"repeat(auto-fit, minmax(310px,1fr))",display:"grid",gap:"20px",padding:"0px px 0px 12px",minHeight:"250px!important",paddingBottom:"16px" , justifyItems:"center",paddingTop:"1%" }}>
       { loading ? Array(20).fill(null).map((e,index)=><Skeleton key={index}/>)  :
       

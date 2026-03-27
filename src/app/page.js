@@ -4,18 +4,99 @@ import Link from 'next/link'
 import BrandsEffect from './component/BrandsEffect'
 import ScrollReveal, { ScrollRevealGroup } from './component/ScrollReveal'
 import StatsCounter from './component/CountUp'
-import { FaWrench, FaCogs, FaTools, FaCheckCircle, FaStar, FaShieldAlt, FaArrowRight, FaForklift, FaPhoneAlt } from 'react-icons/fa'
+import { FaWrench, FaCogs, FaTools, FaCheckCircle, FaStar, FaShieldAlt, FaArrowRight, FaPhoneAlt } from 'react-icons/fa'
 
 export const metadata = {
   title: 'Forklift Repair, Sales & Rentals in Brampton & the GTA',
   description: 'Expert forklift repair, sales & rentals in Brampton & the GTA. 24/7 emergency service, all major brands. Call 647-573-0160.',
+  keywords: [
+    'forklift repair Brampton', 'forklift repair GTA', 'forklift for sale Brampton',
+    'forklift rental Brampton', 'forklift maintenance Ontario', '24/7 forklift repair',
+    'Toyota forklift Brampton', 'Hyster forklift GTA', 'warehouse forklift service',
+    'mobile forklift repair', 'emergency forklift repair', 'forklift dealer Brampton',
+  ],
   openGraph: {
     title: 'Super Handlers — Forklift Repair, Sales & Rentals in Brampton',
     description: 'Expert forklift repair, sales & rentals across the Greater Toronto Area. 24/7 service, all major brands.',
     url: 'https://www.superhandlerslift.com',
+    images: [{ url: '/android-chrome-512x512.png', width: 512, height: 512, alt: 'Super Handlers' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Super Handlers — Forklift Repair, Sales & Rentals in Brampton',
+    description: 'Expert forklift repair, sales & rentals across the Greater Toronto Area. 24/7 service, all major brands.',
   },
   alternates: {
     canonical: 'https://www.superhandlerslift.com',
+  },
+}
+
+const SITE_URL = 'https://www.superhandlerslift.com'
+
+const homeFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Does Super Handlers offer 24/7 emergency forklift repair in Brampton?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Super Handlers provides 24/7 emergency mobile forklift repair across Brampton, Mississauga, Toronto, Vaughan, and the Greater Toronto Area. Call us any time at +1-647-573-0160.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What forklift brands does Super Handlers service and sell?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We service and sell all major forklift brands including Toyota, Hyster, Yale, Crown, Raymond, Nissan, Clark, Caterpillar, Linde, and Jungheinrich. We carry genuine OEM parts for all brands.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I rent a forklift from Super Handlers in Brampton?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. We offer short-term and long-term forklift rentals. Our rental fleet includes electric, propane, and diesel forklifts from all major brands. Contact us or browse our rental inventory online.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is Super Handlers located?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Super Handlers is located at 11 Holland Dr, Unit 9, Bolton, ON L7E 1G7. We serve Brampton, Mississauga, Toronto, Vaughan, Etobicoke, and the full Greater Toronto Area.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Super Handlers sell used or pre-owned forklifts?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. We carry certified pre-owned forklifts that are inspected and tested by our certified technicians. All pre-owned units come with a condition report and competitive pricing.',
+      },
+    },
+  ],
+}
+
+const homeServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Forklift Repair & Maintenance',
+  provider: { '@type': 'LocalBusiness', name: 'Super Handlers', url: SITE_URL },
+  areaServed: [
+    { '@type': 'City', name: 'Brampton' },
+    { '@type': 'City', name: 'Toronto' },
+    { '@type': 'City', name: 'Mississauga' },
+    { '@type': 'City', name: 'Vaughan' },
+  ],
+  description: 'Professional forklift repair, maintenance, sales and rental services across Brampton and the Greater Toronto Area.',
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/InStock',
+    priceCurrency: 'CAD',
+    seller: { '@type': 'Organization', name: 'Super Handlers' },
   },
 }
 
@@ -28,6 +109,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen relative overflow-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeServiceSchema) }} />
       <div className="bg-orb orb-1"></div>
       <div className="bg-orb orb-2"></div>
 

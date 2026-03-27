@@ -30,15 +30,16 @@ export const metadata = {
     template: '%s | Super Handlers',
   },
   description: 'Expert forklift repair, sales & rentals in Brampton & the GTA. 24/7 emergency service. Toyota, Hyster, Yale, Crown & more. Call 647-573-0160.',
-  keywords: ['forklift repair Brampton', 'forklift rental GTA', 'forklift sales Toronto', 'forklift maintenance', 'used forklift', 'forklift service 24/7', 'warehouse equipment Brampton', 'Super Handlers'],
+  keywords: [
+    'forklift repair Brampton', 'forklift rental GTA', 'forklift sales Toronto',
+    'forklift maintenance', 'used forklift', 'forklift service 24/7',
+    'warehouse equipment Brampton', 'forklift dealer Ontario', 'Super Handlers',
+    'forklift repair Toronto', 'forklift rental Mississauga', 'Toyota forklift dealer',
+  ],
   authors: [{ name: 'Super Handlers' }],
   creator: 'Super Handlers',
   publisher: 'Super Handlers',
-  formatDetection: {
-    telephone: true,
-    email: true,
-    address: true,
-  },
+  formatDetection: { telephone: true, email: true, address: true },
   openGraph: {
     type: 'website',
     locale: 'en_CA',
@@ -51,12 +52,12 @@ export const metadata = {
         url: '/android-chrome-512x512.png',
         width: 512,
         height: 512,
-        alt: 'Super Handlers Logo',
+        alt: 'Super Handlers — Forklift Dealer & Repair, Brampton Ontario',
       },
     ],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Super Handlers — Forklift Repair & Sales in Brampton & GTA',
     description: 'Expert forklift repair, sales & rentals across the Greater Toronto Area. 24/7 service.',
     images: ['/android-chrome-512x512.png'],
@@ -80,6 +81,7 @@ export const metadata = {
     },
   },
   verification: {},
+  category: 'Forklift Dealer & Repair Service',
 }
 
 const businessSchema = {
@@ -164,6 +166,10 @@ export default async function RootLayout({ children }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <link rel="preload" as="image" href="/wp7388677-forklift-wallpapers.jpg" fetchPriority="high" />
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
