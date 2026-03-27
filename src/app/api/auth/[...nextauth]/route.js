@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 import { NextResponse } from "next/server";
 
-import { connectToDb,getfiles } from "../../upload/route";
+import { connectToDb } from "@/lib/db";
  async function login(req) {
         const {client} = await connectToDb();
         if(!req) return null

@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import "../card.scss"
 import { FaTrash } from 'react-icons/fa'
 import MyModal from './Modal'
@@ -8,6 +9,7 @@ import FullModal from './FullModal'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer, toast } from 'react-toastify'
 import axios from 'axios'
+import { buildInventoryUrl } from '@/lib/shopSeo'
 
 export default function Cards({ res, title, price, desc, selected, deleted, setDeleteFile }) {
   const [urls] = useState(`/api/uploads/${res}`)
@@ -38,6 +40,7 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
 
   const formattedPrice = `$${new Intl.NumberFormat('en-US').format(price || 0)}`
   const isRental = selected === "Rental ForkLift"
+  const detailsHref = buildInventoryUrl({ filename: res, metadata: { title } })
 
   return (
     <article className="card-item group" itemScope itemType="https://schema.org/Product">
@@ -88,7 +91,9 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
       {/* Info */}
       <div className="px-4 py-3 border-t border-slate-100">
         <h3 className="text-sm font-bold text-slate-900 truncate mb-1.5" itemProp="name">
-          {title || 'Forklift'}
+          <Link href={detailsHref} className="hover:text-[#5ba3b5] transition-colors">
+            {title || 'Forklift'}
+          </Link>
         </h3>
         {desc && (
           <p className="sr-only" itemProp="description">{desc}</p>
@@ -102,12 +107,12 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
               <span className="text-xs font-medium text-slate-400 ml-0.5">/mo</span>
             )}
           </p>
-          <button
-            onClick={() => setImageOpen(true)}
+          <Link
+            href={detailsHref}
             className="text-xs font-semibold text-[#5ba3b5] hover:text-[#7ab8c7] transition-colors"
           >
             View Details →
-          </button>
+          </Link>
         </div>
       </div>
 

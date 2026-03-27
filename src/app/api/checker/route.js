@@ -1,9 +1,9 @@
-import { connectToDb } from "../upload/route";
+import { connectToDb } from "@/lib/db";
 
 
 export async function POST(request) {
     const req = await request.json()
-    const {client} = connectToDb()
+    const {client} = await connectToDb()
 const result = await client
 .db()
 .collection("password.check")

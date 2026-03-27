@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import ShopContent from './ShopContent'
+import { getInventory } from '@/lib/inventory'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata = {
     title: 'Forklift Inventory — Sales, Rentals & Pre-Owned',
@@ -17,22 +20,14 @@ export const metadata = {
     },
 }
 
-async function getInventory() {
+export default async function Shop() {
+    let inventory = []
+
     try {
-        const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
-        const res = await fetch(`${baseUrl}/api/getName`, {
-            next: { revalidate: 60 },
-        })
-        const data = await res.json()
-        return data?.result || []
+        inventory = await getInventory()
     } catch (error) {
         console.error('Failed to fetch inventory:', error)
-        return []
     }
-}
-
-export default async function Shop() {
-    const inventory = await getInventory()
 
     const structuredData = {
         '@context': 'https://schema.org',
@@ -149,7 +144,11 @@ export default async function Shop() {
                         {inventory.map((item) => (
                             <li key={item.filename}>
                                 <article>
-                                    <h3>{item.metadata?.title || 'Forklift'}</h3>
+                                    <h3>
+                                        <Link href={item.href}>
+                                            {item.metadata?.title || 'Forklift'}
+                                        </Link>
+                                    </h3>
                                     <p>Category: {item.metadata?.selected || 'Forklift'}</p>
                                     <p>Price: ${item.metadata?.price || '0'} CAD{item.metadata?.selected === 'Rental ForkLift' ? ' per month' : ''}</p>
                                     {item.metadata?.description && <p>{item.metadata.description}</p>}

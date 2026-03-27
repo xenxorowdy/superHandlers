@@ -1,38 +1,9 @@
-import { MongoClient, GridFSBucket } from "mongodb";
-declare global {
-  var client: MongoClient | null;
-  var bucket: GridFSBucket | null;
-}
 import { NextResponse } from "next/server";
 import { Readable } from "stream";
 import { v4 as uuidv4 } from "uuid";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
-
-const MONGODB_URI = process.env.MONGODB_URI;
-if (!MONGODB_URI) {
-  throw new Error(
-    "Please define the MONGODB_URI environment variable inside .env.local"
-  );
-}
-
-export async function connectToDb() {
-  if (global.client) {
-    return {
-      client: global.client,
-      bucket: global.bucket!,
-    };
-  }
-
-  const client = (global.client = new MongoClient(MONGODB_URI!, {}));
-  const bucket = (global.bucket = new GridFSBucket(client.db(), {
-    bucketName: "images",
-  }));
-
-  await global.client.connect();
-  console.log("Connected to the Database");
-  return { client, bucket: bucket! };
-}
+import { connectToDb } from "../../../lib/db";
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);

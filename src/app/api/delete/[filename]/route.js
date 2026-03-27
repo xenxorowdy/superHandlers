@@ -1,4 +1,4 @@
-import { connectToDb } from "../../upload/route";
+import { connectToDb } from "@/lib/db";
 
 export async function DELETE(request, { params }) {
   const { filename } = await params;

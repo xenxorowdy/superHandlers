@@ -1,16 +1,6 @@
+import { getInventory } from "@/lib/inventory";
 import { NextResponse } from "next/server";
-import { connectToDb } from "../upload/route";
 
-async function getInventory() {
-  const { client } = await connectToDb();
-  return client
-    .db()
-    .collection("images.files")
-    .find()
-    .sort({ uploadDate: -1 })
-    .project({ filename: 1, metadata: 1 })
-    .toArray();
-}
 
 export async function GET() {
   try {
@@ -31,4 +21,3 @@ export async function POST() {
     return NextResponse.json({ result: [] }, { status: 500 });
   }
 }
-

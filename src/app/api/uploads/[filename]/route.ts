@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { connectToDb } from "../../upload/route";
+import { connectToDb } from "../../../../lib/db";
 
 
 type Params = {
