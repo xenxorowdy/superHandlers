@@ -44,14 +44,13 @@ const Navbar = () => {
     <>
       <nav className={scrolled ? 'nav scrolled' : 'nav'}>
         <Link href="/" className="flex items-center gap-2.5" onClick={closeMobileMenu}>
-          <Image
-            src="/logo.png"
-            width={80}
-            height={45}
-            className="hover:scale-105 transition-transform duration-300 rounded-lg w-auto h-auto"
-            alt="Super Handlers — Forklift Sales, Rentals & Repair"
+          <Image 
+            src="/logo.png" 
+            width={80} 
+            height={45} 
+            className="hover:scale-105 transition-transform duration-300 rounded-lg w-auto h-auto" 
+            alt="Super Handlers — Forklift Sales, Rentals & Repair" 
             priority
-            unoptimized
           />
           <span className={`hidden sm:block text-[15px] font-black tracking-tight transition-colors duration-500 leading-tight ${
             scrolled ? 'text-white' : 'text-slate-900'
@@ -127,7 +126,7 @@ const Navbar = () => {
         <div className="flex flex-col h-full w-full relative z-10">
           <div className="flex justify-between items-center mb-12 pb-6 border-b border-white/10">
             <div className="flex items-center gap-3">
-              <Image src="/logo.png" width={120} height={67} alt="Super Handlers" className="rounded-lg w-auto h-auto" unoptimized />
+              <Image src="/logo.png" width={120} height={67} alt="Super Handlers" className="rounded-lg w-auto h-auto" />
               <span className="text-[#8a95a8] uppercase text-base font-semibold tracking-[0.2em]">MENU</span>
             </div>
           </div>

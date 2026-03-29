@@ -60,10 +60,7 @@ Disallow: /login
 User-agent: Google-Extended
 Allow: /
 
-# Meta AI (actual crawler) + Facebook link previews
-User-agent: meta-externalagent
-Allow: /
-
+# Meta AI
 User-agent: FacebookBot
 Allow: /
 
@@ -78,30 +75,6 @@ Disallow: /login
 
 # Cohere
 User-agent: cohere-ai
-Allow: /
-
-# DuckDuckGo
-User-agent: DuckDuckBot
-Allow: /
-
-# ByteDance / TikTok AI
-User-agent: Bytespider
-Allow: /
-
-# OpenAI search crawler
-User-agent: OAI-SearchBot
-Allow: /
-
-# Common Crawl (used to train most AI models)
-User-agent: CCBot
-Allow: /
-
-# Amazon Alexa
-User-agent: Amazonbot
-Allow: /
-
-# Brave Search
-User-agent: BraveBot
 Allow: /
 
 # Common AI crawlers

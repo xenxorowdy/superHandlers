@@ -4,27 +4,19 @@ import { v4 as uuidv4 } from "uuid";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { connectToDb } from "../../../lib/db";
-import sharp from "sharp";
-
-async function compressImage(buffer: Buffer): Promise<Buffer> {
-  return sharp(buffer)
-    .resize({ width: 1200, withoutEnlargement: true })
-    .webp({ quality: 75 })
-    .toBuffer();
-}
 
 async function uploadImageToGridFS(
   bucket: any,
   file: Blob,
   metadata: Record<string, unknown>
 ): Promise<string> {
-  const filename = `${uuidv4()}.webp`;
-  const raw = Buffer.from(await file.arrayBuffer());
-  const buffer = await compressImage(raw);
+  const fileExtension = file.type.split("/").pop() || "jpg";
+  const filename = `${uuidv4()}.${fileExtension}`;
+  const buffer = Buffer.from(await file.arrayBuffer());
   const stream = Readable.from(buffer);
 
   const uploadStream = bucket.openUploadStream(filename, {
-    contentType: "image/webp",
+    contentType: file.type,
     metadata,
   });
 

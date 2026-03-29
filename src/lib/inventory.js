@@ -23,7 +23,7 @@ export async function getInventory() {
   const result = await client
     .db()
     .collection("images.files")
-    .find({ "metadata.isPrimary": { $ne: false } })
+    .find()
     .sort({ uploadDate: -1 })
     .project({ filename: 1, metadata: 1, uploadDate: 1 })
     .toArray();
