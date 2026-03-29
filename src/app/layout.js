@@ -1,6 +1,7 @@
 import { getServerSession } from 'next-auth'
 import { Outfit } from 'next/font/google'
 import GoogleAnalytics from './component/GoogleAnalytics'
+import OpenReplay from './component/OpenReplay'
 import Navbar from './component/Navbar'
 import SessionProvider from "./component/SessionProvider.jsx"
 import Footter from './component/footter'
@@ -192,6 +193,7 @@ export default async function RootLayout({ children }) {
         <GoogleAnalytics />
         <Analytics />
         <SpeedInsights />
+        <OpenReplay />
       </body>
     </html>
   )
