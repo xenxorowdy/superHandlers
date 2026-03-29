@@ -48,7 +48,8 @@ const Navbar = () => {
             src="/logo.png"
             width={80}
             height={45}
-            className="hover:scale-105 transition-transform duration-300 rounded-lg w-auto h-auto"
+            className="hover:scale-105 transition-transform duration-300 rounded-lg"
+            style={{ width: 80, height: 45 }}
             alt="Super Handlers — Forklift Sales, Rentals & Repair"
             priority
             unoptimized
@@ -127,7 +128,7 @@ const Navbar = () => {
         <div className="flex flex-col h-full w-full relative z-10">
           <div className="flex justify-between items-center mb-12 pb-6 border-b border-white/10">
             <div className="flex items-center gap-3">
-              <Image src="/logo.png" width={120} height={67} alt="Super Handlers" className="rounded-lg w-auto h-auto" unoptimized />
+              <Image src="/logo.png" width={120} height={67} alt="Super Handlers" className="rounded-lg" style={{ width: 120, height: 67 }} unoptimized />
               <span className="text-[#8a95a8] uppercase text-base font-semibold tracking-[0.2em]">MENU</span>
             </div>
           </div>
