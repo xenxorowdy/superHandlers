@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle, FaSpinner, FaArrowRight } from 'react-icons/fa'
+import { trackCallClick, trackEmailClick, trackFormSubmission } from '@/lib/analytics'
 
 const Contact = () => {
     const [form, setForm] = useState({ name: '', contact: '', email: '', interest: '', message: '' });
@@ -25,6 +26,7 @@ const Contact = () => {
 
             setStatus('success');
             setForm({ name: '', contact: '', email: '', interest: '', message: '' });
+            trackFormSubmission('Contact page form (success)');
             setTimeout(() => setStatus('idle'), 5000);
         } catch {
             setStatus('idle');
@@ -56,6 +58,18 @@ const Contact = () => {
         },
     ];
 
+    const getCardClick = (card) => {
+        if (!card.href) return undefined
+
+        if (card.href.startsWith('tel')) {
+            return () => trackCallClick(`${card.label} card`)
+        }
+        if (card.href.startsWith('mailto')) {
+            return () => trackEmailClick(`${card.label} card`)
+        }
+        return undefined
+    }
+
     return (
         <main className="min-h-screen relative overflow-hidden">
             <div className="bg-orb orb-1 opacity-10"></div>
@@ -77,10 +91,18 @@ const Contact = () => {
 
                     {/* Quick action pills */}
                     <div className="flex flex-wrap items-center justify-center gap-3">
-                        <a href="tel:+6475730160" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#5ba3b5] text-white font-bold text-sm hover:bg-[#7ab8c7] transition-all duration-300 shadow-lg shadow-[#5ba3b5]/25 active:scale-95">
+                        <a
+                            href="tel:+6475730160"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#5ba3b5] text-white font-bold text-sm hover:bg-[#7ab8c7] transition-all duration-300 shadow-lg shadow-[#5ba3b5]/25 active:scale-95"
+                            onClick={() => trackCallClick('Contact hero quick action')}
+                        >
                             <FaPhoneAlt size={12} /> Call Now
                         </a>
-                        <a href="mailto:superhandlers1@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 text-white font-bold text-sm border border-white/20 hover:bg-white/15 backdrop-blur-sm transition-all duration-300">
+                        <a
+                            href="mailto:superhandlers1@gmail.com"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 text-white font-bold text-sm border border-white/20 hover:bg-white/15 backdrop-blur-sm transition-all duration-300"
+                            onClick={() => trackEmailClick('Contact hero quick action')}
+                        >
                             <FaEnvelope size={12} /> Email Us
                         </a>
                     </div>
@@ -98,6 +120,7 @@ const Contact = () => {
                                     key={i}
                                     {...(card.href ? { href: card.href } : {})}
                                     className="glass-card p-8 rounded-[28px] group flex items-start gap-5 relative overflow-hidden"
+                                    onClick={getCardClick(card)}
                                 >
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-[#5ba3b5]/5 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-[#5ba3b5]/10 transition-all duration-700" />
                                     <div className="w-14 h-14 bg-gradient-to-br from-[#5ba3b5] to-[#7ab8c7] text-white rounded-2xl flex items-center justify-center text-xl group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#5ba3b5]/20 shrink-0">
@@ -215,7 +238,11 @@ const Contact = () => {
                                 </div>
                             </div>
 
-                            <a href="tel:+6475730160" className="block rounded-[28px] bg-gradient-to-r from-[#5ba3b5] to-[#4a9aad] p-8 text-white group hover:shadow-xl hover:shadow-[#5ba3b5]/20 transition-all duration-300">
+                            <a
+                                href="tel:+6475730160"
+                                className="block rounded-[28px] bg-gradient-to-r from-[#5ba3b5] to-[#4a9aad] p-8 text-white group hover:shadow-xl hover:shadow-[#5ba3b5]/20 transition-all duration-300"
+                                onClick={() => trackCallClick('Contact sidebar CTA')}
+                            >
                                 <p className="text-sm font-bold opacity-80 mb-2">Need urgent help?</p>
                                 <p className="text-2xl font-black mb-4">Call us now</p>
                                 <div className="flex items-center gap-2 text-sm font-bold opacity-90 group-hover:gap-3 transition-all">

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 import { FaPhoneAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { trackCallClick } from '@/lib/analytics'
 import "./NavbarStyles.css";
 
 const Navbar = () => {
@@ -83,6 +84,7 @@ const Navbar = () => {
                 ? 'hover:font-bold'
                 : 'text-slate-700 hover:text-slate-900'
             }`}
+            onClick={() => trackCallClick('Navbar desktop call')}
           >
             <FaPhoneAlt className="text-xs text-[#5ba3b5]" />
             <span>647-573-0160</span>
@@ -153,7 +155,11 @@ const Navbar = () => {
           <div className="mobile-panel-footer mt-auto pb-10 space-y-5">
             <div className="p-5 bg-white/5 rounded-2xl border border-white/8">
               <p className="text-[10px] font-black text-[#5ba3b5] uppercase tracking-[0.3em] mb-3">Support</p>
-              <Link href="tel:+1 647-573-0160" className="text-base font-bold text-[#c8cdd6] flex items-center gap-3 hover:text-white transition-colors">
+              <Link
+                href="tel:+1 647-573-0160"
+                className="text-base font-bold text-[#c8cdd6] flex items-center gap-3 hover:text-white transition-colors"
+                onClick={() => trackCallClick('Navbar mobile call')}
+              >
                 <FaPhoneAlt className="text-[#5ba3b5] text-sm" /> +1 647-573-0160
               </Link>
             </div>

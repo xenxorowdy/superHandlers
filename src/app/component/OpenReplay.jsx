@@ -17,11 +17,15 @@ export default function OpenReplay() {
         capturePerformance: true,
         __DISABLE_SECURE_MODE: disableSecureMode,
       })
+      window.__OPENREPLAY_TRACKER = tracker
       tracker.start()
     })
 
     return () => {
       tracker?.stop()
+      if (typeof window !== 'undefined') {
+        window.__OPENREPLAY_TRACKER = undefined
+      }
     }
   }, [])
 

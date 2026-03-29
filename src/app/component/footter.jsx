@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { FaFacebook, FaTwitter, FaLinkedinIn, FaInstagram, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa"
+import { trackCallClick, trackEmailClick } from "@/lib/analytics"
 import "./footer.css"
 
 export default function Footter() {
@@ -60,13 +61,21 @@ export default function Footter() {
             <h4>Contact Us</h4>
             <ul>
               <li>
-                <Link href="tel:+1 647-573-0160" className="contact-item">
+                <Link
+                  href="tel:+1 647-573-0160"
+                  className="contact-item"
+                  onClick={() => trackCallClick('Footer call')}
+                >
                   <span className="contact-icon"><FaPhoneAlt /></span>
                   <span>+1 (647) 573-0160</span>
                 </Link>
               </li>
               <li>
-                <Link href="mailto:superhandlers1@gmail.com" className="contact-item">
+                <Link
+                  href="mailto:superhandlers1@gmail.com"
+                  className="contact-item"
+                  onClick={() => trackEmailClick('Footer email')}
+                >
                   <span className="contact-icon"><FaEnvelope /></span>
                   <span>superhandlers1@gmail.com</span>
                 </Link>
