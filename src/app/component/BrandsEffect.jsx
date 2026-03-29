@@ -52,6 +52,7 @@ const BrandsEffect = () => {
                                 sizes="(max-width: 640px) 128px, 160px"
                                 className="object-contain mix-blend-multiply"
                                 alt={brand.alt}
+                                unoptimized
                             />
                         </div>
                     </SwiperSlide>

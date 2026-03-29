@@ -19,6 +19,7 @@ const About = () => {
           className="object-cover"
           alt="Super Handlers forklift operations"
           priority
+          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1a2335] via-[#1a2335]/70 to-transparent" />
         <div className="relative z-10 container mx-auto px-6 pb-20 md:pb-28">

@@ -57,6 +57,7 @@ export default function ShopContent({ initialData }) {
 
         return list
     }, [initialData, selected, searchQuery, sort])
+    const resultsCount = filteredResult.length
 
     const clearSearch = () => setSearchQuery('')
 
@@ -127,13 +128,13 @@ export default function ShopContent({ initialData }) {
 
             {/* Results count */}
             <p className="text-sm text-slate-400 font-medium mb-6">
-                <span className="text-slate-700 font-black">{filteredResult.length}</span> {filteredResult.length === 1 ? 'unit' : 'units'} found
+                <span className="text-slate-700 font-black">{resultsCount}</span> {resultsCount === 1 ? 'unit' : 'units'} found
                 {selected !== 'All' && <> in <span className="text-[#5ba3b5] font-bold">{CATEGORIES.find(c => c.key === selected)?.label}</span></>}
                 {searchQuery && <> matching &ldquo;<span className="text-slate-600 font-semibold">{searchQuery}</span>&rdquo;</>}
             </p>
 
             {/* Grid */}
-            {filteredResult.length > 0 ? (
+            {resultsCount > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {filteredResult.map(e => (
                         <Cards

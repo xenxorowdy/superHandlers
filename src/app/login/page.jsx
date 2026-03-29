@@ -26,7 +26,7 @@ export default function Login() {
   <a href='/upload' >
   <p className=" flex text-[#3f4550] font-normal gap-4 align-baseline  items-center  w-[240px] text-xl"> <FaCloudUploadAlt className="h-4"/> upload <FaExternalLinkAlt className='h-4 '/> </p>
 <figure>
-<Image  src={'/wp7388677-forklift-wallpapers.jpg'} className=' aspect-[3/2] w-80 h-40' width={300} height={400} alt="Mountains" />
+<Image src={'/wp7388677-forklift-wallpapers.jpg'} className=' aspect-[3/2] w-80 h-40' width={300} height={400} alt="Mountains" unoptimized />
 
   <figcaption>Upload</figcaption>
 </figure>

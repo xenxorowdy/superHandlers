@@ -11,7 +11,7 @@ export default function Footter() {
           {/* Brand Column */}
           <div className="footer-brand">
             <Link href="/" className="footer-logo-link">
-              <Image src="/logo.png" width={40} height={40} alt="Super Handlers logo" className="rounded-lg" />
+              <Image src="/logo.png" width={40} height={40} alt="Super Handlers logo" className="rounded-lg" style={{ width: 40, height: 40 }} unoptimized />
               <span className="footer-logo-text">Super Handlers</span>
             </Link>
             <p className="footer-tagline">
