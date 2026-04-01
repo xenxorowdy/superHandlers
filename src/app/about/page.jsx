@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import ScrollReveal, { ScrollRevealGroup } from '../component/ScrollReveal'
-import { FaQuoteLeft, FaHandshake, FaGlobeAmericas, FaAward, FaTruckLoading, FaCogs, FaPhoneAlt, FaArrowRight } from 'react-icons/fa'
+import { FaQuoteLeft, FaHandshake, FaGlobeAmericas, FaAward, FaTruckLoading, FaCogs, FaPhoneAlt, FaArrowRight, FaWrench, FaBolt, FaShieldAlt, FaCheck, FaUsers } from 'react-icons/fa'
 
 const About = () => {
   return (
@@ -116,6 +116,62 @@ const About = () => {
           </section>
         </ScrollReveal>
 
+        {/* Company Story — Timeline */}
+        <section className="py-16 mb-24">
+          <ScrollReveal animation="fade-up">
+            <div className="text-center mb-16">
+              <span className="inline-block py-1 px-4 rounded-full bg-[#5ba3b5]/10 text-[#5ba3b5] text-[10px] font-black tracking-[0.2em] uppercase border border-[#5ba3b5]/20 mb-6">
+                Our Story
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+                15+ Years in the Making
+              </h2>
+              <p className="text-slate-500 font-medium max-w-2xl mx-auto text-lg">
+                From a single service van to the GTA&rsquo;s most trusted forklift specialists — built one repair at a time.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollRevealGroup animation="fade-up" stagger={120} className="relative space-y-0 max-w-3xl mx-auto">
+            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#5ba3b5] via-[#5ba3b5]/40 to-transparent pointer-events-none" />
+            {[
+              {
+                year: '2009',
+                title: 'Founded in Brampton',
+                body: 'Two licensed forklift technicians launched Super Handlers with a single service van and a commitment to honest, same-day service. Starting with local warehouses and distribution centres in Brampton, the company quickly earned a reputation for transparency, fair pricing, and work done right the first time.',
+              },
+              {
+                year: '2012',
+                title: 'First 200 Clients Served',
+                body: 'Word-of-mouth drove rapid growth across Brampton and Mississauga. By our third year we had serviced over 200 facilities — warehouses, manufacturing plants, and cold-storage operations. We expanded our team and began stocking the most in-demand parts on-hand to cut turnaround times.',
+              },
+              {
+                year: '2016',
+                title: 'GTA-Wide Coverage Established',
+                body: 'We expanded our service radius to cover all of the Greater Toronto Area, including Vaughan, Etobicoke, and Toronto Metro. Parts agreements with Toyota, Hyster, Yale, and Crown distributors gave us the inventory depth to handle complex repairs without delays.',
+              },
+              {
+                year: '2020',
+                title: '24/7 Emergency Callout Launch',
+                body: 'Formalised our around-the-clock emergency response to support Ontario\'s essential industries. Our same-day repair guarantee — covering hydraulic, electrical, and engine faults — became the standard that set us apart from larger franchise chains.',
+              },
+              {
+                year: '2024+',
+                title: '1,000+ Clients & Still Growing',
+                body: 'Today Super Handlers holds long-term service contracts with leading logistics, retail, and manufacturing companies across the GTA. We continue to expand our parts inventory and add certified technicians to keep pace with Ontario\'s growing industrial sector.',
+              },
+            ].map((item, i) => (
+              <div key={i} className="relative pl-16 pb-12">
+                <div className="absolute left-[18px] top-1.5 w-4 h-4 rounded-full bg-[#5ba3b5] border-4 border-slate-50 shadow-md shadow-[#5ba3b5]/30" />
+                <div className="glass-card rounded-[20px] p-7">
+                  <p className="text-[10px] font-black text-[#5ba3b5] tracking-[0.2em] uppercase mb-1">{item.year}</p>
+                  <h3 className="text-xl font-black text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-slate-500 font-medium leading-relaxed">{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </ScrollRevealGroup>
+        </section>
+
         {/* Service Area + Quote — 2 Column */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
           <ScrollReveal animation="fade-right">
@@ -192,6 +248,81 @@ const About = () => {
           </section>
         </ScrollReveal>
 
+        {/* Services Detail */}
+        <section className="mb-24">
+          <ScrollReveal animation="fade-up">
+            <div className="text-center mb-16">
+              <span className="inline-block py-1 px-4 rounded-full bg-[#5ba3b5]/10 text-[#5ba3b5] text-[10px] font-black tracking-[0.2em] uppercase border border-[#5ba3b5]/20 mb-6">
+                What We Do
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+                Full-Spectrum Forklift Services
+              </h2>
+              <p className="text-slate-500 font-medium max-w-xl mx-auto">
+                Every service we offer is backed by certified technicians, genuine parts, and a commitment to keeping your operation moving.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollRevealGroup animation="fade-up" stagger={100} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <FaWrench />,
+                title: 'Repair & Diagnostics',
+                desc: 'Comprehensive on-site and in-shop repairs covering hydraulic systems, mast assemblies, transmissions, and electrical faults across all major forklift brands.',
+                points: ['Hydraulic & mast repair', 'Engine & transmission service', 'Electrical fault diagnostics'],
+              },
+              {
+                icon: <FaCogs />,
+                title: 'Preventive Maintenance',
+                desc: 'Scheduled PM programs tailored to your fleet size and usage cycle — designed to eliminate unplanned downtime before it costs your operation.',
+                points: ['Custom PM schedules', 'OSHA-compliant inspections', 'Detailed service records'],
+              },
+              {
+                icon: <FaAward />,
+                title: 'Certified Parts Supply',
+                desc: 'Over 500 genuine and certified aftermarket parts stocked in our Brampton facility, with same-day availability for the most common components.',
+                points: ['500+ parts in stock', 'All major brands covered', 'Genuine & certified aftermarket'],
+              },
+              {
+                icon: <FaTruckLoading />,
+                title: 'Forklift Rentals & Sales',
+                desc: 'Short-term and long-term rental options for electric, propane, and diesel forklifts — fully serviced and ready for immediate deployment across the GTA.',
+                points: ['Electric, propane & diesel', 'Short & long-term terms', 'Fully maintained fleet'],
+              },
+              {
+                icon: <FaBolt />,
+                title: 'Electric & Battery Service',
+                desc: 'Specialist servicing for electric forklift systems including battery load testing, replacement, charger repair, and controller diagnostics.',
+                points: ['Battery testing & replacement', 'Charger repair & calibration', 'Controller diagnostics'],
+              },
+              {
+                icon: <FaShieldAlt />,
+                title: 'Safety Inspections',
+                desc: 'Certified pre-shift and annual safety inspections in compliance with Ontario Ministry of Labour requirements — keeping your team protected and your operation audit-ready.',
+                points: ['Ministry of Labour compliant', 'Pre-shift inspection checklists', 'Annual certification reports'],
+              },
+            ].map((svc, i) => (
+              <div key={i} className="glass-card rounded-[24px] p-8 flex flex-col gap-5 group hover:shadow-lg hover:shadow-slate-200/60 transition-shadow duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#5ba3b5] to-[#7ab8c7] text-white rounded-xl flex items-center justify-center text-2xl shadow-md shadow-[#5ba3b5]/20 group-hover:scale-110 transition-transform duration-300 shrink-0">
+                  {svc.icon}
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900 mb-2">{svc.title}</h3>
+                  <p className="text-sm text-slate-500 font-medium leading-relaxed mb-4">{svc.desc}</p>
+                  <ul className="space-y-1.5">
+                    {svc.points.map((pt, j) => (
+                      <li key={j} className="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                        <FaCheck className="text-[#5ba3b5] shrink-0" />
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </ScrollRevealGroup>
+        </section>
+
         {/* Core Pillars */}
         <ScrollReveal animation="fade-up">
           <section className="text-center py-20 px-6 md:px-16 glass-strong rounded-[40px] shadow-sm mb-24">
@@ -225,6 +356,62 @@ const About = () => {
             </ScrollRevealGroup>
           </section>
         </ScrollReveal>
+
+        {/* Team */}
+        <section className="glass-strong rounded-[40px] p-10 md:p-16 mb-24">
+          <ScrollReveal animation="fade-up">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+              <div>
+                <span className="inline-block py-1 px-4 rounded-full bg-[#5ba3b5]/10 text-[#5ba3b5] text-[10px] font-black tracking-[0.2em] uppercase border border-[#5ba3b5]/20 mb-6">
+                  Our Team
+                </span>
+                <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+                  The Experts Behind<br />Every Repair.
+                </h2>
+                <p className="text-slate-500 font-medium max-w-lg">
+                  Our technicians are licensed, insured, and trained across all major forklift brands. When we show up, the job gets done right — the first time.
+                </p>
+              </div>
+              <Link href="/contact" className="shrink-0 inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-white bg-[#5ba3b5] hover:bg-[#7ab8c7] transition-all duration-300 shadow-lg shadow-[#5ba3b5]/20 self-start md:self-auto">
+                Get in Touch <FaArrowRight size={12} />
+              </Link>
+            </div>
+          </ScrollReveal>
+          <ScrollRevealGroup animation="fade-up" stagger={100} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: <FaWrench />,
+                title: 'Licensed Technicians',
+                desc: 'Every mechanic holds the provincial certifications required to service, certify, and safely operate industrial lift trucks in Ontario.',
+              },
+              {
+                icon: <FaShieldAlt />,
+                title: 'Fully Insured',
+                desc: 'Super Handlers carries full liability and commercial auto insurance — protecting your facility, your equipment, and our crew on every job.',
+              },
+              {
+                icon: <FaCogs />,
+                title: 'All-Brand Expertise',
+                desc: 'Certified to work on Toyota, Hyster, Yale, Crown, Caterpillar, Clark, and all major electric forklift manufacturers.',
+              },
+              {
+                icon: <FaUsers />,
+                title: '24/7 Availability',
+                desc: 'Our technicians are on call around the clock. A broken forklift at 2 AM is just as costly as one at noon — so we answer both.',
+              },
+            ].map((card, i) => (
+              <div key={i} className="bg-white rounded-[20px] p-7 shadow-sm border border-slate-100 flex flex-col gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#5ba3b5] to-[#7ab8c7] text-white rounded-xl flex items-center justify-center text-xl shadow-md shadow-[#5ba3b5]/20">
+                  {card.icon}
+                </div>
+                <div>
+                  <h4 className="font-black text-slate-900 mb-1.5">{card.title}</h4>
+                  <p className="text-sm text-slate-500 font-medium leading-relaxed">{card.desc}</p>
+                </div>
+              </div>
+            ))}
+          </ScrollRevealGroup>
+        </section>
 
         {/* CTA Banner */}
         <ScrollReveal animation="fade-up">
