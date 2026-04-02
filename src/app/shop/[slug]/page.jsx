@@ -429,6 +429,10 @@ export default async function ShopItemPage({ params }) {
                                             itemScope
                                             itemType="https://schema.org/Product"
                                         >
+                                            <link itemProp="image" href={`${SITE_URL}/api/uploads/${rel.filename}`} />
+                                            <div itemProp="brand" itemScope itemType="https://schema.org/Brand">
+                                                <meta itemProp="name" content="Super Handlers" />
+                                            </div>
                                             <Link href={rel.href} className="block relative h-48 overflow-hidden bg-slate-100">
                                                 <Image
                                                     src={`/api/uploads/${rel.filename}`}
@@ -467,6 +471,20 @@ export default async function ShopItemPage({ params }) {
                                                             <span className="text-xs text-slate-400">Contact for pricing</span>
                                                         )}
                                                         <meta itemProp="availability" content="https://schema.org/InStock" />
+                                                        <div itemProp="shippingDetails" itemScope itemType="https://schema.org/OfferShippingDetails">
+                                                            <div itemProp="shippingRate" itemScope itemType="https://schema.org/MonetaryAmount">
+                                                                <meta itemProp="value" content="0" />
+                                                                <meta itemProp="currency" content="CAD" />
+                                                            </div>
+                                                            <div itemProp="shippingDestination" itemScope itemType="https://schema.org/DefinedRegion">
+                                                                <meta itemProp="addressCountry" content="CA" />
+                                                                <meta itemProp="addressRegion" content="ON" />
+                                                            </div>
+                                                        </div>
+                                                        <div itemProp="hasMerchantReturnPolicy" itemScope itemType="https://schema.org/MerchantReturnPolicy">
+                                                            <meta itemProp="applicableCountry" content="CA" />
+                                                            <link itemProp="returnPolicyCategory" href="https://schema.org/MerchantReturnNotPermitted" />
+                                                        </div>
                                                     </span>
                                                     <Link href={rel.href} className="text-xs font-semibold text-[#5ba3b5] hover:text-[#4a92a4] transition-colors">
                                                         View →

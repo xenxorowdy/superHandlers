@@ -1,43 +1,72 @@
-"use client"
-import React, { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { FaTrash, FaPhoneAlt } from 'react-icons/fa'
-import MyModal from './Modal'
-import 'react-toastify/dist/ReactToastify.css'
-import { ToastContainer, toast } from 'react-toastify'
-import axios from 'axios'
-import { buildInventoryUrl } from '@/lib/shopSeo'
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { FaTrash, FaPhoneAlt } from "react-icons/fa";
+import MyModal from "./Modal";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import { buildInventoryUrl, SITE_URL } from "@/lib/shopSeo";
 
-const PHONE = '+16475730160'
+const PHONE = "+16475730160";
 
 const CATEGORY_COLORS = {
-  'New ForkLift':       { bg: 'bg-emerald-100', text: 'text-emerald-700', label: 'New' },
-  'Rental ForkLift':    { bg: 'bg-blue-100',    text: 'text-blue-700',    label: 'Rental' },
-  'Pre Owned ForkLift': { bg: 'bg-amber-100',   text: 'text-amber-700',   label: 'Pre-Owned' },
-}
+  "New ForkLift": {
+    bg: "bg-emerald-100",
+    text: "text-emerald-700",
+    label: "New",
+  },
+  "Rental ForkLift": {
+    bg: "bg-blue-100",
+    text: "text-blue-700",
+    label: "Rental",
+  },
+  "Pre Owned ForkLift": {
+    bg: "bg-amber-100",
+    text: "text-amber-700",
+    label: "Pre-Owned",
+  },
+};
 
-export default function Cards({ res, title, price, desc, selected, deleted, setDeleteFile, uploadDate }) {
-  const [urls] = useState(`/api/uploads/${res}`)
-  const [open, setOpen] = useState(false)
-  const [imgError, setImgError] = useState(false)
+export default function Cards({
+  res,
+  title,
+  price,
+  desc,
+  selected,
+  deleted,
+  setDeleteFile,
+  uploadDate,
+}) {
+  const [urls] = useState(`/api/uploads/${res}`);
+  const [open, setOpen] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const handleDelete = () => {
-    axios(`api/delete/${res}`, { method: 'DELETE' })
+    axios(`api/delete/${res}`, { method: "DELETE" })
       .then((resp) => {
         if (resp.status === 200) {
-          setDeleteFile(res)
-          toast.success('Card Deleted', { position: 'bottom-left', autoClose: 3000, theme: 'dark' })
-        } else throw new Error('Delete failed')
+          setDeleteFile(res);
+          toast.success("Card Deleted", {
+            position: "bottom-left",
+            autoClose: 3000,
+            theme: "dark",
+          });
+        } else throw new Error("Delete failed");
       })
       .catch(() => {
-        toast.error('Error — try again later', { position: 'bottom-left', autoClose: 5000, theme: 'dark' })
-      })
-  }
+        toast.error("Error — try again later", {
+          position: "bottom-left",
+          autoClose: 5000,
+          theme: "dark",
+        });
+      });
+  };
 
-  const isRental = selected === 'Rental ForkLift'
-  const detailsHref = buildInventoryUrl({ filename: res, metadata: { title } })
-  const formattedPrice = `$${new Intl.NumberFormat('en-US').format(price || 0)}`
+  const isRental = selected === "Rental ForkLift";
+  const detailsHref = buildInventoryUrl({ filename: res, metadata: { title } });
+  const formattedPrice = `$${new Intl.NumberFormat("en-US").format(price || 0)}`;
 
   return (
     <article
@@ -45,7 +74,11 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
       itemScope
       itemType="https://schema.org/Product"
     >
-      <meta itemProp="category" content={selected || 'Forklift'} />
+      <meta itemProp="category" content={selected || "Forklift"} />
+      <link itemProp="image" href={`${SITE_URL}/api/uploads/${res}`} />
+      <div itemProp="brand" itemScope itemType="https://schema.org/Brand">
+        <meta itemProp="name" content="Super Handlers" />
+      </div>
 
       {/* Delete button (admin only) */}
       {deleted && (
@@ -59,7 +92,10 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
       )}
 
       {/* Cover image */}
-      <Link href={detailsHref} className="relative block w-full h-[240px] overflow-hidden bg-slate-100 shrink-0 cursor-pointer">
+      <Link
+        href={detailsHref}
+        className="relative block w-full h-[240px] overflow-hidden bg-slate-100 shrink-0 cursor-pointer"
+      >
         {imgError ? (
           <div className="w-full h-full flex items-center justify-center text-slate-300 text-sm font-medium">
             Image unavailable
@@ -70,7 +106,7 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
             fill
             unoptimized
             className="object-cover transition-transform duration-500 group-hover:scale-105"
-            alt={`${title || 'Forklift'} — ${selected || 'forklift'} for sale at Super Handlers`}
+            alt={`${title || "Forklift"} — ${selected || "forklift"} for sale at Super Handlers`}
             itemProp="image"
             onError={() => setImgError(true)}
           />
@@ -81,42 +117,88 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
       <div className="flex flex-col flex-1 p-5">
         {/* Category tag */}
         {(() => {
-          const cat = CATEGORY_COLORS[selected]
+          const cat = CATEGORY_COLORS[selected];
           return cat ? (
-            <span className={`self-start mb-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${cat.bg} ${cat.text}`}>
+            <span
+              className={`self-start mb-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${cat.bg} ${cat.text}`}
+            >
               {cat.label}
             </span>
-          ) : null
+          ) : null;
         })()}
-        <h3 className="text-[15px] font-black text-slate-900 leading-tight mb-1 line-clamp-2" itemProp="name">
-          <Link href={detailsHref} className="hover:text-[#5ba3b5] transition-colors">
-            {title || 'Forklift'}
+        <h3
+          className="text-[15px] font-black text-slate-900 leading-tight mb-1 line-clamp-2"
+          itemProp="name"
+        >
+          <Link
+            href={detailsHref}
+            className="hover:text-[#5ba3b5] transition-colors"
+          >
+            {title || "Forklift"}
           </Link>
         </h3>
 
-        {desc && <p className="sr-only" itemProp="description">{desc}</p>}
+        {desc && (
+          <p className="sr-only" itemProp="description">
+            {desc}
+          </p>
+        )}
 
         {/* Price */}
-        <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="flex items-baseline gap-1 mt-2 mb-4">
+        <div
+          itemProp="offers"
+          itemScope
+          itemType="https://schema.org/Offer"
+          className="flex items-baseline gap-1 mt-2 mb-4"
+        >
           {price ? (
             <>
-              <span className="text-2xl font-black text-[#5ba3b5] tracking-tight" itemProp="price" content={price}>
+              <span
+                className="text-2xl font-black text-[#5ba3b5] tracking-tight"
+                itemProp="price"
+                content={price}
+              >
                 {formattedPrice}
               </span>
               <span className="text-xs font-semibold text-slate-400">CAD</span>
-              {isRental && <span className="text-xs font-semibold text-slate-400">/mo</span>}
+              {isRental && (
+                <span className="text-xs font-semibold text-slate-400">
+                  /mo
+                </span>
+              )}
               <meta itemProp="priceCurrency" content="CAD" />
             </>
           ) : (
-            <span className="text-sm font-semibold text-slate-400">Contact for pricing</span>
+            <span className="text-sm font-semibold text-slate-400">
+              Contact for pricing
+            </span>
           )}
           <meta itemProp="availability" content="https://schema.org/InStock" />
+          <div itemProp="shippingDetails" itemScope itemType="https://schema.org/OfferShippingDetails">
+            <div itemProp="shippingRate" itemScope itemType="https://schema.org/MonetaryAmount">
+              <meta itemProp="value" content="0" />
+              <meta itemProp="currency" content="CAD" />
+            </div>
+            <div itemProp="shippingDestination" itemScope itemType="https://schema.org/DefinedRegion">
+              <meta itemProp="addressCountry" content="CA" />
+              <meta itemProp="addressRegion" content="ON" />
+            </div>
+          </div>
+          <div itemProp="hasMerchantReturnPolicy" itemScope itemType="https://schema.org/MerchantReturnPolicy">
+            <meta itemProp="applicableCountry" content="CA" />
+            <link itemProp="returnPolicyCategory" href="https://schema.org/MerchantReturnNotPermitted" />
+          </div>
         </div>
 
         {/* Listing date */}
         {uploadDate && (
           <p className="text-[11px] text-slate-400 -mt-2 mb-2">
-            Listed {new Date(uploadDate).toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' })}
+            Listed{" "}
+            {new Date(uploadDate).toLocaleDateString("en-CA", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
           </p>
         )}
 
@@ -139,7 +221,16 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
       </div>
 
       <MyModal open={open} setOpen={setOpen} handleDelete={handleDelete} />
-      <ToastContainer position="bottom-left" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick draggable pauseOnHover theme="dark" />
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </article>
-  )
+  );
 }

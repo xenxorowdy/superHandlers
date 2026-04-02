@@ -149,6 +149,10 @@ export default async function NewForkliftsPage() {
                                             itemType="https://schema.org/Product"
                                         >
                                             <meta itemProp="category" content="New ForkLift" />
+                                            <link itemProp="image" href={`${SITE_URL}/api/uploads/${item.filename}`} />
+                                            <div itemProp="brand" itemScope itemType="https://schema.org/Brand">
+                                                <meta itemProp="name" content="Super Handlers" />
+                                            </div>
                                             <Link href={item.href} className="block relative h-52 overflow-hidden bg-slate-100">
                                                 <Image
                                                     src={`/api/uploads/${item.filename}`}
@@ -175,6 +179,20 @@ export default async function NewForkliftsPage() {
                                                         ${new Intl.NumberFormat('en-US').format(price || 0)}
                                                         <meta itemProp="priceCurrency" content="CAD" />
                                                         <meta itemProp="availability" content="https://schema.org/InStock" />
+                                                        <div itemProp="shippingDetails" itemScope itemType="https://schema.org/OfferShippingDetails">
+                                                            <div itemProp="shippingRate" itemScope itemType="https://schema.org/MonetaryAmount">
+                                                                <meta itemProp="value" content="0" />
+                                                                <meta itemProp="currency" content="CAD" />
+                                                            </div>
+                                                            <div itemProp="shippingDestination" itemScope itemType="https://schema.org/DefinedRegion">
+                                                                <meta itemProp="addressCountry" content="CA" />
+                                                                <meta itemProp="addressRegion" content="ON" />
+                                                            </div>
+                                                        </div>
+                                                        <div itemProp="hasMerchantReturnPolicy" itemScope itemType="https://schema.org/MerchantReturnPolicy">
+                                                            <meta itemProp="applicableCountry" content="CA" />
+                                                            <link itemProp="returnPolicyCategory" href="https://schema.org/MerchantReturnNotPermitted" />
+                                                        </div>
                                                     </span>
                                                     <Link href={item.href} className="text-xs font-semibold text-[#5ba3b5] hover:text-[#7ab8c7] transition-colors">
                                                         View Details →

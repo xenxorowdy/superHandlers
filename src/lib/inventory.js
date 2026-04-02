@@ -8,8 +8,11 @@ import {
 } from "./shopSeo";
 
 function normalizeInventoryItem(item = {}) {
+  const { _id, uploadDate, ...rest } = item;
   return {
-    ...item,
+    ...rest,
+    _id: _id?.toString() ?? null,
+    uploadDate: uploadDate instanceof Date ? uploadDate.toISOString() : (uploadDate ?? null),
     metadata: item.metadata || {},
     slug: buildInventorySlug(item),
     href: buildInventoryUrl(item),
