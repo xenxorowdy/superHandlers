@@ -98,12 +98,18 @@ export default function Cards({ res, title, price, desc, selected, deleted, setD
 
         {/* Price */}
         <div itemProp="offers" itemScope itemType="https://schema.org/Offer" className="flex items-baseline gap-1 mt-2 mb-4">
-          <span className="text-2xl font-black text-[#5ba3b5] tracking-tight" itemProp="price" content={price || '0'}>
-            {formattedPrice}
-          </span>
-          <span className="text-xs font-semibold text-slate-400">CAD</span>
-          {isRental && <span className="text-xs font-semibold text-slate-400">/mo</span>}
-          <meta itemProp="priceCurrency" content="CAD" />
+          {price ? (
+            <>
+              <span className="text-2xl font-black text-[#5ba3b5] tracking-tight" itemProp="price" content={price}>
+                {formattedPrice}
+              </span>
+              <span className="text-xs font-semibold text-slate-400">CAD</span>
+              {isRental && <span className="text-xs font-semibold text-slate-400">/mo</span>}
+              <meta itemProp="priceCurrency" content="CAD" />
+            </>
+          ) : (
+            <span className="text-sm font-semibold text-slate-400">Contact for pricing</span>
+          )}
           <meta itemProp="availability" content="https://schema.org/InStock" />
         </div>
 

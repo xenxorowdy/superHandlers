@@ -43,17 +43,37 @@ export default async function Shop() {
                 '@type': 'Product',
                 name: item.metadata?.title || 'Forklift',
                 description: item.metadata?.description || 'Quality forklift available at Super Handlers, Brampton ON.',
-                image: `https://www.superhandlerslift.com/api/uploads/${item.filename}`,
+                image: [`https://www.superhandlerslift.com/api/uploads/${item.filename}`],
+                url: item.absoluteUrl,
+                mpn: (item.metadata?.title || 'Forklift').replace(/\s+/g, '-').toUpperCase(),
                 brand: { '@type': 'Brand', name: 'Super Handlers' },
                 offers: {
                     '@type': 'Offer',
-                    price: item.metadata?.price || '0',
-                    priceCurrency: 'CAD',
+                    url: item.absoluteUrl,
+                    ...(item.metadata?.price && { price: item.metadata.price, priceCurrency: 'CAD' }),
                     availability: 'https://schema.org/InStock',
                     seller: {
                         '@type': 'Organization',
                         name: 'Super Handlers',
                         url: 'https://www.superhandlerslift.com',
+                    },
+                    shippingDetails: {
+                        '@type': 'OfferShippingDetails',
+                        shippingRate: {
+                            '@type': 'MonetaryAmount',
+                            value: '0',
+                            currency: 'CAD',
+                        },
+                        shippingDestination: {
+                            '@type': 'DefinedRegion',
+                            addressCountry: 'CA',
+                            addressRegion: 'ON',
+                        },
+                    },
+                    hasMerchantReturnPolicy: {
+                        '@type': 'MerchantReturnPolicy',
+                        applicableCountry: 'CA',
+                        returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
                     },
                 },
             },
@@ -150,7 +170,7 @@ export default async function Shop() {
                                         </Link>
                                     </h3>
                                     <p>Category: {item.metadata?.selected || 'Forklift'}</p>
-                                    <p>Price: ${item.metadata?.price || '0'} CAD{item.metadata?.selected === 'Rental ForkLift' ? ' per month' : ''}</p>
+                                    {item.metadata?.price && <p>Price: ${item.metadata.price} CAD{item.metadata?.selected === 'Rental ForkLift' ? ' per month' : ''}</p>}
                                     {item.metadata?.description && <p>{item.metadata.description}</p>}
                                     <p>Available at Super Handlers, 11 Holland Dr, Unit 9, Bolton ON. Call +1 647-573-0160.</p>
                                 </article>

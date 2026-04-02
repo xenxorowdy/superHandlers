@@ -136,14 +136,17 @@ export default async function ShopItemPage({ params }) {
             : 'New Forklifts'
 
     // --- Structured data ---
+    const productImages = [image, ...extraImages.map(f => `${SITE_URL}/api/uploads/${f}`)]
+
     const productSchema = {
         '@context': 'https://schema.org',
         '@type': 'Product',
         name: title,
         description,
-        image,
+        image: productImages,
         url: item.absoluteUrl,
         sku: item.filename,
+        mpn: title.replace(/\s+/g, '-').toUpperCase(),
         brand: {
             '@type': 'Brand',
             name: brandLabel || 'Super Handlers',
@@ -152,13 +155,15 @@ export default async function ShopItemPage({ params }) {
         offers: {
             '@type': 'Offer',
             url: item.absoluteUrl,
-            price: item.metadata?.price || '0',
-            priceCurrency: 'CAD',
+            ...(item.metadata?.price && {
+                price: item.metadata.price,
+                priceCurrency: 'CAD',
+            }),
             availability: 'https://schema.org/InStock',
-            ...(isRental && {
+            ...(isRental && item.metadata?.price && {
                 priceSpecification: {
                     '@type': 'UnitPriceSpecification',
-                    price: item.metadata?.price || '0',
+                    price: item.metadata.price,
                     priceCurrency: 'CAD',
                     unitCode: 'MON',
                 },
@@ -168,6 +173,40 @@ export default async function ShopItemPage({ params }) {
                 name: 'Super Handlers',
                 url: SITE_URL,
                 telephone: PHONE,
+            },
+            shippingDetails: {
+                '@type': 'OfferShippingDetails',
+                shippingRate: {
+                    '@type': 'MonetaryAmount',
+                    value: '0',
+                    currency: 'CAD',
+                },
+                shippingDestination: {
+                    '@type': 'DefinedRegion',
+                    addressCountry: 'CA',
+                    addressRegion: 'ON',
+                },
+                deliveryTime: {
+                    '@type': 'ShippingDeliveryTime',
+                    handlingTime: {
+                        '@type': 'QuantitativeValue',
+                        minValue: 1,
+                        maxValue: 3,
+                        unitCode: 'DAY',
+                    },
+                    transitTime: {
+                        '@type': 'QuantitativeValue',
+                        minValue: 1,
+                        maxValue: 5,
+                        unitCode: 'DAY',
+                    },
+                },
+            },
+            hasMerchantReturnPolicy: {
+                '@type': 'MerchantReturnPolicy',
+                applicableCountry: 'CA',
+                returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+                merchantReturnDays: 0,
             },
         },
     }
@@ -209,7 +248,9 @@ export default async function ShopItemPage({ params }) {
                     name: `What is the rental price for the ${title}?`,
                     acceptedAnswer: {
                         '@type': 'Answer',
-                        text: `The ${title} rents for $${new Intl.NumberFormat('en-US').format(item.metadata?.price || 0)} CAD/month. Contact us for long-term rental discounts.`,
+                        text: item.metadata?.price
+                            ? `The ${title} rents for $${new Intl.NumberFormat('en-US').format(item.metadata.price)} CAD/month. Contact us for long-term rental discounts.`
+                            : `Contact Super Handlers at ${PHONE_DISPLAY} for rental pricing on the ${title}.`,
                     },
                 }]
                 : [{
@@ -217,7 +258,9 @@ export default async function ShopItemPage({ params }) {
                     name: `What is the price of the ${title}?`,
                     acceptedAnswer: {
                         '@type': 'Answer',
-                        text: `The ${title} is listed at $${new Intl.NumberFormat('en-US').format(item.metadata?.price || 0)} CAD. Contact Super Handlers for financing options.`,
+                        text: item.metadata?.price
+                            ? `The ${title} is listed at $${new Intl.NumberFormat('en-US').format(item.metadata.price)} CAD. Contact Super Handlers for financing options.`
+                            : `Contact Super Handlers at ${PHONE_DISPLAY} for pricing on the ${title}.`,
                     },
                 }]
             ),
@@ -292,14 +335,16 @@ export default async function ShopItemPage({ params }) {
                         <p className="text-slate-500 leading-7 text-[15px]">{description}</p>
 
                         {/* Price */}
-                        <div className="flex items-baseline gap-2 border-t border-b border-slate-100 py-5">
-                            <span className="text-sm font-semibold uppercase tracking-wider text-slate-400">Price</span>
-                            <span className="text-4xl font-black tracking-tight text-[#5ba3b5]">
-                                ${new Intl.NumberFormat('en-US').format(item.metadata?.price || 0)}
-                                <span className="text-base font-medium text-slate-400 ml-1">CAD</span>
-                            </span>
-                            {isRental && <span className="text-sm font-medium text-slate-400">/month</span>}
-                        </div>
+                        {item.metadata?.price ? (
+                            <div className="flex items-baseline gap-2 border-t border-b border-slate-100 py-5">
+                                <span className="text-sm font-semibold uppercase tracking-wider text-slate-400">Price</span>
+                                <span className="text-4xl font-black tracking-tight text-[#5ba3b5]">
+                                    ${new Intl.NumberFormat('en-US').format(item.metadata.price)}
+                                    <span className="text-base font-medium text-slate-400 ml-1">CAD</span>
+                                </span>
+                                {isRental && <span className="text-sm font-medium text-slate-400">/month</span>}
+                            </div>
+                        ) : null}
 
                         {/* CTA buttons */}
                         <div className="flex flex-col sm:flex-row gap-3">
@@ -410,12 +455,18 @@ export default async function ShopItemPage({ params }) {
                                                     itemType="https://schema.org/Offer"
                                                 >
                                                     <span className="text-base font-black text-[#5ba3b5]">
-                                                        <span itemProp="price" content={relPrice || '0'}>
-                                                            ${new Intl.NumberFormat('en-US').format(relPrice || 0)}
-                                                        </span>
-                                                        <meta itemProp="priceCurrency" content="CAD" />
+                                                        {relPrice ? (
+                                                            <>
+                                                                <span itemProp="price" content={relPrice}>
+                                                                    ${new Intl.NumberFormat('en-US').format(relPrice)}
+                                                                </span>
+                                                                <meta itemProp="priceCurrency" content="CAD" />
+                                                                {relIsRental && <span className="text-xs text-slate-400 ml-0.5">/mo</span>}
+                                                            </>
+                                                        ) : (
+                                                            <span className="text-xs text-slate-400">Contact for pricing</span>
+                                                        )}
                                                         <meta itemProp="availability" content="https://schema.org/InStock" />
-                                                        {relIsRental && <span className="text-xs text-slate-400 ml-0.5">/mo</span>}
                                                     </span>
                                                     <Link href={rel.href} className="text-xs font-semibold text-[#5ba3b5] hover:text-[#4a92a4] transition-colors">
                                                         View →
