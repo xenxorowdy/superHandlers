@@ -93,6 +93,11 @@ export default async function Shop() {
               addressCountry: "CA",
               addressRegion: "ON",
             },
+            deliveryTime: {
+              "@type": "ShippingDeliveryTime",
+              handlingTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 3, unitCode: "DAY" },
+              transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 5, unitCode: "DAY" },
+            },
           },
           hasMerchantReturnPolicy: {
             "@type": "MerchantReturnPolicy",

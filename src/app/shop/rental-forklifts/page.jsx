@@ -82,6 +82,11 @@ export default async function RentalForkliftsPage() {
                         '@type': 'OfferShippingDetails',
                         shippingRate: { '@type': 'MonetaryAmount', value: '0', currency: 'CAD' },
                         shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'CA', addressRegion: 'ON' },
+                        deliveryTime: {
+                            '@type': 'ShippingDeliveryTime',
+                            handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
+                            transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 5, unitCode: 'DAY' },
+                        },
                     },
                     hasMerchantReturnPolicy: {
                         '@type': 'MerchantReturnPolicy',
@@ -196,6 +201,18 @@ export default async function RentalForkliftsPage() {
                                                             <div itemProp="shippingDestination" itemScope itemType="https://schema.org/DefinedRegion">
                                                                 <meta itemProp="addressCountry" content="CA" />
                                                                 <meta itemProp="addressRegion" content="ON" />
+                                                            </div>
+                                                            <div itemProp="deliveryTime" itemScope itemType="https://schema.org/ShippingDeliveryTime">
+                                                                <div itemProp="handlingTime" itemScope itemType="https://schema.org/QuantitativeValue">
+                                                                    <meta itemProp="minValue" content="1" />
+                                                                    <meta itemProp="maxValue" content="3" />
+                                                                    <meta itemProp="unitCode" content="DAY" />
+                                                                </div>
+                                                                <div itemProp="transitTime" itemScope itemType="https://schema.org/QuantitativeValue">
+                                                                    <meta itemProp="minValue" content="1" />
+                                                                    <meta itemProp="maxValue" content="5" />
+                                                                    <meta itemProp="unitCode" content="DAY" />
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div itemProp="hasMerchantReturnPolicy" itemScope itemType="https://schema.org/MerchantReturnPolicy">

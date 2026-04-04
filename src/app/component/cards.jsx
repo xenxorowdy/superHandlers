@@ -183,6 +183,18 @@ export default function Cards({
               <meta itemProp="addressCountry" content="CA" />
               <meta itemProp="addressRegion" content="ON" />
             </div>
+            <div itemProp="deliveryTime" itemScope itemType="https://schema.org/ShippingDeliveryTime">
+              <div itemProp="handlingTime" itemScope itemType="https://schema.org/QuantitativeValue">
+                <meta itemProp="minValue" content="1" />
+                <meta itemProp="maxValue" content="3" />
+                <meta itemProp="unitCode" content="DAY" />
+              </div>
+              <div itemProp="transitTime" itemScope itemType="https://schema.org/QuantitativeValue">
+                <meta itemProp="minValue" content="1" />
+                <meta itemProp="maxValue" content="5" />
+                <meta itemProp="unitCode" content="DAY" />
+              </div>
+            </div>
           </div>
           <div itemProp="hasMerchantReturnPolicy" itemScope itemType="https://schema.org/MerchantReturnPolicy">
             <meta itemProp="applicableCountry" content="CA" />
