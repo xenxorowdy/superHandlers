@@ -38,7 +38,17 @@ const servicesSchema = {
         description: 'On-site mobile forklift repairs available 24 hours a day, 7 days a week across Brampton and the GTA.',
         provider: { '@type': 'LocalBusiness', name: 'Super Handlers', telephone: '+1-647-573-0160' },
         areaServed: [{ '@type': 'City', name: 'Brampton' }, { '@type': 'City', name: 'Toronto' }],
-        offers: { '@type': 'Offer', priceCurrency: 'CAD', availability: 'https://schema.org/InStock' },
+        offers: {
+          '@type': 'Offer',
+          priceCurrency: 'CAD',
+          availability: 'https://schema.org/InStock',
+          hasMerchantReturnPolicy: {
+            '@type': 'MerchantReturnPolicy',
+            applicableCountry: 'CA',
+            returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+            merchantReturnDays: 0,
+          },
+        },
       },
     },
     {

@@ -97,6 +97,12 @@ const homeServiceSchema = {
     availability: 'https://schema.org/InStock',
     priceCurrency: 'CAD',
     seller: { '@type': 'Organization', name: 'Super Handlers' },
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: 'CA',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+      merchantReturnDays: 0,
+    },
   },
 }
 
