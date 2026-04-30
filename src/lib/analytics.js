@@ -1,14 +1,21 @@
 const CONTACT_EVENT_CATEGORY = 'Contact Interaction'
 
+function getWindow() {
+  if (typeof window === 'undefined') return null
+  return window
+}
+
 function sendGoogleEvent(action, payload) {
-  if (typeof window === 'undefined') return
-  if (typeof window.gtag !== 'function') return
-  window.gtag('event', action, payload)
+  const win = getWindow()
+  if (typeof win?.gtag !== 'function') return
+  win.gtag('event', action, payload)
 }
 
 function sendOpenReplayEvent(action, payload) {
-  if (typeof window === 'undefined') return
-  const tracker = window.__OPENREPLAY_TRACKER
+  const win = getWindow()
+  if (!win) return
+
+  const tracker = win.__OPENREPLAY_TRACKER
   tracker?.event?.(action, {
     ...payload,
     category: CONTACT_EVENT_CATEGORY,
@@ -20,10 +27,9 @@ export function trackContactEngagement({ action, label, value } = {}) {
 
   const payload = {
     event_category: CONTACT_EVENT_CATEGORY,
+    ...(label ? { event_label: label } : {}),
+    ...(typeof value !== 'undefined' ? { value } : {}),
   }
-
-  if (label) payload.event_label = label
-  if (typeof value !== 'undefined') payload.value = value
 
   sendGoogleEvent(action, payload)
   sendOpenReplayEvent(action, payload)
